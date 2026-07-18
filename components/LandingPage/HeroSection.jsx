@@ -62,10 +62,10 @@ export default function HeroSection() {
               transition={{ delay: 0.7 }}
               className="mt-10 flex  gap-2"
             >
-              <button className="bg-blue-700 hover:bg-blue-800 text-white px-2 py-4 rounded-lg font-semibold text-sm flex whitespace-nowrap  items-center gap-1 transition">
+              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-2 py-4 rounded-lg font-semibold text-sm flex whitespace-nowrap  items-center gap-1 transition">
                 <BadgeDollarSign size={20} />
                 GET PRICE LIST
-              </button>
+              </button> */}
 
               <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm  whitespace-nowrap px-2 py-4 rounded-lg font-semibold flex items-center gap-2 transition">
                 <Users size={20} />

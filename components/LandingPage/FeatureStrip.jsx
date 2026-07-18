@@ -12,7 +12,7 @@ import {
 const features = [
   {
     icon: ShieldCheck,
-    title: "10+",
+    title: "15+",
     subtitle: "Years Experience",
   },
   {

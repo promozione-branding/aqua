@@ -336,7 +336,7 @@ const faqs = [
       <section className="max-w-7xl mx-auto px-6 pb-20">
         <iframe
           className="w-full h-[420px] rounded-3xl"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27969.61990593087!2d77.0539105!3d28.803039099999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390da822bdf1dae1%3A0x549a8fcadeefa83c!2sBawana%2C%20Delhi%2C%20110039!5e0!3m2!1sen!2sin!4v1784360591355!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.9032540108756!2d77.0599969!3d28.782145199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390da829a9b5b381%3A0x31bd63e527d334c!2sMerlin%20Water%20Purifier!5e0!3m2!1sen!2sin!4v1784364461744!5m2!1sen!2sin"
         />
       </section>
 

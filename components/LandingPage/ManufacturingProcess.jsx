@@ -118,11 +118,11 @@ export default function ManufacturingProcess() {
                 label: "Happy Clients",
               },
               {
-                number: "100+",
+                number: "50+",
                 label: "Product Models",
               },
               {
-                number: "25+",
+                number: "15+",
                 label: "Years Experience",
               },
             ].map((item) => (
