@@ -5,7 +5,7 @@ import { Download, BadgeDollarSign, Users } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden h-[600px]  bg-gradient-to-r ">
+    <section className="relative overflow-hidden h-screen bg-gradient-to-r ">
       {/* Background */}
       <div
   className="absolute inset-0 bg-cover opacity-70"
@@ -100,21 +100,21 @@ export default function HeroSection() {
     <img
       src="/1.png"
       alt="RO 1"
-      className="absolute bottom-32 -left-17 w-[250px] z-10 drop-shadow-2xl "
+      className="absolute bottom-12 -left-17 w-[250px] z-10 drop-shadow-2xl "
     />
 
     {/* Center RO */}
     <img
       src="/2.png"
       alt="RO 2"
-      className="absolute bottom-38 -right-33 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
+      className="absolute bottom-8 -right-33 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
     />
 
     {/* Right RO */}
     <img
       src="/3.png"
       alt="RO 3"
-      className="absolute bottom-42 -right-10 w-[180px] z-20 drop-shadow-2xl "
+      className="absolute bottom-22 -right-10 w-[180px] z-20 drop-shadow-2xl "
     />
   </div>
 </motion.div>
