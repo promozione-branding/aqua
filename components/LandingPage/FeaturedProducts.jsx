@@ -22,13 +22,13 @@ const products = [
   //   material: "RO + UV + UF",
   //   image: "/2.png",
   // },
-  {
-    id: 4,
-    name: "Elite Water Purifier",
-    storage: "10L",
-    material: "RO + UV",
-    image: "/5.png",
-  },
+  // {
+  //   id: 4,
+  //   name: "Elite Water Purifier",
+  //   storage: "10L",
+  //   material: "RO + UV",
+  //   image: "/5.png",
+  // },
   {
     id: 5,
     name: "LED Display Cabinet",

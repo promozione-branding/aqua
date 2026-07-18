@@ -20,18 +20,18 @@ const categories = [
       "LED Display Cabinets",
     ],
   },
-  {
-    title: "WATER PURIFIERS",
-    image: "/2.png",
-    icon: Droplets,
-    color: "bg-amber-500",
-    points: [
-      "RO + UV",
-      "RO + UV + UF",
-      "Alkaline Water Purifiers",
-      "Copper RO Purifiers",
-    ],
-  },
+  // {
+  //   title: "WATER PURIFIERS",
+  //   image: "/2.png",
+  //   icon: Droplets,
+  //   color: "bg-amber-500",
+  //   points: [
+  //     "RO + UV",
+  //     "RO + UV + UF",
+  //     "Alkaline Water Purifiers",
+  //     "Copper RO Purifiers",
+  //   ],
+  // },
   {
     title: "RO COMPONENTS",
     image: "/3.png",
