@@ -225,7 +225,7 @@ const faqs = [
               <input
                 type="text"
                 name="subject"
-                placeholder="Subject"
+                placeholder="Product"
                 value={form.subject}
                 onChange={handleChange}
                 className="md:col-span-2 h-14 rounded-2xl border border-slate-300 px-5 outline-none transition-all duration-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100"
