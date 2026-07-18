@@ -30,7 +30,7 @@ export default function Footer() {
             <h1 className="text-3xl ">JNJ AQUA</h1>
 
             <p className="leading-7 mt-5 text-gray-400 max-w-md">
-              Manufacturer of premium RO Cabinets & Water Purifiers.
+              Manufacturer of premium RO Cabinets & Spare Parts.
               Delivering quality, innovation and customized solutions
               for businesses across India.
             </p>
@@ -90,7 +90,7 @@ export default function Footer() {
             <ul className="space-y-4">
               {[
                 "RO Cabinets",
-                "Water Purifiers",
+                "Spare Parts",
                 "RO Components",
                 "Commercial RO",
                 "Accessories",
