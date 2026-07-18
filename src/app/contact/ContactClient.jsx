@@ -348,7 +348,7 @@ const faqs = [
           {faqs.map(([q, a], i) => (
             <div
               key={i}
-              className="rounded-2xl border border-white/10 overflow-hidden"
+              className="rounded-2xl border border-blue-400 overflow-hidden"
             >
               <button
                 onClick={() => setOpen(open === i ? -1 : i)}
