@@ -184,9 +184,9 @@ export default function ProductCategories() {
   </div>
 
 
-    <section className="relative z-10 mt-8 px-4 lg:px-8">
+    <section className="relative z-10 mt-13 px-4 lg:px-8">
   <div className="mx-auto w-full rounded-[28px] border border-blue-100 bg-white p-4 shadow-[0_25px_80px_rgba(0,0,0,0.12)] backdrop-blur-xl lg:p-6">
-    <h2 className="mb-5 text-center text-2xl font-bold text-[#0F4FA8] md:text-4xl">
+    <h2 className="mb-7 text-center text-2xl font-bold text-[#0F4FA8] md:text-4xl">
       Get the Best RO Cabinets & Spare Parts at Wholesale Prices!
     </h2>
 
