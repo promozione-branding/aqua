@@ -55,13 +55,17 @@ export default function AboutSection() {
 
   return (
     <motion.section
-      className="py-9 bg-white"
+      className="py-0 bg-white"
       variants={container}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      
+      <div className="w-full relative">
+         <svg className="absolute opacity-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,192L60,170.7C120,149,240,107,360,80C480,53,600,43,720,53.3C840,64,960,96,1080,96C1200,96,1320,64,1380,48L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+      <div className="max-w-7xl relative mx-auto px-6">
+         
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div variants={leftVariant} className="relative overflow-hidden rounded-lg">
             <motion.img
@@ -82,11 +86,11 @@ export default function AboutSection() {
           </motion.div>
 
           <motion.div variants={rightVariant}>
-            <motion.p variants={fadeUp} className="text-sm font-semibold uppercase tracking-widest text-blue-600 mb-2">About Crystal Impex</motion.p>
+            <motion.p variants={fadeUp} className="text-base rounded-3xl font-semibold uppercase tracking-widest text-white mb-2 bg-blue-700 w-fit px-3 py-2">About JNJ AQUA</motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl font-bold text-gray-900 leading-tight">
               Manufacturer of Premium<br/>RO Cabinets & Spare Parts
             </motion.h2>
-            <motion.p variants={fadeUp} className="mt-6 text-gray-600 leading-7">
+            <motion.p variants={fadeUp} className="mt-6 text-lg text-black leading-7">
               JNJ Aqua is a leading manufacturer of high-quality RO Cabinets and Water Purifiers. With advanced technology, modern infrastructure and strict quality control, we deliver products that ensure purity, reliability and long-lasting performance.
             </motion.p>
 
@@ -111,9 +115,15 @@ export default function AboutSection() {
                 animate={{x:[0,5,0]}}
                 transition={{duration:1,repeat:Infinity}}>→</motion.span>
             </motion.button>
+   
           </motion.div>
+          
         </div>
+                 
       </div>
+      </div>
+
+      
     </motion.section>
   );
 }

@@ -49,7 +49,7 @@ const process = [
 
 export default function ManufacturingProcess() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-14 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-5">
         {/* Heading */}
         <div className="text-center mb-16">
@@ -78,7 +78,7 @@ export default function ManufacturingProcess() {
                   {/* Arrow */}
                   {index !== process.length - 1 && (
                     <ChevronRight
-                      className="hidden lg:block absolute -right-7 top-10 text-blue-500"
+                      className="hidden lg:block absolute -right-7 bottom-1 top-10 text-blue-500"
                       size={28}
                     />
                   )}

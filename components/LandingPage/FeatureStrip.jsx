@@ -64,11 +64,11 @@ export default function FeatureStrip() {
                 </div>
 
                 <div>
-                  <h3 className="text-[15px] font-bold text-[#1F2937] leading-none">
+                  <h3 className="text-[19px] font-bold text-[#1F2937] leading-none">
                     {item.title}
                   </h3>
 
-                  <p className="text-[12px] text-gray-500 leading-tight mt-1">
+                  <p className="text-[14px] text-gray-500 leading-tight mt-1">
                     {item.subtitle}
                   </p>
                 </div>

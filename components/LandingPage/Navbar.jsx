@@ -69,7 +69,7 @@ export default function Navbar() {
 
             {/* Menu */}
 
-            <nav className="hidden lg:flex items-center gap-9 font-semibold text-[13px] text-gray-800 uppercase tracking-wide">
+            <nav className="hidden lg:flex items-center gap-9 font-semibold text-[16px] text-gray-800 uppercase tracking-wide">
 
               <Link
                 href="/"
@@ -127,12 +127,12 @@ export default function Navbar() {
                 Components
               </Link>
 
-              <Link
+              {/* <Link
                 href="/"
                 className="hover:text-[#0D3B8E] transition"
               >
                 Dealer Zone
-              </Link>
+              </Link> */}
 
               <Link
                 href="/"

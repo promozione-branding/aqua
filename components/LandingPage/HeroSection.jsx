@@ -5,16 +5,20 @@ import { Download, BadgeDollarSign, Users } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden  bg-gradient-to-r ">
+    <section className="relative overflow-hidden h-[600px]  bg-gradient-to-r ">
       {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-70"
-        style={{ backgroundImage: "url('/banner.webp')" }} 
-      />
+  className="absolute inset-0 bg-cover opacity-70"
+  style={{
+    backgroundImage: "url('/banner.webp')",
+    backgroundPosition: "50% 60%", // X Y
+  }}
+/>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-15">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-1 py-16 lg:py-0">
+        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[600px]">
           {/* ================= LEFT CONTENT ================= */}
+          <div className="flex items-center justify-start h-full">
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             animate={{ opacity: 1, x: 0 }}
@@ -68,12 +72,13 @@ export default function HeroSection() {
                 BECOME DISTRIBUTOR
               </button>
 
-              <button className="border-2 border-gray-500 hover:border-blue-700 hover:text-blue-700 px-2 py-4 rounded-lg text-sm  whitespace-nowrap font-semibold flex items-center gap-2 transition">
+              <button className="border-2 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-blue-700 px-2 py-4 rounded-lg text-sm  whitespace-nowrap font-semibold flex items-center gap-2 transition">
                 <Download size={20} />
                 DOWNLOAD CATALOGUE
               </button>
             </motion.div>
           </motion.div>
+          </div>
 
           {/* ================= RIGHT SIDE ================= */}
           <motion.div
@@ -95,21 +100,21 @@ export default function HeroSection() {
     <img
       src="/1.png"
       alt="RO 1"
-      className="absolute bottom-31 left-0 w-[180px] z-10 drop-shadow-2xl "
+      className="absolute bottom-32 -left-17 w-[250px] z-10 drop-shadow-2xl "
     />
 
     {/* Center RO */}
     <img
       src="/2.png"
       alt="RO 2"
-      className="absolute bottom-30 left-1/2 -translate-x-1/2 w-[280px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
+      className="absolute bottom-38 -right-33 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
     />
 
     {/* Right RO */}
     <img
       src="/3.png"
       alt="RO 3"
-      className="absolute bottom-35 right-0 w-[180px] z-20 drop-shadow-2xl "
+      className="absolute bottom-42 -right-10 w-[180px] z-20 drop-shadow-2xl "
     />
   </div>
 </motion.div>

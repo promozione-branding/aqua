@@ -15,13 +15,13 @@ const products = [
     material: "ABS Food Grade",
     image: "/7.png",
   },
-  {
-    id: 3,
-    name: "Premium Copper RO",
-    storage: "12L",
-    material: "RO + UV + UF",
-    image: "/2.png",
-  },
+  // {
+  //   id: 3,
+  //   name: "Premium Copper RO",
+  //   storage: "12L",
+  //   material: "RO + UV + UF",
+  //   image: "/2.png",
+  // },
   {
     id: 4,
     name: "Elite Water Purifier",
@@ -47,7 +47,7 @@ const products = [
 
 export default function FeaturedProducts() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-14 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-1">
         {/* Heading */}
         <div className="text-center mb-14">
@@ -63,7 +63,7 @@ export default function FeaturedProducts() {
         </div>
 
         {/* Products */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6">
           {products.map((item) => (
             <div
               key={item.id}

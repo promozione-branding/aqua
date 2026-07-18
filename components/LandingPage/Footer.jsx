@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0F172A] text-gray-300">
       {/* Top */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid gap-12 lg:grid-cols-5 md:grid-cols-2">
 
           {/* Company */}
@@ -29,7 +29,7 @@ export default function Footer() {
             /> */}
             <h1 className="text-3xl ">JNJ AQUA</h1>
 
-            <p className="leading-7 text-gray-400 max-w-md">
+            <p className="leading-7 mt-5 text-gray-400 max-w-md">
               Manufacturer of premium RO Cabinets & Water Purifiers.
               Delivering quality, innovation and customized solutions
               for businesses across India.

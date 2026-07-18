@@ -51,7 +51,7 @@ const benefits = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-blue-700 py-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-blue-700 py-14">
 
       {/* Background Blur */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/20 blur-[140px] rounded-full"></div>
@@ -80,7 +80,7 @@ export default function WhyChooseUs() {
 
         {/* Features */}
 
-        <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6 mt-14">
+        <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6 mt-8">
 
           {features.map((item, index) => {
             const Icon = item.icon;
@@ -111,13 +111,13 @@ export default function WhyChooseUs() {
 
         {/* OEM Banner */}
 
-        <div className="mt-20 rounded-3xl overflow-hidden shadow-2xl">
+        <div className="mt-9 rounded-3xl overflow-hidden shadow-2xl">
 
           <div className="grid lg:grid-cols-2 items-center">
 
             {/* Left */}
 
-            <div className="p-10 lg:p-14">
+            <div className="p-10 lg:p-8">
 
               <span className="bg-white/20 text-white px-4 py-2 rounded-full text-sm">
                 OEM Manufacturing
