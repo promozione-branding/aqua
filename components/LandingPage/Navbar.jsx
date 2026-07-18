@@ -135,7 +135,7 @@ export default function Navbar() {
               </Link> */}
 
               <Link
-                href="/"
+                href="/contact"
                 className="hover:text-[#0D3B8E] transition"
               >
                 Contact Us

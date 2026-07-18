@@ -420,8 +420,7 @@ export default function ProductPage() {
             <div className="flex items-center gap-8 border-b border-slate-200">
               {[
                 { key: "description", label: "DESCRIPTION" },
-                { key: "additional", label: "ADDITIONAL INFORMATION" },
-                { key: "reviews", label: "REVIEWS (0)" },
+                
               ].map((tab) => (
                 <button
                   key={tab.key}
