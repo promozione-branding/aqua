@@ -15,13 +15,13 @@ const products = [
     material: "ABS Food Grade",
     image: "/7.png",
   },
-  // {
-  //   id: 3,
-  //   name: "Premium Copper RO",
-  //   storage: "12L",
-  //   material: "RO + UV + UF",
-  //   image: "/2.png",
-  // },
+  {
+    id: 3,
+    name: "Premium Copper RO",
+    storage: "12L",
+    material: "RO + UV + UF",
+    image: "/2.png",
+  },
   // {
   //   id: 4,
   //   name: "Elite Water Purifier",
