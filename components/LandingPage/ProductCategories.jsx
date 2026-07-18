@@ -82,7 +82,7 @@ export default function ProductCategories() {
         </h2>
 
         <p className="mt-5 text-gray-600 txt-lg leading-7">
-          Explore our complete range of RO Cabinets, Water Purifiers,
+          Explore our complete range of RO Cabinets, Spare Parts,
           Components and OEM Manufacturing Solutions designed for quality,
           performance and reliability.
         </p>
