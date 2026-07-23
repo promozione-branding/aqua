@@ -1,10 +1,14 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/config/connectDB";
 import Product from "@/models/Product/Product";
+import Category from "@/models/category/Category";
+import SubCategory from "@/models/subcategory/SubCategory";
 import { uploadToR2 } from "@/utils/uploadToR2";
 import { generateSlug } from "@/utils/generateSlug";
 import crypto from "crypto";
 import path from "path";
+
+export const dynamic = "force-dynamic";
 
 // GET SINGLE PRODUCT (By Slug or ID)
 export async function GET(req, { params }) {

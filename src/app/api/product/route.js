@@ -3,8 +3,12 @@ import crypto from "crypto";
 import path from "path";
 import connectDB from "@/config/connectDB";
 import Product from "@/models/Product/Product";
+import Category from "@/models/category/Category";
+import SubCategory from "@/models/subcategory/SubCategory";
 import { uploadToR2 } from "@/utils/uploadToR2";
 import { generateSlug } from "@/utils/generateSlug";
+
+export const dynamic = "force-dynamic";
 
 export async function POST(req) {
   try {

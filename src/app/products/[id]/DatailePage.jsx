@@ -1,0 +1,496 @@
+"use client";
+
+import { useState } from "react";
+import {
+  ChevronRight,
+  ChevronLeft,
+  Layers,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
+  Droplet,
+  Sun,
+  CheckCircle2,
+  Download,
+  Package,
+  Truck,
+  MapPin,
+  IndianRupee,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
+
+const iconMap = {
+  ShieldCheck,
+  Droplet,
+  Sparkles,
+  Wrench,
+  Sun,
+  Layers
+};
+
+const quickFeatures = [
+  { icon: Layers, label: "Food Grade\nABS Material" },
+  { icon: ShieldCheck, label: "Leak Proof\nDesign" },
+  { icon: Sparkles, label: "Elegant\nLook" },
+  { icon: Wrench, label: "Easy\nInstallation" },
+];
+
+const productFeatures = [
+  {
+    icon: "ShieldCheck",
+    title: "High Quality ABS Material",
+    desc: "Strong & durable construction",
+  },
+  {
+    icon: "Droplet",
+    title: "Leak Proof & Rust Proof",
+    desc: "100% safe for long term usage",
+  },
+  {
+    icon: "Sparkles",
+    title: "Elegant & Modern Design",
+    desc: "Enhances the look of your RO",
+  },
+  {
+    icon: "Wrench",
+    title: "Easy Installation & Maintenance",
+    desc: "User friendly design for hassle free use",
+  },
+  {
+    icon: "Sun",
+    title: "UV Stabilized Body",
+    desc: "Protects from harmful UV rays",
+  },
+];
+
+const checklist = [
+  "Suitable for 12L Storage RO Systems",
+  "Made from Food Grade ABS Material",
+  "Leak Proof, Rust Proof & UV Stabilized",
+  "Easy to Install and Clean",
+  "Smooth Finish with Elegant Looks",
+];
+
+const perks = [
+  { icon: ShieldCheck, label: "Best Quality Products" },
+  { icon: IndianRupee, label: "Competitive Prices" },
+  { icon: Truck, label: "On-Time Delivery" },
+  { icon: MapPin, label: "PAN India Supply" },
+];
+
+const colorMap = {
+  green: "#22c55e",
+  blue: "#3b82f6",
+  brown: "#8b4513",
+  purple: "#a855f7",
+  gold: "#d4af37",
+  grey: "#808080",
+  gray: "#808080",
+  black: "#1a1a1a",
+  white: "#ffffff",
+  copper: "#b87333",
+  red: "#ef4444",
+  yellow: "#facc15",
+  pink: "#ec4899",
+  orange: "#f97316",
+  silver: "#c0c0c0",
+  rose: "#b76e79",
+};
+
+const getVariantBg = (colorName) => {
+  if (!colorName) return "#ffffff";
+  const parts = colorName.toLowerCase().trim().split(/[\s-]+/);
+  if (parts.length === 1) {
+    return colorMap[parts[0]] || parts[0];
+  }
+  const colors = parts.map(p => colorMap[p] || p);
+  if (colors.length === 2) {
+    return `linear-gradient(135deg, ${colors[0]} 50%, ${colors[1]} 50%)`;
+  }
+  if (colors.length === 3) {
+    return `linear-gradient(135deg, ${colors[0]} 33.33%, ${colors[1]} 33.33%, ${colors[1]} 66.66%, ${colors[2]} 66.66%)`;
+  }
+  return colors[0];
+};
+
+export default function ProductDetailClient({ product, preloadedRelated }) {
+  const [activeVariantIndex, setActiveVariantIndex] = useState(0);
+  const [activeThumb, setActiveThumb] = useState(0);
+  const [activeTab, setActiveTab] = useState("description");
+
+  // Sort color variants to place White and Black first
+  const sortedVariants = [...(product.colorVariants || [])].sort((a, b) => {
+    const nameA = (a.colorName || "").toLowerCase();
+    const nameB = (b.colorName || "").toLowerCase();
+    if (nameA === "white") return -1;
+    if (nameB === "white") return 1;
+    if (nameA === "black") return -1;
+    if (nameB === "black") return 1;
+    return 0;
+  });
+
+  // Load variant images
+  const activeVariant = sortedVariants[activeVariantIndex] || {};
+  const images = activeVariant.images?.map(img => img.url) || ["/1.png"];
+  
+  const selectVariant = (index) => {
+    setActiveVariantIndex(index);
+    setActiveThumb(0);
+  };
+
+  // Load dynamic specifications
+  const specs = product.specifications?.map(s => [s.key, s.value]) || [
+    ["Storage Capacity", "12L"],
+    ["Material", "ABS Food Grade"],
+  ];
+
+  const related = preloadedRelated && preloadedRelated.length > 0 ? preloadedRelated : [
+    { name: "Crystal Premium Cabinet", image: "/1.png", storage: "10L", tile: "#111827", slug: "#" },
+    { name: "Elite Plus Cabinet", image: "/2.png", storage: "15L", tile: "#111827", slug: "#" },
+  ];
+
+  return (
+    <div className="bg-slate-50 text-slate-700 min-h-screen">
+      {/* PRODUCT MAIN */}
+      <section className="max-w-7xl mx-auto px-6 py-10">
+        <div className="grid grid-cols-12 gap-12">
+          {/* Gallery */}
+          <div className="col-span-12 lg:col-span-6">
+            <div className="relative rounded-2xl border border-slate-200 aspect-[4/5] flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
+              <span className="absolute top-5 left-5 bg-blue-900 text-white text-xs font-bold tracking-wide px-3 py-1.5 rounded-md">
+                BEST SELLER
+              </span>
+
+              <button
+                aria-label="Previous image"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition"
+                onClick={() =>
+                  setActiveThumb((p) => (p - 1 + images.length) % images.length)
+                }
+              >
+                <ChevronLeft className="w-4 h-4" strokeWidth={2.5} />
+              </button>
+              <button
+                aria-label="Next image"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition"
+                onClick={() =>
+                  setActiveThumb((p) => (p + 1) % images.length)
+                }
+              >
+                <ChevronRight className="w-4 h-4" strokeWidth={2.5} />
+              </button>
+
+              <Image 
+                src={images[activeThumb] || "/1.png"} 
+                fill 
+                alt={product.name}
+                className="h-full w-full object-contain p-6" 
+              />
+            </div>
+
+            {images.length > 1 && (
+              <div className="grid grid-cols-5 gap-3 mt-4">
+                {images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveThumb(i)}
+                    className={`aspect-square rounded-lg border-2 flex items-center justify-center p-2 bg-gradient-to-br from-white to-blue-100 transition ${
+                      activeThumb === i
+                        ? "border-blue-700"
+                        : "border-slate-200 hover:border-blue-300"
+                    }`}
+                  >
+                    <div className="relative w-full h-full">
+                      <Image src={img} alt="thumb" fill className="object-contain" />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Info */}
+          <div className="col-span-12 lg:col-span-6">
+            <h1 className="text-3xl font-extrabold text-blue-955 tracking-tight">
+              {product.name}
+            </h1>
+            <p className="text-slate-500 mt-3.5">{product.category?.name || "Premium ABS RO Cabinet"}</p>
+
+            <p className="text-base text-slate-600 leading-relaxed mt-6">
+              {product.shortDescription || "Premium food-grade design."}
+            </p>
+
+            {sortedVariants && sortedVariants.length > 1 && (
+              <div className="mt-6">
+                <span className="text-sm font-extrabold text-slate-800 tracking-wider block mb-3 uppercase">
+                  COLOUR — <span className="text-blue-600 font-extrabold uppercase">{activeVariant.colorName}</span>
+                </span>
+                <div className="flex flex-wrap gap-2.5 items-center">
+                  {sortedVariants.map((variant, idx) => {
+                    const isSelected = activeVariantIndex === idx;
+                    const isWhite = variant.colorName.toLowerCase() === "white";
+                    const backgroundVal = getVariantBg(variant.colorName);
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => selectVariant(idx)}
+                        className={`w-7 h-7 rounded-full border shadow-sm transition-all duration-200 focus:outline-none ${
+                          isSelected
+                            ? "ring-2 ring-blue-600 ring-offset-2 scale-110"
+                            : "border-slate-300 hover:scale-110"
+                        } ${isWhite ? "bg-white" : "border-slate-800/10"}`}
+                        style={{ background: isWhite ? undefined : backgroundVal }}
+                        aria-label={`Select ${variant.colorName}`}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            <div className="mt-6 rounded-xl border border-slate-200 overflow-hidden">
+              <div className="bg-blue-50 px-5 py-3 border-b border-slate-200">
+                <h3 className="text-sm font-bold text-blue-955 tracking-wide">
+                  KEY SPECIFICATIONS
+                </h3>
+              </div>
+              <table className="w-full text-sm">
+                <tbody>
+                  {specs.map(([label, value], i) => (
+                    <tr
+                      key={label}
+                      className={`border-b border-slate-100 last:border-b-0 ${i % 2 ? "bg-slate-50/60" : ""}`}
+                    >
+                      <td className="px-5 py-2.5 text-black font-medium w-1/2">
+                        {label}
+                      </td>
+                      <td className="px-5 py-2.5 text-black font-medium">
+                        {value}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="grid grid-cols-4 gap-3 mt-6 pb-6 border-b border-slate-200">
+              {quickFeatures.map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex flex-col items-center text-center gap-2"
+                >
+                  <div className="w-11 h-11 rounded-full bg-blue-50 flex items-center justify-center text-blue-800">
+                    <Icon className="w-6 h-6" strokeWidth={1.8} />
+                  </div>
+                  <span className="text-sm font-medium text-slate-600 leading-tight whitespace-pre-line">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3 mt-6">
+              <a 
+                href={`https://wa.me/919876543210?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(product.name)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center text-base justify-center gap-2 bg-green-500 border border-slate-300 text-white font-semibold rounded-lg px-4 py-3 hover:bg-green-600 hover:scale-105 duration-150 transition"
+              >
+                <FaWhatsapp size={23} />
+                WHATSAPP US
+              </a>
+              <button className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition">
+                GET QUOTE
+              </button>
+              <button className="flex items-center justify-center gap-2 bg-white border border-blue-900 text-blue-900 font-semibold text-sm rounded-lg py-3 px-4 hover:bg-blue-50 transition">
+                <Download className="w-5 h-5" />
+                DOWNLOAD CATALOGUE
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PRODUCT FEATURES */}
+      <section className="bg-white border-y border-slate-200 py-14">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-3 mb-8">
+            <h2 className="text-lg font-extrabold text-blue-955 tracking-wide">
+              PRODUCT FEATURES
+            </h2>
+            <div className="h-px flex-1 bg-slate-200" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {productFeatures.map(({ icon: iconName, title, desc }) => {
+              const Icon = iconMap[iconName] || ShieldCheck;
+              return (
+                <div
+                  key={title}
+                  className="border border-slate-200 rounded-xl p-5 hover:shadow-md hover:border-blue-200 transition"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-800 mb-4">
+                    <Icon className="w-7 h-7" strokeWidth={1.8} />
+                  </div>
+                  <h3 className="text-lg font-bold text-blue-955">{title}</h3>
+                  <p className="text-base text-slate-500 mt-1.5">{desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* DESCRIPTION / BULK BANNER */}
+      <section className="py-14">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="">
+            <div className="flex items-center gap-8 border-b border-slate-200">
+              <button
+                onClick={() => setActiveTab("description")}
+                className="text-base pb-3.5 border-b-2 font-bold text-blue-955 border-blue-900 transition"
+              >
+                DESCRIPTION
+              </button>
+            </div>
+
+            <div className="pt-6">
+              <p className="text-lg text-black leading-relaxed">
+                {product.description || "No full description added yet."}
+              </p>
+
+              <ul className="mt-5 space-y-3">
+                {checklist.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-lg text-black"
+                  >
+                    <CheckCircle2
+                      className="w-4 h-4 text-blue-500 mt-1.5 shrink-0"
+                      strokeWidth={2}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Bulk order banner */}
+          <div className="h-full">
+            <div className="relative flex min-h-[340px] flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 to-blue-800 p-7">
+              <div className="relative z-10 flex h-full flex-1 flex-col pr-[170px]">
+                <h3 className="text-3xl font-extrabold leading-tight text-white">
+                  Bulk Order?
+                  <br />
+                  Get Special Pricing
+                </h3>
+                <p className="mt-4 flex-1 text-base leading-relaxed text-blue-100/80">
+                  We offer the best deals for bulk orders & distributors.
+                </p>
+                <button className="mt-auto w-fit rounded-lg bg-white px-5 py-3 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
+                  CONTACT US NOW
+                </button>
+              </div>
+              <Image
+                src="/2.png"
+                alt="RO Cabinet"
+                width={420}
+                height={520}
+                className="absolute bottom-0 right-0 z-0 w-[240px] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* YOU MAY ALSO LIKE */}
+      <section className="bg-white py-14 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-extrabold text-blue-955 tracking-wide">
+              YOU MAY ALSO LIKE
+            </h2>
+            <div className="w-10 h-1 bg-blue-700 rounded-full mx-auto mt-3" />
+          </div>
+
+          <div className="relative flex items-center gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1">
+              {related.map((p, index) => (
+                <div
+                  key={index}
+                  className="group border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+                >
+                  <div
+                    className="aspect-square flex items-center justify-center p-2 bg-slate-50"
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-lg font-bold text-blue-955 line-clamp-1">
+                      {p.name}
+                    </h4>
+                    <p className="text-base text-black mt-1">
+                      Storage: {p.storage}
+                    </p>
+                    <Link href={`/products/${p.slug}`} className="block w-full text-center mt-3 text-xs font-bold text-blue-700 border border-blue-700 rounded-md py-2 hover:bg-blue-900 hover:text-white transition">
+                      VIEW DETAILS
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BULK CTA STRIP */}
+      <section className="bg-blue-950 py-8">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
+              <Package className="w-6 h-6" strokeWidth={1.6} />
+            </div>
+            <div>
+              <h3 className="text-white text-lg font-bold leading-tight">
+                Looking For
+                <br />
+                RO Cabinets in Bulk?
+              </h3>
+              <p className="text-blue-200/70 text-xs mt-2">
+                Get factory direct pricing with best quality products.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-8 text-white">
+            {perks.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-2.5">
+                <Icon className="w-8 h-8 text-blue-200" strokeWidth={1.6} />
+                <span className="text-base font-semibold">{label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-right shrink-0">
+            <p className="text-blue-200/70 text-xs mb-3.5">
+              Get in Touch Today!
+            </p>
+            <button className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-3 rounded-lg hover:bg-blue-50 transition">
+              REQUEST A QUOTE
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

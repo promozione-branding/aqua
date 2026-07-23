@@ -202,34 +202,34 @@ export default function ProductCategories() {
         <input
           type="text"
           placeholder="Full Name"
-          className="h-[60px] w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
+          className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
         />
 
         {/* Email */}
         <input
           type="email"
           placeholder="Email Address"
-          className="h-[60px] w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
+          className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
         />
 
         {/* Phone */}
         <input
           type="tel"
           placeholder="Phone Number"
-          className="h-[60px] w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
+          className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
         />
 
         {/* Requirement */}
         <input
           type="text"
           placeholder="Products Required (RO Cabinet, Pump, Membrane...)"
-          className="h-[60px] w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
+          className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
         />
 
         {/* Desktop Button */}
         <button
           type="submit"
-          className="hidden h-[60px] min-w-[220px] rounded-2xl bg-gradient-to-r from-[#0F4FA8] to-[#0A73E8] px-8 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(14,116,233,0.35)] xl:block"
+          className="hidden h-15 min-w-[220px] rounded-2xl bg-gradient-to-r from-[#0F4FA8] to-[#0A73E8] px-8 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(14,116,233,0.35)] xl:block"
         >
           Get a Quote →
         </button>

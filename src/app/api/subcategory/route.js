@@ -6,6 +6,8 @@ import Category from "@/models/category/Category";
 import { uploadToR2 } from "@/utils/uploadToR2";
 import { generateSlug } from "@/utils/generateSlug";
 
+export const dynamic = "force-dynamic";
+
 // 1. GET ALL SUBCATEGORIES (populated with parent category name)
 export async function GET() {
   try {

@@ -96,7 +96,7 @@ export default function Navbar() {
                 <div className="absolute  z-[9999] left-0 top-full mt-5 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2">
 
                   <Link
-                    href="/product"
+                    href="/products"
                     className="block px-5 py-2 hover:bg-white"
                   >
                     RO Cabinet
