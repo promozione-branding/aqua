@@ -19,7 +19,7 @@ export async function POST(req) {
     const description = formData.get("description")?.trim() || "";
     const shortDescription = formData.get("shortDescription")?.trim() || "";
     const specifications = JSON.parse(formData.get("specifications") || "[]");
-    const price = Number(formData.get("price"));
+    const price = Number(formData.get("price") || 0);
     const discountPrice = Number(formData.get("discountPrice") || 0);
     const stock = Number(formData.get("stock") || 0);
     const category = formData.get("category");
@@ -28,9 +28,9 @@ export async function POST(req) {
     const metaTitle = formData.get("metaTitle")?.trim() || "";
     const metaDescription = formData.get("metaDescription")?.trim() || "";
 
-    if (!name || !price || !category) {
+    if (!name || !category) {
       return NextResponse.json(
-        { success: false, message: "Name, Price, and Category are required" },
+        { success: false, message: "Name and Category are required" },
         { status: 400 }
       );
     }

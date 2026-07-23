@@ -111,12 +111,14 @@ export default function ProductPageHome({ preloadedProducts, preloadedCategories
                   <div className="p-5 flex flex-col flex-1">
                     <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">{prod.category}</span>
                     <h3 className="text-lg font-bold text-blue-955 mt-1 line-clamp-1">{prod.name}</h3>
-                    <div className="flex items-baseline gap-2 mt-2">
-                      <span className="text-xl font-extrabold text-blue-955">₹{prod.price.toLocaleString()}</span>
-                      {prod.originalPrice > prod.price && (
-                        <span className="text-sm line-through text-slate-400">₹{prod.originalPrice.toLocaleString()}</span>
-                      )}
-                    </div>
+                    {prod.price > 0 && (
+                      <div className="flex items-baseline gap-2 mt-2">
+                        <span className="text-xl font-extrabold text-blue-955">₹{prod.price.toLocaleString()}</span>
+                        {prod.originalPrice > prod.price && (
+                          <span className="text-sm line-through text-slate-400">₹{prod.originalPrice.toLocaleString()}</span>
+                        )}
+                      </div>
+                    )}
                     <div className="mt-auto pt-5">
                       <Link
                         href={`/products/${prod.slug || prod.id}`}
