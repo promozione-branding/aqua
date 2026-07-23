@@ -1,6 +1,7 @@
 import dynamicImport from 'next/dynamic';
 import connectDB from "@/config/connectDB";
 import Product from "@/models/Product/Product";
+import Category from "@/models/category/Category";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
