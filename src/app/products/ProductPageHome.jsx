@@ -4,38 +4,46 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function ProductPageHome({ preloadedProducts, preloadedCategories }) {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [maxPrice, setMaxPrice] = useState(15000);
+
+  const handleCategoryClick = (categoryName) => {
+    if (categoryName.toLowerCase() === "spare parts") {
+      router.push("/products/spareparts");
+    } else {
+      setSelectedCategory(categoryName);
+    }
+  };
 
   const filteredProducts = useMemo(() => {
     return preloadedProducts.filter((prod) => {
       const matchCat = selectedCategory === "All" || prod.category === selectedCategory;
-      const matchPrice = prod.price <= maxPrice;
-      return matchCat && matchPrice;
+      return matchCat;
     });
-  }, [preloadedProducts, selectedCategory, maxPrice]);
+  }, [preloadedProducts, selectedCategory]);
 
   return (
     <div className="bg-slate-50 text-slate-700 min-h-screen pt-6 pb-16 font-sans">
       <div className="max-w-7xl mx-auto px-6 mb-8">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-405">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
           <Link href="/" className="hover:text-blue-900 transition">Home</Link>
           <ChevronRight className="w-3.5 h-3.5" />
           <span className="text-blue-950 font-bold">Products</span>
         </div>
-        <h1 className="text-4xl font-extrabold text-blue-955 mt-3 tracking-tight">Our Collection</h1>
+        <h1 className="text-4xl font-extrabold text-blue-950 mt-3 tracking-tight">Our Collection</h1>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-8">
         {/* Sidebar Filters */}
-        <aside className="w-full lg:w-[280px] shrink-0 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm h-fit sticky top-28">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-blue-955">Filters</h2>
-            {(selectedCategory !== "All" || maxPrice !== 15000) && (
+        <aside className="w-full lg:w-[280px] shrink-0 bg-transparent lg:bg-white p-0 lg:p-6 rounded-2xl border-none lg:border lg:border-slate-200 shadow-none lg:shadow-sm h-fit lg:sticky lg:top-28">
+          <div className="items-center justify-between border-b border-slate-100 pb-4 mb-6 hidden lg:flex">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-blue-950">Filters</h2>
+            {selectedCategory !== "All" && (
               <button 
-                onClick={() => { setSelectedCategory("All"); setMaxPrice(15000); }} 
+                onClick={() => { setSelectedCategory("All"); }} 
                 className="text-xs font-bold text-red-500 hover:text-red-600 transition"
               >
                 Clear All
@@ -43,13 +51,15 @@ export default function ProductPageHome({ preloadedProducts, preloadedCategories
             )}
           </div>
 
-          <div className="mb-8">
-            <h3 className="text-xs font-bold uppercase text-slate-400 mb-3 tracking-wider">Categories</h3>
-            <div className="flex flex-col gap-2">
-              <button
-                onClick={() => setSelectedCategory("All")}
-                className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition ${
-                  selectedCategory === "All" ? "bg-blue-50 text-blue-900 font-bold" : "hover:bg-slate-50"
+          <div className="mb-0 lg:mb-8">
+            <h3 className="text-xs font-bold uppercase text-slate-400 mb-3 tracking-wider hidden lg:block">Categories</h3>
+            <div className="flex flex-row lg:flex-col overflow-x-auto gap-2 pb-4 lg:pb-0 scrollbar-none">
+               <button
+                onClick={() => handleCategoryClick("All")}
+                className={`text-left px-4 py-2 lg:px-3 lg:py-2 rounded-full lg:rounded-lg text-sm font-semibold whitespace-nowrap transition shrink-0 ${
+                  selectedCategory === "All"
+                    ? "bg-blue-900 text-white font-bold"
+                    : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 lg:border-none lg:bg-transparent lg:text-slate-700"
                 }`}
               >
                 All Products
@@ -57,31 +67,17 @@ export default function ProductPageHome({ preloadedProducts, preloadedCategories
               {preloadedCategories.map((cat) => (
                 <button
                   key={cat._id}
-                  onClick={() => setSelectedCategory(cat.name)}
-                  className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition ${
-                    selectedCategory === cat.name ? "bg-blue-50 text-blue-900 font-bold" : "hover:bg-slate-50"
+                  onClick={() => handleCategoryClick(cat.name)}
+                  className={`text-left px-4 py-2 lg:px-3 lg:py-2 rounded-full lg:rounded-lg text-sm font-semibold whitespace-nowrap transition shrink-0 ${
+                    selectedCategory === cat.name
+                      ? "bg-blue-900 text-white font-bold"
+                      : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 lg:border-none lg:bg-transparent lg:text-slate-700"
                   }`}
                 >
                   {cat.name}
                 </button>
               ))}
             </div>
-          </div>
-
-          <div>
-            <div className="flex justify-between items-center mb-3">
-              <h3 className="text-xs font-bold uppercase text-slate-400 tracking-wider">Max Price</h3>
-              <span className="text-sm font-bold text-blue-955">₹{maxPrice.toLocaleString()}</span>
-            </div>
-            <input
-              type="range"
-              min={1000}
-              max={15000}
-              step={500}
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-              className="w-full accent-blue-900 cursor-pointer h-1.5 bg-slate-100 rounded-lg appearance-none"
-            />
           </div>
         </aside>
 

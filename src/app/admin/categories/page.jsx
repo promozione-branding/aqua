@@ -266,7 +266,7 @@ export default function CategoriesPage() {
                                 <UploadCloud className="text-gray-600 mb-3" size={40} />
                                 <p className="text-gray-600 font-medium">Click to upload image</p>
                                 <span className="text-sm text-gray-400 mt-1">PNG, JPG, JPEG</span>
-                                <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
+                                <input type="file" accept="image/*, .heic, .heif, .webp, .png, .jpg, .jpeg, .gif" onChange={handleImageChange} className="hidden" />
                             </label>
 
                             {previewUrl && (
