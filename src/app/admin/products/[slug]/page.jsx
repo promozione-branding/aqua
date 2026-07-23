@@ -588,7 +588,7 @@ export default function EditProductPage() {
                                     <label className="border-2 border-dashed border-gray-300 rounded-xl p-6 flex flex-col items-center justify-center cursor-pointer hover:border-black transition">
                                         <UploadCloud size={32} className="text-gray-500 mb-2" />
                                         <p className="text-sm text-gray-600 font-medium">Upload Images for {variant.colorName || "this color"}</p>
-                                        <input type="file" multiple accept="image/*" onChange={(e) => handleImageChange(index, e)} className="hidden" />
+                                        <input type="file" multiple accept="image/*, .heic, .heif, .webp, .png, .jpg, .jpeg, .gif" onChange={(e) => handleImageChange(index, e)} className="hidden" />
                                     </label>
 
                                     {variant.previews.length > 0 && (

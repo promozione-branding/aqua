@@ -97,14 +97,14 @@ export default function Navbar() {
 
                   <Link
                     href="/products"
-                    className="block px-5 py-2 hover:bg-white"
+                    className="block px-5 py-2 hover:bg-slate-50 text-slate-700"
                   >
                     RO Cabinet
                   </Link>
 
                   <Link
-                    href="#"
-                    className="block px-5 py-2 hover:bg-whiet"
+                    href="/products/spareparts"
+                    className="block px-5 py-2 hover:bg-slate-50 text-slate-700"
                   >
                     Spare Parts
                   </Link>

@@ -140,6 +140,34 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
     setActiveThumb(0);
   };
 
+  const handleNextImage = () => {
+    if (images.length === 0) return;
+    if (activeThumb < images.length - 1) {
+      setActiveThumb(activeThumb + 1);
+    } else if (sortedVariants.length > 1) {
+      const nextVariantIdx = (activeVariantIndex + 1) % sortedVariants.length;
+      setActiveVariantIndex(nextVariantIdx);
+      setActiveThumb(0);
+    } else {
+      setActiveThumb(0);
+    }
+  };
+
+  const handlePrevImage = () => {
+    if (images.length === 0) return;
+    if (activeThumb > 0) {
+      setActiveThumb(activeThumb - 1);
+    } else if (sortedVariants.length > 1) {
+      const prevVariantIdx = (activeVariantIndex - 1 + sortedVariants.length) % sortedVariants.length;
+      setActiveVariantIndex(prevVariantIdx);
+      const prevVariant = sortedVariants[prevVariantIdx] || {};
+      const prevImages = prevVariant.images?.map(img => img.url) || ["/1.png"];
+      setActiveThumb(prevImages.length > 0 ? prevImages.length - 1 : 0);
+    } else {
+      setActiveThumb(images.length - 1);
+    }
+  };
+
   // Load dynamic specifications
   const specs = product.specifications?.map(s => [s.key, s.value]) || [
     ["Storage Capacity", "12L"],
@@ -157,58 +185,64 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
       <section className="max-w-7xl mx-auto px-6 py-10">
         <div className="grid grid-cols-12 gap-12">
           {/* Gallery */}
-          <div className="col-span-12 lg:col-span-6">
-            <div className="relative rounded-2xl border border-slate-200 aspect-[4/5] flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
-              <span className="absolute top-5 left-5 bg-blue-900 text-white text-xs font-bold tracking-wide px-3 py-1.5 rounded-md">
-                BEST SELLER
-              </span>
+          <div className="col-span-12 lg:col-span-6 px-12 sm:px-16">
+            <div className="max-w-[420px] mx-auto w-full relative">
+              <div className="relative rounded-2xl border border-slate-200 aspect-[4/5] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
+                {/* Clickable side overlays for navigation */}
+                <div 
+                  className="absolute left-0 top-0 w-1/2 h-full cursor-pointer z-10"
+                  onClick={handlePrevImage}
+                  title="Previous Image"
+                />
+                <div 
+                  className="absolute right-0 top-0 w-1/2 h-full cursor-pointer z-10"
+                  onClick={handleNextImage}
+                  title="Next Image"
+                />
+
+                <Image 
+                  src={images[activeThumb] || "/1.png"} 
+                  fill 
+                  alt={product.name}
+                  className="h-full w-full object-contain p-10" 
+                />
+              </div>
 
               <button
                 aria-label="Previous image"
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition"
-                onClick={() =>
-                  setActiveThumb((p) => (p - 1 + images.length) % images.length)
-                }
+                className="absolute -left-12 sm:-left-16 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition z-20"
+                onClick={handlePrevImage}
               >
                 <ChevronLeft className="w-4 h-4" strokeWidth={2.5} />
               </button>
               <button
                 aria-label="Next image"
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition"
-                onClick={() =>
-                  setActiveThumb((p) => (p + 1) % images.length)
-                }
+                className="absolute -right-12 sm:-right-16 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition z-20"
+                onClick={handleNextImage}
               >
                 <ChevronRight className="w-4 h-4" strokeWidth={2.5} />
               </button>
 
-              <Image 
-                src={images[activeThumb] || "/1.png"} 
-                fill 
-                alt={product.name}
-                className="h-full w-full object-contain p-6" 
-              />
+              {images.length > 1 && (
+                <div className="grid grid-cols-5 gap-3 mt-4">
+                  {images.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveThumb(i)}
+                      className={`aspect-square rounded-lg border-2 flex items-center justify-center p-2 bg-gradient-to-br from-white to-blue-100 transition ${
+                        activeThumb === i
+                          ? "border-blue-700"
+                          : "border-slate-200 hover:border-blue-300"
+                      }`}
+                    >
+                      <div className="relative w-full h-full">
+                        <Image src={img} alt="thumb" fill className="object-contain" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-
-            {images.length > 1 && (
-              <div className="grid grid-cols-5 gap-3 mt-4">
-                {images.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveThumb(i)}
-                    className={`aspect-square rounded-lg border-2 flex items-center justify-center p-2 bg-gradient-to-br from-white to-blue-100 transition ${
-                      activeThumb === i
-                        ? "border-blue-700"
-                        : "border-slate-200 hover:border-blue-300"
-                    }`}
-                  >
-                    <div className="relative w-full h-full">
-                      <Image src={img} alt="thumb" fill className="object-contain" />
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
 
           {/* Info */}
@@ -275,7 +309,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
               </table>
             </div>
 
-            <div className="grid grid-cols-4 gap-3 mt-6 pb-6 border-b border-slate-200">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pb-6 border-b border-slate-200">
               {quickFeatures.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
@@ -291,20 +325,20 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <a 
                 href={`https://wa.me/919876543210?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center text-base justify-center gap-2 bg-green-500 border border-slate-300 text-white font-semibold rounded-lg px-4 py-3 hover:bg-green-600 hover:scale-105 duration-150 transition"
+                className="flex items-center text-base justify-center gap-2 bg-green-500 border border-slate-300 text-white font-semibold rounded-lg px-4 py-3 hover:bg-green-600 hover:scale-105 duration-150 transition w-full sm:w-auto text-center"
               >
                 <FaWhatsapp size={23} />
                 WHATSAPP US
               </a>
-              <button className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition">
+              <button className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition w-full sm:w-auto">
                 GET QUOTE
               </button>
-              <button className="flex items-center justify-center gap-2 bg-white border border-blue-900 text-blue-900 font-semibold text-sm rounded-lg py-3 px-4 hover:bg-blue-50 transition">
+              <button className="flex items-center justify-center gap-2 bg-white border border-blue-900 text-blue-900 font-semibold text-sm rounded-lg py-3 px-4 hover:bg-blue-50 transition w-full sm:w-auto">
                 <Download className="w-5 h-5" />
                 DOWNLOAD CATALOGUE
               </button>
@@ -381,7 +415,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
           {/* Bulk order banner */}
           <div className="h-full">
             <div className="relative flex min-h-[340px] flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 to-blue-800 p-7">
-              <div className="relative z-10 flex h-full flex-1 flex-col pr-[170px]">
+              <div className="relative z-10 flex h-full flex-1 flex-col pr-0 sm:pr-[170px] pb-[160px] sm:pb-0">
                 <h3 className="text-3xl font-extrabold leading-tight text-white">
                   Bulk Order?
                   <br />
@@ -399,7 +433,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 alt="RO Cabinet"
                 width={420}
                 height={520}
-                className="absolute bottom-0 right-0 z-0 w-[240px] object-contain"
+                className="absolute bottom-0 right-0 z-0 w-[180px] sm:w-[240px] object-contain"
               />
             </div>
           </div>
@@ -472,7 +506,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-8 text-white">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center gap-6 md:gap-8 text-white w-full md:w-auto">
             {perks.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2.5">
                 <Icon className="w-8 h-8 text-blue-200" strokeWidth={1.6} />
@@ -481,11 +515,11 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             ))}
           </div>
 
-          <div className="text-right shrink-0">
+          <div className="text-left md:text-right shrink-0 w-full md:w-auto">
             <p className="text-blue-200/70 text-xs mb-3.5">
               Get in Touch Today!
             </p>
-            <button className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-3 rounded-lg hover:bg-blue-50 transition">
+            <button className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto">
               REQUEST A QUOTE
             </button>
           </div>
