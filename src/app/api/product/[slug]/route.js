@@ -48,7 +48,7 @@ export async function PUT(req, { params }) {
     const formData = await req.formData();
     const name = formData.get("name")?.trim();
     const customSlug = formData.get("slug")?.trim();
-    const price = Number(formData.get("price"));
+    const price = Number(formData.get("price") || 0);
     const discountPrice = Number(formData.get("discountPrice") || 0);
     const category = formData.get("category");
     const subCategory = formData.get("subCategory") || null;
@@ -62,7 +62,7 @@ export async function PUT(req, { params }) {
 
     // Update basic details
     if (name) product.name = name;
-    if (price) product.price = price;
+    product.price = price;
     product.discountPrice = discountPrice;
     if (category) product.category = category;
     product.subCategory = subCategory || null;

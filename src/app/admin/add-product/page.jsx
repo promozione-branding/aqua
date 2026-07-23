@@ -322,7 +322,7 @@ export default function AddProductPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700 mb-2">Price (INR)</label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-2">Price (INR) (Optional)</label>
                                 <div className="relative">
                                     <IndianRupee className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                                     <input
@@ -331,7 +331,6 @@ export default function AddProductPage() {
                                         value={price}
                                         onChange={(e) => setPrice(e.target.value)}
                                         className="w-full pl-12 pr-4 py-3 border border-gray-400 rounded-lg outline-none focus:ring-1 focus:ring-black"
-                                        required
                                     />
                                 </div>
                             </div>
