@@ -1,14 +1,35 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+
 export default function ProductPageHome({ preloadedProducts, preloadedCategories }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // Sync selected category from ?category= URL param
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    if (!categoryParam) {
+      setSelectedCategory("All");
+      return;
+    }
+    // Match slug (e.g. "ro-cabinet") to actual category name from DB
+    const matched = preloadedCategories.find(
+      (cat) => cat.slug === categoryParam || cat.name.toLowerCase().replace(/\s+/g, "-") === categoryParam.toLowerCase()
+    );
+    if (matched) {
+      setSelectedCategory(matched.name);
+    } else {
+      setSelectedCategory("All");
+    }
+  }, [searchParams, preloadedCategories]);
 
   const handleCategoryClick = (categoryName) => {
     if (categoryName.toLowerCase() === "spare parts") {

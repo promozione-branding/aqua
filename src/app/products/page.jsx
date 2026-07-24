@@ -65,7 +65,9 @@ function mapProduct(prod) {
   };
 }
 
-export default async function page() {
+export default async function page({ searchParams }) {
+  const resolvedSearchParams = await searchParams;
+  const initialCategory = resolvedSearchParams?.category || null;
   let preloadedProducts = [];
   let preloadedCategories = [];
 
