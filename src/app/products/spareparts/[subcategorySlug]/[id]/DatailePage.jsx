@@ -180,48 +180,50 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
   ];
 
   return (
-    <div className="bg-slate-50 text-slate-700 min-h-screen">
+    <div className="bg-slate-50 text-slate-700 min-h-screen overflow-x-hidden">
       {/* PRODUCT MAIN */}
-      <section className="max-w-7xl mx-auto px-6 py-10">
-        <div className="grid grid-cols-12 gap-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <div className="grid grid-cols-12 gap-6 sm:gap-12">
           {/* Gallery */}
-          <div className="col-span-12 lg:col-span-6 px-8 sm:px-16">
-            <div className="max-w-[420px] mx-auto w-full relative">
-              <div className="relative rounded-2xl border border-slate-200 aspect-[4/5] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
-                {/* Clickable side overlays for navigation */}
-                <div 
-                  className="absolute left-0 top-0 w-1/2 h-full cursor-pointer z-10"
+          <div className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16">
+            <div className="max-w-[420px] mx-auto w-full">
+              <div className="relative w-full">
+                <div className="relative rounded-2xl border border-slate-200 aspect-square sm:aspect-[4/5] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
+                  {/* Clickable side overlays for navigation */}
+                  <div 
+                    className="absolute left-0 top-0 w-1/2 h-full cursor-pointer z-10"
+                    onClick={handlePrevImage}
+                    title="Previous Image"
+                  />
+                  <div 
+                    className="absolute right-0 top-0 w-1/2 h-full cursor-pointer z-10"
+                    onClick={handleNextImage}
+                    title="Next Image"
+                  />
+
+                  <Image 
+                    src={images[activeThumb] || "/1.png"} 
+                    fill 
+                    alt={product.name}
+                    className="h-full w-full object-contain p-10" 
+                  />
+                </div>
+
+                <button
+                  aria-label="Previous image"
+                  className="absolute left-2 sm:-left-16 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition z-20"
                   onClick={handlePrevImage}
-                  title="Previous Image"
-                />
-                <div 
-                  className="absolute right-0 top-0 w-1/2 h-full cursor-pointer z-10"
+                >
+                  <ChevronLeft className="w-4 h-4" strokeWidth={2.5} />
+                </button>
+                <button
+                  aria-label="Next image"
+                  className="absolute right-2 sm:-right-16 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition z-20"
                   onClick={handleNextImage}
-                  title="Next Image"
-                />
-
-                <Image 
-                  src={images[activeThumb] || "/1.png"} 
-                  fill 
-                  alt={product.name}
-                  className="h-full w-full object-contain p-10" 
-                />
+                >
+                  <ChevronRight className="w-4 h-4" strokeWidth={2.5} />
+                </button>
               </div>
-
-              <button
-                aria-label="Previous image"
-                className="absolute -left-6 sm:-left-16 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition z-20"
-                onClick={handlePrevImage}
-              >
-                <ChevronLeft className="w-4 h-4" strokeWidth={2.5} />
-              </button>
-              <button
-                aria-label="Next image"
-                className="absolute -right-6 sm:-right-16 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 hover:bg-blue-50 transition z-20"
-                onClick={handleNextImage}
-              >
-                <ChevronRight className="w-4 h-4" strokeWidth={2.5} />
-              </button>
 
               {images.length > 1 && (
                 <div className="grid grid-cols-5 gap-3 mt-4">
