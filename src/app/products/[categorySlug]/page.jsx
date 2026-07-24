@@ -7,9 +7,8 @@ import Product from "@/models/Product/Product";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-export async function generateMetadata({ searchParams }) {
-  const resolvedSearchParams = await searchParams;
-  const categorySlug = resolvedSearchParams?.category;
+export async function generateMetadata({ params }) {
+  const { categorySlug } = await params;
 
   if (categorySlug) {
     try {
@@ -32,7 +31,7 @@ export async function generateMetadata({ searchParams }) {
   };
 }
 
-const ProductPageHome = dynamicImport(() => import('./ProductPageHome'), {
+const ProductPageHome = dynamicImport(() => import('../ProductPageHome'), {
   loading: () => (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center">
       <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-900"></div>
@@ -46,6 +45,7 @@ function mapProduct(prod) {
     : 0;
 
   const categoryName = prod.category?.name || "Water Purifier";
+  const categorySlug = prod.category?.slug || "water-purifier";
   const firstVariant = prod.colorVariants?.[0];
   const image = firstVariant?.images?.[0]?.url || "/1.png";
   const allImages = firstVariant?.images?.map((img) => img.url) || [image];
@@ -60,15 +60,14 @@ function mapProduct(prod) {
     image,
     allImages,
     category: categoryName,
-    categorySlug: prod.category?.slug || "ro-cabinet",
+    categorySlug,
     specifications: prod.specifications || [],
     featured: prod.featured || false,
   };
 }
 
-export default async function page({ searchParams }) {
-  const resolvedSearchParams = await searchParams;
-  const initialCategory = resolvedSearchParams?.category || null;
+export default async function Page({ params }) {
+  const { categorySlug } = await params;
   let preloadedProducts = [];
   let preloadedCategories = [];
 
@@ -92,6 +91,7 @@ export default async function page({ searchParams }) {
     <ProductPageHome 
       preloadedProducts={preloadedProducts} 
       preloadedCategories={preloadedCategories} 
+      initialCategory={categorySlug}
     />
   );
 }

@@ -100,7 +100,7 @@ export default function ScrollDrivenHorizontal({ products = [] }) {
           >
             {products.map((item) => (
               <Link
-                href={`/products/${item.slug}`}
+                href={`/products/${item.categorySlug || 'ro-cabinet'}/${item.slug}`}
                 key={item.id}
                 className="flex-shrink-0 block bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden group h-[400px] w-[280px] sm:w-[300px] flex flex-col cursor-pointer"
               >

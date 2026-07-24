@@ -1,21 +1,22 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { useRouter } from "next/navigation";
-
 
 export default function ProductPageHome({ preloadedProducts, preloadedCategories }) {
   const router = useRouter();
+  const params = useParams();
   const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("All");
+  
+  const categorySlug = params?.categorySlug;
 
-  // Sync selected category from ?category= URL param
+  // Sync selected category from URL path param or search param
   useEffect(() => {
-    const categoryParam = searchParams.get("category");
+    const categoryParam = categorySlug || searchParams.get("category");
     if (!categoryParam) {
       setSelectedCategory("All");
       return;
@@ -29,13 +30,20 @@ export default function ProductPageHome({ preloadedProducts, preloadedCategories
     } else {
       setSelectedCategory("All");
     }
-  }, [searchParams, preloadedCategories]);
+  }, [categorySlug, searchParams, preloadedCategories]);
 
   const handleCategoryClick = (categoryName) => {
-    if (categoryName.toLowerCase() === "spare parts") {
+    if (categoryName === "All") {
+      router.push("/products");
+    } else if (categoryName.toLowerCase() === "spare parts") {
       router.push("/products/spareparts");
     } else {
-      setSelectedCategory(categoryName);
+      const matched = preloadedCategories.find(c => c.name === categoryName);
+      if (matched && matched.slug) {
+        router.push(`/products/${matched.slug}`);
+      } else {
+        router.push("/products");
+      }
     }
   };
 
@@ -64,7 +72,7 @@ export default function ProductPageHome({ preloadedProducts, preloadedCategories
             <h2 className="text-sm font-bold uppercase tracking-wider text-blue-950">Filters</h2>
             {selectedCategory !== "All" && (
               <button 
-                onClick={() => { setSelectedCategory("All"); }} 
+                onClick={() => handleCategoryClick("All")} 
                 className="text-xs font-bold text-red-500 hover:text-red-600 transition"
               >
                 Clear All
@@ -112,7 +120,7 @@ export default function ProductPageHome({ preloadedProducts, preloadedCategories
             <div className="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6">
               {filteredProducts.map((prod) => (
                 <Link
-                  href={`/products/${prod.slug || prod.id}`}
+                  href={`/products/${prod.categorySlug || 'ro-cabinet'}/${prod.slug || prod.id}`}
                   key={prod.id}
                   className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 flex flex-col cursor-pointer"
                 >

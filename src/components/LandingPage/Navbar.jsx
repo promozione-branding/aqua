@@ -99,7 +99,7 @@ export default function Navbar() {
                     
                     {/* Left Column: RO Cabinet Featured Card */}
                     <div className="flex-1 p-6 bg-slate-50 border-r border-slate-100">
-                      <Link href="/products?category=ro-cabinet" className="group/item block bg-white rounded-xl p-4 shadow-sm border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all duration-300 h-full">
+                      <Link href="/products/ro-cabinet" className="group/item block bg-white rounded-xl p-4 shadow-sm border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all duration-300 h-full">
                         <div className="aspect-square bg-slate-50 rounded-lg mb-4 flex items-center justify-center p-4 relative overflow-hidden">
                           <img src="/1.png" alt="RO Cabinets" className="w-full h-full object-contain group-hover/item:scale-110 transition-transform duration-500" />
                         </div>

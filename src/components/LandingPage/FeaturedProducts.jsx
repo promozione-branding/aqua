@@ -7,6 +7,7 @@ export default async function FeaturedProducts() {
   try {
     await connectDB();
     const rawProducts = await Product.find({ isActive: true })
+      .populate("category")
       .sort({ name: 1 })
       .limit(10)
       .lean();
@@ -25,6 +26,7 @@ export default async function FeaturedProducts() {
         storage: storageSpec,
         material: materialSpec,
         image,
+        categorySlug: prod.category?.slug || "ro-cabinet",
       };
     });
   } catch (error) {
