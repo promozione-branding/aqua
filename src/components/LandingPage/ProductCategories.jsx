@@ -97,7 +97,7 @@ export default function ProductCategories() {
       <div className="overflow-hidden">
         <Swiper
           modules={[Autoplay]}
-          loop
+          loop={categories.length > 3}
           speed={900}
           spaceBetween={25}
           autoplay={{

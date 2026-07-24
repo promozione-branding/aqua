@@ -97,22 +97,22 @@ const colorMap = {
   orange: "#f97316",
   silver: "#c0c0c0",
   rose: "#b76e79",
+  plum: "#9e0a0d",
+  wine: "#80304c",
+  "cherry wine": "#80304c",
+  "brandy rose": "#b68582",
+  "casal blue": "#2F6168",
+  "persian plum": "#9e0a0d",
 };
 
-const getVariantBg = (colorName) => {
-  if (!colorName) return "#ffffff";
-  const parts = colorName.toLowerCase().trim().split(/[\s-]+/);
-  if (parts.length === 1) {
-    return colorMap[parts[0]] || parts[0];
+const getVariantColors = (colorName) => {
+  if (!colorName) return ["#ffffff"];
+  const normalized = colorName.toLowerCase().trim();
+  if (colorMap[normalized]) {
+    return [colorMap[normalized]];
   }
-  const colors = parts.map(p => colorMap[p] || p);
-  if (colors.length === 2) {
-    return `linear-gradient(135deg, ${colors[0]} 50%, ${colors[1]} 50%)`;
-  }
-  if (colors.length === 3) {
-    return `linear-gradient(135deg, ${colors[0]} 33.33%, ${colors[1]} 33.33%, ${colors[1]} 66.66%, ${colors[2]} 66.66%)`;
-  }
-  return colors[0];
+  const parts = normalized.split(/[\s-]+/);
+  return parts.map(p => colorMap[p] || p);
 };
 
 export default function ProductDetailClient({ product, preloadedRelated }) {
@@ -267,19 +267,33 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                   {sortedVariants.map((variant, idx) => {
                     const isSelected = activeVariantIndex === idx;
                     const isWhite = variant.colorName.toLowerCase() === "white";
-                    const backgroundVal = getVariantBg(variant.colorName);
+                    const colors = getVariantColors(variant.colorName);
                     return (
                       <button
                         key={idx}
                         onClick={() => selectVariant(idx)}
-                        className={`w-7 h-7 rounded-full border shadow-sm transition-all duration-200 focus:outline-none ${
+                        className={`w-7 h-7 rounded-full border shadow-sm transition-all duration-200 focus:outline-none flex items-center justify-center overflow-hidden ${
                           isSelected
                             ? "ring-2 ring-blue-600 ring-offset-2 scale-110"
                             : "border-slate-300 hover:scale-110"
                         } ${isWhite ? "bg-white" : "border-slate-800/10"}`}
-                        style={{ background: isWhite ? undefined : backgroundVal }}
                         aria-label={`Select ${variant.colorName}`}
-                      />
+                      >
+                        {colors.length === 1 ? (
+                          <div className="w-full h-full" style={{ backgroundColor: colors[0] }} />
+                        ) : colors.length === 2 ? (
+                          <svg viewBox="0 0 100 100" className="w-full h-full block">
+                            <polygon points="0,0 100,0 0,100" fill={colors[0]} />
+                            <polygon points="100,0 100,100 0,100" fill={colors[1]} />
+                          </svg>
+                        ) : (
+                          <svg viewBox="0 0 100 100" className="w-full h-full block">
+                            <rect x="0" y="0" width="33.33" height="100" fill={colors[0]} />
+                            <rect x="33.33" y="0" width="33.34" height="100" fill={colors[1]} />
+                            <rect x="66.67" y="0" width="33.33" height="100" fill={colors[2]} />
+                          </svg>
+                        )}
+                      </button>
                     );
                   })}
                 </div>
