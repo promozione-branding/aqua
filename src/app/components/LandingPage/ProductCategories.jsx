@@ -65,7 +65,7 @@ export default function ProductCategories() {
     <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 items-start">
 
       {/* LEFT CONTENT */}
-      <div className=" ">
+      <div className="px-4 sm:px-6 lg:px-0">
       <div className="sticky top-24">
         <p className="text-[#0D3B8E] font-bold uppercase text-[15px] tracking-wider relative inline-block">
           OUR PRODUCTS

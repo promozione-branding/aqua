@@ -46,20 +46,20 @@ export default function FeatureStrip() {
   return (
     <section className="bg-white border-y border-gray-200">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-y md:divide-y-0 lg:divide-x divide-gray-200">
           {features.map((item, index) => {
             const Icon = item.icon;
 
             return (
               <div
                 key={index}
-                className="flex items-center justify-center gap-3 py-6 border-r last:border-r-0 border-gray-200"
+                className="flex items-center justify-center gap-3 py-4 sm:py-6 border-gray-100"
               >
                 <div className="flex-shrink-0">
                   <Icon
-                    size={34}
+                    size={30}
                     strokeWidth={1.8}
-                    className="text-[#3D67B1]"
+                    className="text-[#3D67B1] sm:w-[34px] sm:h-[34px]"
                   />
                 </div>
 

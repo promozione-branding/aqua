@@ -39,7 +39,7 @@ export default async function SubCategoryProductsPage({ params }) {
         subCategory: subCategoryData._id,
         isActive: true
       })
-      .sort({ createdAt: -1 })
+      .sort({ name: 1 })
       .lean();
 
       // Map DB products to match your client format
@@ -104,15 +104,16 @@ export default async function SubCategoryProductsPage({ params }) {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
             {products.map((prod) => (
-              <div 
+              <Link 
+                href={`/products/spareparts/${subcategorySlug}/${prod.slug || prod.id}`}
                 key={prod.id} 
-                className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 flex flex-col"
+                className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 flex flex-col cursor-pointer"
               >
-                <div className="relative aspect-square bg-slate-50 flex items-center justify-center p-6">
+                <div className="relative aspect-square bg-slate-50 flex items-center justify-center p-3 sm:p-6">
                   {prod.discount && (
-                    <span className="absolute top-4 left-4 bg-red-500 text-white text-xs font-extrabold px-2.5 py-1 rounded-md">
+                    <span className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-red-500 text-white text-[10px] sm:text-xs font-extrabold px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded-md z-10">
                       {prod.discount}
                     </span>
                   )}
@@ -120,31 +121,30 @@ export default async function SubCategoryProductsPage({ params }) {
                     src={prod.image}
                     alt={prod.name}
                     fill
-                    className="object-contain p-6 group-hover:scale-105 transition duration-300"
+                    className="object-contain p-3 sm:p-6 group-hover:scale-105 transition duration-300"
                   />
                 </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-lg font-bold text-blue-955 line-clamp-1">{prod.name}</h3>
+                <div className="p-3 sm:p-5 flex flex-col flex-1">
+                  <h3 className="text-sm sm:text-lg font-bold text-blue-955 line-clamp-1">{prod.name}</h3>
                   
                   {prod.price > 0 && (
-                    <div className="flex items-baseline gap-2 mt-2">
-                      <span className="text-xl font-extrabold text-blue-955">₹{prod.price.toLocaleString()}</span>
+                    <div className="flex items-baseline gap-1 sm:gap-2 mt-2">
+                      <span className="text-base sm:text-xl font-extrabold text-blue-955">₹{prod.price.toLocaleString()}</span>
                       {prod.originalPrice > prod.price && (
-                        <span className="text-sm line-through text-slate-400">₹{prod.originalPrice.toLocaleString()}</span>
+                        <span className="text-[10px] sm:text-sm line-through text-slate-400">₹{prod.originalPrice.toLocaleString()}</span>
                       )}
                     </div>
                   )}
 
-                  <div className="mt-auto pt-5">
-                    <Link
-                      href={`/products/${prod.slug || prod.id}`}
-                      className="block text-center w-full bg-blue-900 hover:bg-blue-955 text-white text-sm font-bold py-2.5 px-4 rounded-xl transition duration-150"
+                  <div className="mt-auto pt-4">
+                    <div
+                      className="block text-center w-full bg-blue-900 group-hover:bg-blue-955 text-white text-xs sm:text-sm font-bold py-2 px-3 sm:py-2.5 sm:px-4 rounded-lg sm:rounded-xl transition duration-150"
                     >
                       VIEW DETAILS
-                    </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

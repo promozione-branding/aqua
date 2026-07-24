@@ -112,9 +112,16 @@ export default function AllProductsPage() {
                                                     )}
                                                 </div>
 
-                                                <div className="flex items-center gap-1.5 text-gray-500 text-sm font-semibold uppercase tracking-wider">
-                                                    <Folder size={16} />
-                                                    <span>{product?.category?.name || "None"}</span>
+                                                <div className="flex flex-col items-end text-gray-500 text-xs font-semibold uppercase tracking-wider">
+                                                    <div className="flex items-center gap-1">
+                                                        <Folder size={14} />
+                                                        <span>category : {product?.category?.name || "None"}</span>
+                                                    </div>
+                                                    {product?.subCategory?.name && (
+                                                        <span className="text-gray-400 text-[10px] mt-0.5 font-normal">
+                                                            subcategory : {product.subCategory.name}
+                                                        </span>
+                                                    )}
                                                 </div>
                                             </div>
 

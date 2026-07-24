@@ -74,7 +74,7 @@ export default async function page() {
 
     const rawProducts = await Product.find({ isActive: true })
       .populate("category")
-      .sort({ createdAt: -1 })
+      .sort({ name: 1 })
       .lean();
 
     preloadedProducts = JSON.parse(JSON.stringify(rawProducts)).map(mapProduct);
