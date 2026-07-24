@@ -180,12 +180,12 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
   ];
 
   return (
-    <div className="bg-slate-50 text-slate-700 min-h-screen overflow-x-hidden">
+    <div className="bg-slate-50 text-slate-700 min-h-screen">
       {/* PRODUCT MAIN */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
-        <div className="grid grid-cols-12 gap-6 sm:gap-12">
+      <section className="max-w-7xl mx-auto px-6 py-10">
+        <div className="grid grid-cols-12 gap-12">
           {/* Gallery */}
-          <div className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16">
+          <div className="col-span-12 lg:col-span-6 px-8 sm:px-16">
             <div className="max-w-[420px] mx-auto w-full relative">
               <div className="relative rounded-2xl border border-slate-200 aspect-[4/5] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
                 {/* Clickable side overlays for navigation */}
@@ -247,12 +247,12 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
 
           {/* Info */}
           <div className="col-span-12 lg:col-span-6">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-955 tracking-tight">
+            <h1 className="text-3xl font-extrabold text-blue-955 tracking-tight">
               {product.name}
             </h1>
-            <p className="text-slate-500 mt-2 text-sm sm:text-base">{product.category?.name || "Premium ABS RO Cabinet"}</p>
+            <p className="text-slate-500 mt-3.5">{product.category?.name || "Premium ABS RO Cabinet"}</p>
 
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-4">
+            <p className="text-base text-slate-600 leading-relaxed mt-6">
               {product.shortDescription || "Premium food-grade design."}
             </p>
 
@@ -290,17 +290,17 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                   KEY SPECIFICATIONS
                 </h3>
               </div>
-              <table className="w-full text-xs sm:text-sm">
+              <table className="w-full text-sm">
                 <tbody>
                   {specs.map(([label, value], i) => (
                     <tr
                       key={label}
                       className={`border-b border-slate-100 last:border-b-0 ${i % 2 ? "bg-slate-50/60" : ""}`}
                     >
-                      <td className="px-3 sm:px-5 py-2 sm:py-2.5 text-black font-medium w-1/2">
+                      <td className="px-5 py-2.5 text-black font-medium w-1/2">
                         {label}
                       </td>
-                      <td className="px-3 sm:px-5 py-2 sm:py-2.5 text-black font-medium break-words">
+                      <td className="px-5 py-2.5 text-black font-medium">
                         {value}
                       </td>
                     </tr>
@@ -309,16 +309,16 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
               </table>
             </div>
 
-            <div className="grid grid-cols-4 gap-2 sm:gap-4 mt-5 pb-5 border-b border-slate-200">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pb-6 border-b border-slate-200">
               {quickFeatures.map(({ icon: Icon, label }) => (
                 <div
                   key={label}
-                  className="flex flex-col items-center text-center gap-1.5"
+                  className="flex flex-col items-center text-center gap-2"
                 >
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-blue-50 flex items-center justify-center text-blue-800">
-                    <Icon className="w-4 h-4 sm:w-6 sm:h-6" strokeWidth={1.8} />
+                  <div className="w-11 h-11 rounded-full bg-blue-50 flex items-center justify-center text-blue-800">
+                    <Icon className="w-6 h-6" strokeWidth={1.8} />
                   </div>
-                  <span className="text-[10px] sm:text-sm font-medium text-slate-600 leading-tight whitespace-pre-line">
+                  <span className="text-sm font-medium text-slate-600 leading-tight whitespace-pre-line">
                     {label}
                   </span>
                 </div>
@@ -348,28 +348,28 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
       </section>
 
       {/* PRODUCT FEATURES */}
-      <section className="bg-white border-y border-slate-200 py-8 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center gap-3 mb-6">
-            <h2 className="text-base sm:text-lg font-extrabold text-blue-955 tracking-wide">
+      <section className="bg-white border-y border-slate-200 py-14">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-3 mb-8">
+            <h2 className="text-lg font-extrabold text-blue-955 tracking-wide">
               PRODUCT FEATURES
             </h2>
             <div className="h-px flex-1 bg-slate-200" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {productFeatures.map(({ icon: iconName, title, desc }) => {
               const Icon = iconMap[iconName] || ShieldCheck;
               return (
                 <div
                   key={title}
-                  className="border border-slate-200 rounded-xl p-3 sm:p-5 hover:shadow-md hover:border-blue-200 transition"
+                  className="border border-slate-200 rounded-xl p-5 hover:shadow-md hover:border-blue-200 transition"
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-800 mb-3">
-                    <Icon className="w-5 h-5 sm:w-7 sm:h-7" strokeWidth={1.8} />
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-800 mb-4">
+                    <Icon className="w-7 h-7" strokeWidth={1.8} />
                   </div>
-                  <h3 className="text-sm sm:text-lg font-bold text-blue-955">{title}</h3>
-                  <p className="text-xs sm:text-base text-slate-500 mt-1">{desc}</p>
+                  <h3 className="text-lg font-bold text-blue-955">{title}</h3>
+                  <p className="text-base text-slate-500 mt-1.5">{desc}</p>
                 </div>
               );
             })}
@@ -378,31 +378,31 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
       </section>
 
       {/* DESCRIPTION / BULK BANNER */}
-      <section className="py-8 sm:py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-          <div>
+      <section className="py-14">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="">
             <div className="flex items-center gap-8 border-b border-slate-200">
               <button
                 onClick={() => setActiveTab("description")}
-                className="text-sm sm:text-base pb-3 sm:pb-3.5 border-b-2 font-bold text-blue-955 border-blue-900 transition"
+                className="text-base pb-3.5 border-b-2 font-bold text-blue-955 border-blue-900 transition"
               >
                 DESCRIPTION
               </button>
             </div>
 
-            <div className="pt-4 sm:pt-6">
-              <p className="text-sm sm:text-base text-black leading-relaxed">
+            <div className="pt-6">
+              <p className="text-lg text-black leading-relaxed">
                 {product.description || "No full description added yet."}
               </p>
 
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-5 space-y-3">
                 {checklist.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2 text-sm sm:text-base text-black"
+                    className="flex items-start gap-2.5 text-lg text-black"
                   >
                     <CheckCircle2
-                      className="w-4 h-4 text-blue-500 mt-0.5 shrink-0"
+                      className="w-4 h-4 text-blue-500 mt-1.5 shrink-0"
                       strokeWidth={2}
                     />
                     {item}
@@ -414,17 +414,17 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
 
           {/* Bulk order banner */}
           <div className="h-full">
-            <div className="relative flex min-h-[280px] sm:min-h-[340px] flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 to-blue-800 p-5 sm:p-7">
-              <div className="relative z-10 flex h-full flex-1 flex-col pr-0 sm:pr-[170px] pb-[140px] sm:pb-0">
-                <h3 className="text-2xl sm:text-3xl font-extrabold leading-tight text-white">
+            <div className="relative flex min-h-[340px] flex-col overflow-hidden rounded-2xl bg-gradient-to-br from-blue-950 to-blue-800 p-7">
+              <div className="relative z-10 flex h-full flex-1 flex-col pr-0 sm:pr-[170px] pb-[160px] sm:pb-0">
+                <h3 className="text-3xl font-extrabold leading-tight text-white">
                   Bulk Order?
                   <br />
                   Get Special Pricing
                 </h3>
-                <p className="mt-3 flex-1 text-sm sm:text-base leading-relaxed text-blue-100/80">
+                <p className="mt-4 flex-1 text-base leading-relaxed text-blue-100/80">
                   We offer the best deals for bulk orders & distributors.
                 </p>
-                <button className="mt-4 w-fit rounded-lg bg-white px-4 py-2.5 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
+                <button className="mt-auto w-fit rounded-lg bg-white px-5 py-3 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
                   CONTACT US NOW
                 </button>
               </div>
@@ -433,7 +433,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 alt="RO Cabinet"
                 width={420}
                 height={520}
-                className="absolute bottom-0 right-0 z-0 w-[140px] sm:w-[240px] object-contain"
+                className="absolute bottom-0 right-0 z-0 w-[180px] sm:w-[240px] object-contain"
               />
             </div>
           </div>
@@ -441,80 +441,85 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
       </section>
 
       {/* YOU MAY ALSO LIKE */}
-      <section className="bg-white py-8 sm:py-14 border-t border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-6 sm:mb-10">
-            <h2 className="text-xl sm:text-3xl font-extrabold text-blue-955 tracking-wide">
+      <section className="bg-white py-14 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-extrabold text-blue-955 tracking-wide">
               YOU MAY ALSO LIKE
             </h2>
-            <div className="w-10 h-1 bg-blue-700 rounded-full mx-auto mt-2" />
+            <div className="w-10 h-1 bg-blue-700 rounded-full mx-auto mt-3" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-            {related.map((p, index) => (
-              <Link
-                key={index}
-                href={`/products/${p.slug}`}
-                className="group border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col"
-              >
-                <div className="aspect-square flex items-center justify-center p-2 bg-slate-50">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={p.image}
-                      alt={p.name}
-                      fill
-                      className="object-contain"
-                    />
+          <div className="relative flex items-center gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-1">
+              {related.map((p, index) => (
+                <div
+                  key={index}
+                  className="group border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+                >
+                  <div
+                    className="aspect-square flex items-center justify-center p-2 bg-slate-50"
+                  >
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-lg font-bold text-blue-955 line-clamp-1">
+                      {p.name}
+                    </h4>
+                    <p className="text-base text-black mt-1">
+                      Storage: {p.storage}
+                    </p>
+                    <Link href={`/products/${p.slug}`} className="block w-full text-center mt-3 text-xs font-bold text-blue-700 border border-blue-700 rounded-md py-2 hover:bg-blue-900 hover:text-white transition">
+                      VIEW DETAILS
+                    </Link>
                   </div>
                 </div>
-                <div className="p-2 sm:p-4 flex flex-col flex-1">
-                  <h4 className="text-sm sm:text-lg font-bold text-blue-955 line-clamp-1">
-                    {p.name}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-black mt-1">
-                    Storage: {p.storage}
-                  </p>
-                  <div className="mt-auto pt-2 block w-full text-center text-xs font-bold text-blue-700 border border-blue-700 rounded-md py-1.5 sm:py-2 group-hover:bg-blue-900 group-hover:text-white transition">
-                    VIEW DETAILS
-                  </div>
-                </div>
-              </Link>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* BULK CTA STRIP */}
-      <section className="bg-blue-950 py-6 sm:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
-              <Package className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.6} />
+      <section className="bg-blue-950 py-8">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
+              <Package className="w-6 h-6" strokeWidth={1.6} />
             </div>
             <div>
-              <h3 className="text-white text-base sm:text-lg font-bold leading-tight">
-                Looking For RO Cabinets in Bulk?
+              <h3 className="text-white text-lg font-bold leading-tight">
+                Looking For
+                <br />
+                RO Cabinets in Bulk?
               </h3>
-              <p className="text-blue-200/70 text-xs mt-1">
+              <p className="text-blue-200/70 text-xs mt-2">
                 Get factory direct pricing with best quality products.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:flex md:flex-wrap items-center gap-3 sm:gap-6 md:gap-8 text-white w-full md:w-auto">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center gap-6 md:gap-8 text-white w-full md:w-auto">
             {perks.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2">
-                <Icon className="w-5 h-5 sm:w-8 sm:h-8 text-blue-200" strokeWidth={1.6} />
-                <span className="text-xs sm:text-base font-semibold">{label}</span>
+              <div key={label} className="flex items-center gap-2.5">
+                <Icon className="w-8 h-8 text-blue-200" strokeWidth={1.6} />
+                <span className="text-base font-semibold">{label}</span>
               </div>
             ))}
           </div>
 
-          <div className="shrink-0 w-full md:w-auto">
-            <p className="text-blue-200/70 text-xs mb-2">
+          <div className="text-left md:text-right shrink-0 w-full md:w-auto">
+            <p className="text-blue-200/70 text-xs mb-3.5">
               Get in Touch Today!
             </p>
-            <button className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-2.5 sm:py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto">
+            <button className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto">
               REQUEST A QUOTE
             </button>
           </div>
