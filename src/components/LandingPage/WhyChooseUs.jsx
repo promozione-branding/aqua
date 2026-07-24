@@ -162,13 +162,13 @@ export default function WhyChooseUs() {
 
             {/* Right */}
 
-            <div className="relative flex justify-center items-end h-full py-10">
+             <div className="relative flex justify-center items-end h-full py-10 px-4">
 
               {/* Back Product */}
 
               <img
                 src="/2.png"
-                className="w-48 lg:w-56 rotate-[-10deg] absolute left-10 bottom-12 drop-shadow-2xl hover:scale-105 transition"
+                className="w-44 sm:w-48 lg:w-56 rotate-[-10deg] absolute left-2 sm:left-6 lg:left-10 bottom-12 drop-shadow-2xl hover:scale-105 transition"
                 alt=""
               />
 
@@ -176,7 +176,7 @@ export default function WhyChooseUs() {
 
               <img
                 src="/1.png"
-                className="w-56 lg:w-72 relative z-20 drop-shadow-2xl hover:-translate-y-3 transition"
+                className="w-52 sm:w-56 lg:w-72 relative z-20 drop-shadow-2xl hover:-translate-y-3 transition"
                 alt=""
               />
 
@@ -184,11 +184,11 @@ export default function WhyChooseUs() {
 
               <img
                 src="/3.png"
-                className="w-48 lg:w-56 rotate-[10deg] absolute right-10 bottom-12 drop-shadow-2xl hover:scale-105 transition"
+                className="w-44 sm:w-48 lg:w-56 rotate-[10deg] absolute right-2 sm:right-6 lg:right-10 bottom-12 drop-shadow-2xl hover:scale-105 transition"
                 alt=""
               />
 
-            </div>
+             </div>
 
           </div>
 
