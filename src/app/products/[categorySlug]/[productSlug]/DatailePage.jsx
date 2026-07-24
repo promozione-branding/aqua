@@ -470,7 +470,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             {related.map((p, index) => (
               <Link
                 key={index}
-                href={`/products/${p.slug}`}
+                href={`/products/${p.categorySlug || 'ro-cabinet'}/${p.slug}`}
                 className="group border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col"
               >
                 <div className="aspect-square flex items-center justify-center p-2 bg-slate-50">

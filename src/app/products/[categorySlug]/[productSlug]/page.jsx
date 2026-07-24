@@ -8,15 +8,15 @@ export const revalidate = 0;
 
 // Generates browser tab titles dynamically
 export async function generateMetadata({ params }) {
-  const { id } = await params;
+  const { productSlug } = await params;
   try {
     await connectDB();
     let product = null;
-    if (id && id.match(/^[0-9a-fA-F]{24}$/)) {
-      product = await Product.findById(id);
+    if (productSlug && productSlug.match(/^[0-9a-fA-F]{24}$/)) {
+      product = await Product.findById(productSlug);
     }
     if (!product) {
-      product = await Product.findOne({ slug: id });
+      product = await Product.findOne({ slug: productSlug });
     }
 
     if (!product) {
@@ -48,18 +48,18 @@ const ProductDetailClient = dynamicImport(() => import('./DatailePage'), {
 });
 
 export default async function ProductDetailPage({ params }) {
-  const { id } = await params;
+  const { categorySlug, productSlug } = await params;
   let serializedProduct = null;
   let relatedProducts = [];
 
   try {
     await connectDB();
     let productDoc = null;
-    if (id && id.match(/^[0-9a-fA-F]{24}$/)) {
-      productDoc = await Product.findById(id).populate("category").lean();
+    if (productSlug && productSlug.match(/^[0-9a-fA-F]{24}$/)) {
+      productDoc = await Product.findById(productSlug).populate("category").lean();
     }
     if (!productDoc) {
-      productDoc = await Product.findOne({ slug: id }).populate("category").lean();
+      productDoc = await Product.findOne({ slug: productSlug }).populate("category").lean();
     }
 
     if (productDoc) {
@@ -71,13 +71,15 @@ export default async function ProductDetailPage({ params }) {
         _id: { $ne: productDoc._id },
         isActive: true
       }).limit(4).lean();
-      
+
+      const parentCategorySlug = productDoc.category?.slug || categorySlug || "ro-cabinet";
       relatedProducts = JSON.parse(JSON.stringify(rawRelated)).map(p => ({
         name: p.name,
         image: p.colorVariants?.[0]?.images?.[0]?.url || "/1.png",
         storage: p.specifications?.find(s => s.key.toLowerCase().includes("capacity"))?.value || "12L",
         tile: "#111827",
-        slug: p.slug || p._id.toString()
+        slug: p.slug || p._id.toString(),
+        categorySlug: parentCategorySlug,
       }));
     }
   } catch (error) {
