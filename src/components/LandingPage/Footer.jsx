@@ -1,9 +1,12 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import {
   MapPin,
   Phone,
   Mail,
   Globe,
-  ArrowRight,
 } from "lucide-react";
 
 import {
@@ -11,189 +14,174 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Hide footer on admin routes
+  const adminLayout = pathname?.startsWith("/admin");
+  if (adminLayout) return null;
+
   return (
-    <footer className="bg-[#0F172A] text-gray-300">
-      {/* Top */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid gap-12 lg:grid-cols-5 md:grid-cols-2">
-
-          {/* Company */}
-          <div className="lg:col-span-2">
-            {/* <img
-              src="/logo.png"
-              alt="Crystal Impex"
-              className="h-14 mb-6"
-            /> */}
-            <h1 className="text-3xl ">JNJ AQUA</h1>
-
-            <p className="leading-7 mt-5 text-gray-400 max-w-md">
-              Manufacturer of premium RO Cabinets & Spare Parts.
-              Delivering quality, innovation and customized solutions
-              for businesses across India.
+    <footer className="bg-[#0F172A] text-white pt-16 font-sans border-t border-slate-800/80 shadow-[0_-4px_20px_rgba(0,0,0,0.2)] relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
+        {/* Astride 5-Column Grid Layout */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr] gap-x-8 gap-y-12 pb-12">
+          
+          {/* Brand Section */}
+          <div className="col-span-2 md:col-span-1 pr-4">
+            <Link href="/" aria-label="JNJ AQUA home" className="inline-flex items-center group">
+              <h1 className="text-3xl font-extrabold tracking-tight text-white group-hover:text-blue-50 transition-colors">
+                JNJ AQUA
+              </h1>
+            </Link>
+            <p className="text-slate-400 text-sm mt-5 max-w-[280px] leading-relaxed">
+              Manufacturer of premium RO Cabinets & Spare Parts. Delivering quality, innovation, and customized solutions for businesses across India.
             </p>
-
-            <div className="flex gap-4 mt-8">
+            <div className="flex gap-3 mt-7">
               {[
-                FaFacebookF,
-                FaInstagram,
-                FaLinkedinIn,
-                FaYoutube,
-              ].map((Icon, i) => (
+                { Icon: FaInstagram, label: "Instagram", href: "#" },
+                { Icon: FaFacebookF, label: "Facebook", href: "#" },
+                { Icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
+                { Icon: FaYoutube, label: "YouTube", href: "#" },
+              ].map(({ Icon, label, href }, index) => (
                 <a
-                  key={i}
-                  href="#"
-                  className="w-11 h-11 rounded-full border border-white/10 bg-white/5 hover:bg-blue-600 hover:border-blue-600 transition flex items-center justify-center"
+                  key={index}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-10 h-10 rounded-full border border-slate-700 bg-slate-800/50 flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-blue-600 hover:border-blue-500 hover:text-white hover:-translate-y-1 hover:shadow-[0_4px_14px_rgba(37,99,235,0.4)]"
                 >
-                  <Icon size={18} />
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">
+          <div className="col-span-1">
+            <h4 className="text-xs uppercase tracking-[0.15em] mb-6 text-slate-100 font-bold">
               Quick Links
-            </h3>
-
-            <ul className="space-y-4">
+            </h4>
+            <div className="flex flex-col space-y-3">
               {[
-                "Home",
-                "About Us",
-                "Products",
-                "OEM Solutions",
-                "Dealer Zone",
-                "Contact Us",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 hover:text-blue-400 transition"
-                  >
-                    <ArrowRight size={15} />
-                    {item}
-                  </a>
-                </li>
+                { name: "Home", link: "/" },
+                { name: "About Us", link: "/about" },
+                { name: "Products", link: "/products" },
+                { name: "OEM Solutions", link: "/oem-solutions" },
+                { name: "Dealer Zone", link: "/dealer-zone" },
+                { name: "Contact Us", link: "/contact" },
+              ].map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.link}
+                  className="w-fit text-slate-400 text-sm transition-all duration-300 hover:text-blue-400 hover:translate-x-1 font-medium"
+                >
+                  {item.name}
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Products */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">
+          {/* Our Products (with Left Border) */}
+          <div className="col-span-1 lg:border-l lg:border-slate-800 lg:pl-8">
+            <h4 className="text-xs uppercase tracking-[0.15em] mb-6 text-slate-100 font-bold">
               Our Products
-            </h3>
-
-            <ul className="space-y-4">
+            </h4>
+            <div className="flex flex-col space-y-3">
               {[
-                "RO Cabinets",
-                "Spare Parts",
-                "RO Components",
-                "Commercial RO",
-                "Accessories",
-              ].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 hover:text-blue-400 transition"
-                  >
-                    <ArrowRight size={15} />
-                    {item}
-                  </a>
-                </li>
+                { name: "RO Cabinets", link: "/products/ro-cabinets" },
+                { name: "Spare Parts", link: "/products/spare-parts" },
+                { name: "RO Components", link: "/products/components" },
+                { name: "Commercial RO", link: "/products/commercial-ro" },
+                { name: "Accessories", link: "/products/accessories" },
+              ].map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.link}
+                  className="w-fit text-slate-400 text-sm transition-all duration-300 hover:text-blue-400 hover:translate-x-1 font-medium"
+                >
+                  {item.name}
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-6">
+          {/* Help Links (with Left Border) */}
+          <div className="col-span-1 lg:border-l lg:border-slate-800 lg:pl-8">
+            <h4 className="text-xs uppercase tracking-[0.15em] mb-6 text-slate-100 font-bold">
+              Legal & Help
+            </h4>
+            <div className="flex flex-col space-y-3">
+              {[
+                { name: "Privacy Policy", link: "/privacy-policy" },
+                { name: "Terms & Conditions", link: "/terms-conditions" },
+                { name: "Refund Policy", link: "/refund-policy" },
+                { name: "Shipping Policy", link: "/shipping-policy" },
+                { name: "FAQs", link: "/#faq" },
+              ].map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.link}
+                  className="w-fit text-slate-400 text-sm transition-all duration-300 hover:text-blue-400 hover:translate-x-1 font-medium"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact Us (with Left Border) */}
+          <div className="col-span-1 lg:border-l lg:border-slate-800 lg:pl-8">
+            <h4 className="text-xs uppercase tracking-[0.15em] mb-6 text-slate-100 font-bold">
               Contact Us
-            </h3>
-
-            <div className="space-y-5">
-
-              <div className="flex gap-4">
-                <MapPin
-                  className="text-blue-500 mt-1 shrink-0"
-                  size={20}
-                />
-                <p className="text-gray-400">
-                  B-103, Industrial Area,
-                  <br />
-                  Sector-63, Noida,
-                  <br />
-                  Uttar Pradesh 201301
+            </h4>
+            <div className="space-y-4">
+              <div className="flex items-start gap-2.5 group">
+                <MapPin className="text-blue-500 shrink-0 mt-0.5 transition-transform group-hover:scale-110" size={18} />
+                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed transition-colors group-hover:text-slate-200">
+                  B-103, Industrial Area,<br/> Sector-63, Noida,<br/> Uttar Pradesh 201301
                 </p>
               </div>
 
-              <div className="flex gap-4">
-                <Phone
-                  className="text-blue-500 shrink-0"
-                  size={18}
-                />
-                <a
-                  href="tel:+919876543210"
-                  className="hover:text-blue-400"
-                >
+              <div className="flex items-center gap-2.5 group">
+                <Phone className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
+                <a href="tel:+917949347105" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
                   +91 79493 47105
-
                 </a>
               </div>
 
-              <div className="flex gap-4">
-                <Mail
-                  className="text-blue-500 shrink-0"
-                  size={18}
-                />
-                <a
-                  href="mailto:info@crystalimpex.com"
-                  className="hover:text-blue-400"
-                >
+              <div className="flex items-center gap-2.5 group">
+                <Mail className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
+                <a href="mailto:info@crystalimpex.com" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
                   info@crystalimpex.com
                 </a>
               </div>
 
-              <div className="flex gap-4">
-                <Globe
-                  className="text-blue-500 shrink-0"
-                  size={18}
-                />
-                <a
-                  href="https://crystalimpex.com"
-                  className="hover:text-blue-400"
-                >
+              <div className="flex items-center gap-2.5 group">
+                <Globe className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
+                <a href="https://crystalimpex.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
                   www.crystalimpex.com
                 </a>
               </div>
-
             </div>
           </div>
 
         </div>
-      </div>
 
-      {/* Divider */}
-      <div className="border-t border-white/10"></div>
-
-      {/* Bottom */}
-      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-        <p>
-          © {new Date().getFullYear()} Crystal Impex. All Rights
-          Reserved.
-        </p>
-
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-blue-400">
-            Privacy Policy
-          </a>
-
-          <a href="#" className="hover:text-blue-400">
-            Terms & Conditions
-          </a>
+        {/* Bottom Bar */}
+        <div className="border-t border-slate-800 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+          <span className="font-medium">© {new Date().getFullYear()} JNJ AQUA. All Rights Reserved.</span>
+          <div className="flex gap-6">
+            <Link href="/privacy-policy" className="hover:text-blue-400 transition-colors font-medium">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-conditions" className="hover:text-blue-400 transition-colors font-medium">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

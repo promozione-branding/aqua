@@ -65,8 +65,9 @@ export default async function SparePartsPage() {
           /* Grid showing SubCategory Cards */
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {subCategories.map((sub) => (
-              <div 
+              <Link 
                 key={sub._id} 
+                href={`/products/spareparts/${sub.slug}`}
                 className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition duration-300 flex flex-col"
               >
                 {/* Image Container */}
@@ -87,17 +88,16 @@ export default async function SparePartsPage() {
                     {sub.description || "Premium water purifier spare parts and components."}
                   </p>
                   
-                  {/* Link pointing to the subcategory products page */}
+                  {/* Styled button element */}
                   <div className="mt-4 pt-4 border-t border-slate-100">
-                    <Link
-                      href={`/products/spareparts/${sub.slug}`}
+                    <span
                       className="block text-center w-full bg-blue-900 hover:bg-blue-955 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition duration-150"
                     >
                       BROWSE ITEMS
-                    </Link>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

@@ -1,64 +1,98 @@
 "use client";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import Link from "next/link";
 import { Check, Package, Droplets, Settings, Briefcase } from "lucide-react";
 
-const categories = [
-  {
-    title: "RO CABINETS",
-    image: "/1.png",
-    icon: Package,
-    color: "bg-lime-600",
-    points: [
-      "ABS RO Cabinets",
-      "Transparent Cabinets",
-      "Designer RO Cabinets",
-      "LED Display Cabinets",
-    ],
-  },
-  // {
-  //   title: "WATER PURIFIERS",
-  //   image: "/2.png",
-  //   icon: Droplets,
-  //   color: "bg-amber-500",
-  //   points: [
-  //     "RO + UV",
-  //     "RO + UV + UF",
-  //     "Alkaline Water Purifiers",
-  //     "Copper RO Purifiers",
-  //   ],
-  // },
-  {
-    title: "RO COMPONENTS",
-    image: "/3.png",
-    icon: Settings,
-    color: "bg-cyan-600",
-    points: [
-      "Pumps",
-      "Membranes",
-      "Filters",
-      "SMPS & Controllers",
-    ],
-  },
-  {
-    title: "OEM SOLUTIONS",
-    image: "/4.png",
-    icon: Briefcase,
-    color: "bg-purple-600",
-    points: [
-      "Private Label ",
-      "Custom Branding",
-      "Custom Cabinet Design",
-      "Bulk Production",
-    ],
-  },
-];
+const getCategoryMeta = (title = "") => {
+  const t = title.toUpperCase();
+  if (t.includes("CABINET")) {
+    return { icon: Package, color: "bg-lime-600" };
+  }
+  if (t.includes("COMPONENT") || t.includes("PART")) {
+    return { icon: Settings, color: "bg-cyan-600" };
+  }
+  if (t.includes("OEM") || t.includes("SOLUTION")) {
+    return { icon: Briefcase, color: "bg-purple-600" };
+  }
+  return { icon: Droplets, color: "bg-blue-600" };
+};
 
 export default function ProductCategories() {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const prodRes = await fetch("/api/product").then((res) => res.json());
+
+        if (prodRes.success) {
+          // Find products matching the names: Atlas, Alive, Aroma specifically
+          const targetNames = ["ALTIS", "ALIVE", "AROMA"];
+          const matchedProducts = [];
+
+          targetNames.forEach((targetName) => {
+            const found = prodRes.products.find(
+              (p) => p.name && p.name.toUpperCase().includes(targetName)
+            );
+            if (found) {
+              matchedProducts.push(found);
+            }
+          });
+
+          // Fallback to other cabinet products if we don't have 3 matched
+          if (matchedProducts.length < 3) {
+            const cabinetProducts = prodRes.products.filter(
+              (prod) => 
+                prod.category && 
+                prod.category.name && 
+                prod.category.name.toUpperCase().includes("CABINET") &&
+                !matchedProducts.some((m) => m._id === prod._id)
+            );
+            matchedProducts.push(...cabinetProducts.slice(0, 3 - matchedProducts.length));
+          }
+
+          // Map them to the UI structure
+          const mapped = matchedProducts.map((prod) => {
+            const firstVariant = prod.colorVariants?.[0];
+            const imageUrl = firstVariant?.images?.[0]?.url || "/1.png";
+            
+            // Map specifications or descriptions to bullets
+            const points = prod.specifications && prod.specifications.length > 0 
+              ? prod.specifications.map((spec) => `${spec.key}: ${spec.value}`).slice(0, 4)
+              : [
+                  "Food-Grade ABS Plastic",
+                  "Elegant & Modern Design",
+                  "High Storage Capacity",
+                  "Universal Component Fit",
+                ];
+
+            return {
+              id: prod._id,
+              title: prod.name,
+              image: imageUrl,
+              slug: prod.slug,
+              categorySlug: prod.category?.slug || "ro-cabinet",
+              points,
+            };
+          });
+
+          setCategories(mapped);
+        }
+      } catch (error) {
+        console.error("Error fetching cabinet products:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
   return (
     <section className="w-full bg-[#fafafa] py-14 overflow-hidden">
   <div className="max-w-7xl mx-auto px-0">
@@ -87,97 +121,115 @@ export default function ProductCategories() {
           performance and reliability.
         </p>
 
-        <button className="mt-8 flex items-center gap-2 font-semibold text-[#0D3B8E] hover:gap-3 transition-all">
-          View All Products →
-        </button>
+        <Link href="/products">
+          <button className="mt-8 flex items-center gap-2 font-semibold text-[#0D3B8E] hover:gap-3 transition-all">
+            View All Products →
+          </button>
+        </Link>
       </div>
       </div>
 
       {/* RIGHT SWIPER */}
       <div className="overflow-hidden">
-        <Swiper
-          modules={[Autoplay]}
-          loop={categories.length > 3}
-          speed={900}
-          spaceBetween={25}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-            },
-            640: {
-              slidesPerView: 1.2,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 2.4,
-            },
-            1280: {
-              slidesPerView: 3,
-            },
-          }}
-        >
-          {categories.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <SwiperSlide key={index}>
-                <div className="relative bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-4 group">
-
-                  {/* Icon */}
-                  {/* <div
-                    className={`absolute -top-7 left-7 w-14 h-14 rounded-full ${item.color} flex items-center justify-center shadow-lg ring-4 ring-white`}
-                  >
-                    <Icon className="text-white" size={24} />
-                  </div> */}
-
-                  {/* Image */}
-                  <div className="mt-0 flex justify-center overflow-hidden rounded-2xl bg-gray-50">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={220}
-                      height={180}
-                      className="h-[210px] w-full object-contain transition duration-300 group-hover:scale-105"
-                    />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="mt-5 text-xl font-extrabold text-gray-900">
-                    {item.title}
-                  </h3>
-
-                  {/* Features */}
-                  <ul className="mt-4 space-y-2">
-                    {item.points.map((point, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start text-sm text-gray-600"
-                      >
-                        <Check
-                          size={16}
-                          className="mr-2 mt-1 shrink-0 text-[#0D3B8E]"
-                        />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Button */}
-                  <button className="mt-6 w-full h-12 rounded-xl bg-[#0D3B8E] text-white font-semibold transition hover:bg-[#082d6e]">
-                    VIEW PRODUCTS
-                  </button>
-
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="bg-white rounded-3xl border border-gray-200 p-4 animate-pulse">
+                <div className="h-[210px] w-full bg-slate-100 rounded-2xl" />
+                <div className="h-6 bg-slate-100 rounded mt-5 w-2/3" />
+                <div className="space-y-2 mt-4">
+                  <div className="h-4 bg-slate-100 rounded w-5/6" />
+                  <div className="h-4 bg-slate-100 rounded w-4/5" />
+                  <div className="h-4 bg-slate-100 rounded w-3/4" />
                 </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                <div className="h-12 bg-slate-100 rounded-xl mt-6 w-full" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Swiper
+            modules={[Autoplay]}
+            loop={categories.length > 3}
+            speed={900}
+            spaceBetween={25}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              0: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 1.2,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 2.4,
+              },
+              1280: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            {categories.map((item, index) => {
+              const meta = getCategoryMeta(item.title);
+              const Icon = meta.icon;
+
+              return (
+                <SwiperSlide key={index} className="!h-auto flex">
+                  <Link href={`/products/${item.categorySlug}/${item.slug}`} className="w-full flex">
+                    <div className="relative bg-white rounded-3xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-4 group h-full flex flex-col justify-between w-full">
+                      <div>
+                        {/* Image */}
+                        <div className="mt-0 flex justify-center overflow-hidden rounded-2xl bg-gray-50">
+                          <Image
+                            src={item.image}
+                            alt={item.title}
+                            width={220}
+                            height={180}
+                            className="h-[210px] w-full object-contain transition duration-300 group-hover:scale-105"
+                          />
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="mt-5 text-xl font-extrabold text-gray-900">
+                          {item.title}
+                        </h3>
+
+                        {/* Features */}
+                        <ul className="mt-4 space-y-2">
+                          {item.points.map((point, i) => (
+                            <li
+                              key={i}
+                              className="flex items-start text-sm text-gray-600"
+                            >
+                              <Check
+                                size={16}
+                                className="mr-2 mt-1 shrink-0 text-[#0D3B8E]"
+                              />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Button */}
+                      <div className="block mt-6">
+                        <button className="w-full h-12 rounded-xl bg-[#0D3B8E] text-white font-semibold transition hover:bg-[#082d6e]">
+                          VIEW DETAILS
+                        </button>
+                      </div>
+
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        )}
       </div>
 
     </div>
