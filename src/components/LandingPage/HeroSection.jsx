@@ -19,74 +19,117 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-24 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[500px] lg:min-h-[600px]">
           {/* ================= LEFT CONTENT ================= */}
-          <div className="flex items-center justify-start h-full">
-          <motion.div
-            initial={{ opacity: 0, x: -80 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.span
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold"
-            >
-              • INDIA'S TRUSTED
-            </motion.span>
+          <div className="flex items-center justify-start h-full w-full">
+            {/* MOBILE VIEW: Pure static HTML (0 animation, instant load) */}
+            <div className="block md:hidden w-full">
+              <span className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
+                • INDIA'S TRUSTED
+              </span>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight"
-            >
-              RO CABINET & <br />
-              SPARE PARTS
-              <br />
-              <span className="text-blue-600">MANUFACTURER</span>
-            </motion.h2>
+              <h2 className="mt-6 text-3xl sm:text-4xl font-black leading-tight">
+                RO CABINET & <br />
+                SPARE PARTS
+                <br />
+                <span className="text-blue-600">MANUFACTURER</span>
+              </h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 max-w-xl"
-            >
-              Premium Quality RO Cabinets, Spare Parts & OEM Manufacturing
-              Solutions for Your Business.
-            </motion.p>
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 max-w-xl">
+                Premium Quality RO Cabinets, Spare Parts & OEM Manufacturing
+                Solutions for Your Business.
+              </p>
 
-            {/* Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="mt-8 sm:mt-10 flex flex-wrap gap-3 w-full sm:w-auto"
-            >
-              {/* <button className="bg-blue-700 hover:bg-blue-800 text-white px-2 py-4 rounded-lg font-semibold text-sm flex whitespace-nowrap  items-center gap-1 transition">
-                <BadgeDollarSign size={20} />
-                GET PRICE LIST
-              </button> */}
+              {/* Buttons */}
+              <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 w-full">
+                <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                  <Users size={20} />
+                  BECOME DISTRIBUTOR
+                </button>
 
-              <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
-                <Users size={20} />
-                BECOME DISTRIBUTOR
-              </button>
+                <button className="border-2 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                  <Download size={20} />
+                  DOWNLOAD CATALOGUE
+                </button>
 
-              <button className="border-2 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
-                <Download size={20} />
-                DOWNLOAD CATALOGUE
-              </button>
+                <Link
+                  href="/products"
+                  className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+                >
+                  VIEW ALL PRODUCTS
+                  <ArrowRight size={20} />
+                </Link>
+              </div>
+            </div>
 
-              <Link
-                href="/products"
-                className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+            {/* DESKTOP VIEW: Motion elements for premium look */}
+            <div className="hidden md:block w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                style={{ willChange: "transform, opacity" }}
               >
-                VIEW ALL PRODUCTS
-                <ArrowRight size={20} />
-              </Link>
-            </motion.div>
-          </motion.div>
+                <motion.span
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
+                  style={{ willChange: "transform, opacity" }}
+                  className="inline-block bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold"
+                >
+                  • INDIA'S TRUSTED
+                </motion.span>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                  style={{ willChange: "transform, opacity" }}
+                  className="mt-6 text-3xl sm:text-4xl lg:text-5xl font-black leading-tight"
+                >
+                  RO CABINET & <br />
+                  SPARE PARTS
+                  <br />
+                  <span className="text-blue-600">MANUFACTURER</span>
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                  style={{ willChange: "transform, opacity" }}
+                  className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 max-w-xl"
+                >
+                  Premium Quality RO Cabinets, Spare Parts & OEM Manufacturing
+                  Solutions for Your Business.
+                </motion.p>
+
+                {/* Buttons */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  style={{ willChange: "transform, opacity" }}
+                  className="mt-8 sm:mt-10 flex flex-wrap gap-3 w-full sm:w-auto"
+                >
+                  <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                    <Users size={20} />
+                    BECOME DISTRIBUTOR
+                  </button>
+
+                  <button className="border-2 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                    <Download size={20} />
+                    DOWNLOAD CATALOGUE
+                  </button>
+
+                  <Link
+                    href="/products"
+                    className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+                  >
+                    VIEW ALL PRODUCTS
+                    <ArrowRight size={20} />
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
           </div>
 
           {/* ================= RIGHT SIDE ================= */}
