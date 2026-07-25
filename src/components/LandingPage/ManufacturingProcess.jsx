@@ -42,12 +42,6 @@ const RiverCard = memo(({ step, index, total, sharedProgress }) => {
 
   const cardProgress = useTransform(sharedProgress, [start, end], [0, 1]);
 
-  // 4-segment clockwise border draw: top → right → bottom → left
-  const topScale    = useTransform(cardProgress, [0,    0.25], [0, 1]);
-  const rightScale  = useTransform(cardProgress, [0.25, 0.5 ], [0, 1]);
-  const bottomScale = useTransform(cardProgress, [0.5,  0.75], [0, 1]);
-  const leftScale   = useTransform(cardProgress, [0.75, 1   ], [0, 1]);
-
   const Icon = step.icon;
   const isEven = index % 2 === 0;
 
@@ -57,36 +51,30 @@ const RiverCard = memo(({ step, index, total, sharedProgress }) => {
         isEven ? "md:flex-row-reverse" : "md:flex-row"
       }`}
     >
-      {/* Card Wrapper — NO overflow-hidden so no expensive GPU clipping */}
-      <div className="w-full md:w-[calc(50%-3rem)] relative rounded-[2rem] shadow-sm hover:shadow-md transition-shadow duration-300">
+      {/* Card Wrapper */}
+      <div className="w-full md:w-[calc(50%-3rem)] relative rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
 
         {/* Static base border */}
-        <div className="absolute inset-0 rounded-[2rem] border-2 border-slate-200 pointer-events-none z-10" />
+        <div className="absolute inset-0 rounded-xl border-4 border-slate-200 pointer-events-none z-10" />
 
-        {/* === 4 thin border segments — each 2px, GPU composited === */}
-        {/* Top: scales from left → right */}
-        <motion.div
-          style={{ scaleX: topScale }}
-          className="absolute top-0 left-0 right-0 h-[2px] bg-blue-600 origin-left pointer-events-none z-10 will-change-transform"
-        />
-        {/* Right: scales from top → bottom */}
-        <motion.div
-          style={{ scaleY: rightScale }}
-          className="absolute top-0 right-0 w-[2px] h-full bg-blue-600 origin-top pointer-events-none z-10 will-change-transform"
-        />
-        {/* Bottom: scales from right → left */}
-        <motion.div
-          style={{ scaleX: bottomScale }}
-          className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-600 origin-right pointer-events-none z-10 will-change-transform"
-        />
-        {/* Left: scales from bottom → top */}
-        <motion.div
-          style={{ scaleY: leftScale }}
-          className="absolute bottom-0 left-0 w-[2px] h-full bg-blue-600 origin-bottom pointer-events-none z-10 will-change-transform"
-        />
+        {/* SVG Drawing Rounded Border to match rounded-xl perfectly */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible">
+          <motion.rect
+            x="2"
+            y="2"
+            rx="10"
+            ry="10"
+            fill="none"
+            stroke="#2563eb"
+            strokeWidth="4"
+            className="w-[calc(100%-4px)] h-[calc(100%-4px)]"
+            style={{ pathLength: cardProgress }}
+            transition={{ ease: "linear" }}
+          />
+        </svg>
 
         {/* Inner Card */}
-        <div className="relative bg-white rounded-[2rem] p-6 md:p-10 h-full w-full z-0 flex flex-col justify-center overflow-hidden">
+        <div className="relative bg-white rounded-xl p-6 md:p-10 h-full w-full z-0 flex flex-col justify-center overflow-hidden">
           <span className="absolute -bottom-4 -right-2 text-8xl md:text-9xl font-black text-blue-50 pointer-events-none select-none">
             {step.id}
           </span>
@@ -147,12 +135,12 @@ export default function ManufacturingProcess() {
         <div ref={containerRef} className="relative max-w-5xl mx-auto">
 
           {/* Static base track — pure CSS, zero animation cost */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-slate-200 z-0 rounded-full" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-[6px] -translate-x-1/2 bg-slate-200 z-0 rounded-full" />
 
           {/* Animated fill track — scaleY on a single element, GPU composited */}
           <motion.div
             style={{ scaleY: sharedProgress }}
-            className="absolute left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-blue-600 rounded-full z-0 origin-top will-change-transform"
+            className="absolute left-1/2 top-0 bottom-0 w-[6px] -translate-x-1/2 bg-blue-600 rounded-full z-0 origin-top will-change-transform"
           />
 
           <div className="flex flex-col gap-4 md:gap-10">
