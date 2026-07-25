@@ -9,7 +9,7 @@ export default async function FeaturedProducts() {
     const rawProducts = await Product.find({ isActive: true })
       .populate("category")
       .sort({ name: 1 })
-      .limit(10)
+      .limit(7)
       .lean();
 
     products = JSON.parse(JSON.stringify(rawProducts)).map((prod) => {

@@ -94,5 +94,5 @@ export default async function ProductDetailPage({ params }) {
     );
   }
 
-  return <ProductDetailClient product={serializedProduct} preloadedRelated={relatedProducts} />;
+  return <ProductDetailClient product={serializedProduct} preloadedRelated={relatedProducts} categorySlug={categorySlug} />;
 }

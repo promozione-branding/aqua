@@ -139,6 +139,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
   const selectVariant = (index) => {
     setActiveVariantIndex(index);
     setActiveThumb(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleNextImage = () => {
@@ -186,7 +187,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <div className="grid grid-cols-12 gap-6 sm:gap-12">
           {/* Gallery */}
-          <div className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16">
+          <div id="product-gallery" className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16">
             <div className="max-w-[420px] mx-auto w-full">
               <div className="relative w-full">
                 <div className="relative rounded-2xl border border-slate-200 aspect-square sm:aspect-[4/5] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
@@ -259,7 +260,8 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
               {product.shortDescription || "Premium food-grade design."}
             </p>
 
-            {sortedVariants && sortedVariants.length > 1 && (
+            {/* Spare parts do not show colour selector */}
+            {false && sortedVariants && sortedVariants.length > 0 && (
               <div className="mt-6">
                 <span className="text-sm font-extrabold text-slate-800 tracking-wider block mb-3 uppercase">
                   COLOUR — <span className="text-blue-600 font-extrabold uppercase">{activeVariant.colorName}</span>
@@ -267,17 +269,17 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 <div className="flex flex-wrap gap-2.5 items-center">
                   {sortedVariants.map((variant, idx) => {
                     const isSelected = activeVariantIndex === idx;
-                    const isWhite = variant.colorName.toLowerCase() === "white";
                     const colors = getVariantColors(variant.colorName);
+                    const hasWhite = colors.includes("#ffffff") || variant.colorName.toLowerCase().includes("white");
                     return (
                       <button
                         key={idx}
                         onClick={() => selectVariant(idx)}
                         className={`w-7 h-7 rounded-full border shadow-sm transition-all duration-200 focus:outline-none flex items-center justify-center overflow-hidden ${
                           isSelected
-                            ? "ring-2 ring-blue-600 ring-offset-2 scale-110"
-                            : "border-slate-300 hover:scale-110"
-                        } ${isWhite ? "bg-white" : "border-slate-800/10"}`}
+                            ? "ring-2 ring-blue-600 ring-offset-2 scale-110 border-slate-400"
+                            : "hover:scale-110"
+                        } ${hasWhite ? "border-slate-300 bg-white" : "border-slate-800/20"}`}
                         aria-label={`Select ${variant.colorName}`}
                       >
                         {colors.length === 1 ? (
