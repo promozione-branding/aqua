@@ -336,7 +336,7 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[9998] lg:hidden"
+                className="fixed inset-0 bg-slate-900/50 z-[9998] lg:hidden"
               />
 
               {/* Menu Panel */}
@@ -344,7 +344,7 @@ export default function Navbar() {
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                transition={{ type: "tween", ease: "easeOut", duration: 0.25 }}
                 className="fixed top-0 right-0 bottom-0 w-[85%] max-w-[400px] bg-white z-[9999] shadow-2xl overflow-y-auto lg:hidden flex flex-col"
               >
                 {/* Mobile Menu Header (Matches Navbar Height) */}
