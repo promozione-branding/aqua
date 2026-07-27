@@ -363,7 +363,7 @@ export default function Navbar() {
               </span>
             </Link>
             <div className="flex">
-              <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-xs lg:hidden px-2 py-2 rounded-lg font-semibold flex items-center justify-center gap-1 transition ">
+              <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-xs lg:hidden px-2 py-2 rounded-lg font-bold flex items-center justify-center gap-1 transition ">
                 <Users size={18} />
                 BECOME DISTRIBUTOR
               </button>

@@ -93,8 +93,8 @@ export default function AboutSection() {
                     <div className="flex justify-center mb-1.5 text-blue-600">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <h4 className="font-semibold text-gray-900 text-xs sm:text-sm">{item.title}</h4>
-                    <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5">{item.subtitle}</p>
+                    <h4 className="font-semibold text-gray-900 text-sm sm:text-sm">{item.title}</h4>
+                    <p className="text-[13px] sm:text-xs text-gray-500 mt-0.5">{item.subtitle}</p>
                   </motion.div>
                 );
               })}

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden h-[85vh] lg:h-screen bg-gradient-to-r ">
+    <section className="relative overflow-hidden lg:h-screen bg-gradient-to-r ">
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover opacity-70 
@@ -20,50 +20,49 @@ export default function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-2 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[500px] lg:min-h-[600px]">
           {/* ================= LEFT CONTENT ================= */}
-          <div className="flex items-center justify-start h-full w-full">
+          <div className="flex items-start justify-start h-full w-full">
             {/* MOBILE VIEW: Pure static HTML (0 animation, instant load) */}
-            <div className="block md:hidden w-full">
-  <span className="inline-block bg-blue-100 text-blue-700 text-[10px] px-3 py-1 rounded-full font-semibold">
-    • INDIA'S TRUSTED
-  </span>
+            <div className="block md:hidden mt-5 w-full">
+              <span className="inline-block bg-blue-100 text-blue-700 text-[13px] px-3 py-1 rounded-full font-semibold">
+                • INDIA'S TRUSTED
+              </span>
 
-  <h2 className="mt-4 text-2xl sm:text-3xl font-black leading-tight">
-    RO CABINET & <br />
-    SPARE PARTS <br />
-    <span className="text-blue-600">MANUFACTURER</span>
-  </h2>
+              <h2 className="mt-4 text-2xl sm:text-3xl font-black leading-tight">
+                RO CABINET & SPARE PARTS 
+                <span className="text-blue-600"> {" "}MANUFACTURER</span>
+              </h2>
 
-  <p className="mt-3 text-sm text-gray-600">
-    Premium Quality RO Cabinets, Spare Parts & OEM Manufacturing
-    Solutions for Your Business.
-  </p>
+              <p className="mt-3 text-sm font-bold text-gray-600">
+                Premium Quality RO Cabinets, Spare Parts & OEM Manufacturing
+                Solutions for Your Business.
+              </p>
 
-  {/* ✅ RO Images Section */}
-  <div className="relative h-[200px] mt-16 flex items-end justify-center">
-    {/* Left RO */}
-    <img
-      src="/1.png"
-      alt="RO 1"
-      className="absolute left-2 bottom-0 w-[110px] z-10 drop-shadow-2xl"
-    />
+              {/* ✅ RO Images Section */}
+              <div className="relative h-[200px]   flex items-end justify-center">
+                {/* Left RO */}
+                <img
+                  src="/1.png"
+                  alt="RO 1"
+                  className="absolute -left-5 -bottom-15 w-[160px] z-10 drop-shadow-2xl"
+                />
 
-    {/* Center RO */}
-    <img
-      src="/2.png"
-      alt="RO 2"
-      className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[150px] z-30 drop-shadow-[0_25px_25px_rgba(0,0,0,.35)]"
-    />
+                {/* Center RO */}
+                <img
+                  src="/2.png"
+                  alt="RO 2"
+                  className="absolute left-1/2 -translate-x-1/2 -bottom-12 w-[190px] z-30 drop-shadow-[0_25px_25px_rgba(0,0,0,.35)]"
+                />
 
-    {/* Right RO */}
-    <img
-      src="/3.png"
-      alt="RO 3"
-      className="absolute right-2 bottom-0 w-[100px] z-20 drop-shadow-2xl"
-    />
-  </div>
+                {/* Right RO */}
+                <img
+                  src="/3.png"
+                  alt="RO 3"
+                  className="absolute -right-1 -bottom-9 w-[130px] z-20 drop-shadow-2xl"
+                />
+              </div>
 
-  {/* ✅ Buttons BELOW images */}
-  {/* <div className="mt-6 flex flex-row gap-3 w-full">
+              {/* ✅ Buttons BELOW images */}
+              {/* <div className="mt-6 flex flex-row gap-3 w-full">
     <button className="border-2 text-white bg-blue-700 border-blue-700 px-4 py-3 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 transition w-full">
       <Download size={18} />
       DOWNLOAD CATALOGUE
@@ -77,7 +76,7 @@ export default function HeroSection() {
       <ArrowRight size={18} />
     </Link>
   </div> */}
-</div>
+            </div>
 
             {/* DESKTOP VIEW: Motion elements for premium look */}
             <div className="hidden md:block w-full">

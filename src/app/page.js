@@ -19,7 +19,7 @@ export default function Home() {
     <FeatureStrip/>
     <ProductCategories/>
     <AboutSection/>
-    <CountSection/>
+    {/* <CountSection/> */}
     <FeaturedProducts/>
     <WhyChooseUs/>
     <ManufacturingProcess/>

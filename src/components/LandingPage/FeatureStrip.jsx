@@ -64,7 +64,7 @@ export default function FeatureStrip() {
                 </div>
 
                 <div>
-                  <h3 className="text-[15px] sm:text-[17px] font-extrabold text-slate-800 leading-tight">
+                  <h3 className="text-[16px]  font-extrabold text-slate-800 leading-tight">
                     {item.title}
                   </h3>
 
