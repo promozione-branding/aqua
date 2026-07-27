@@ -43,21 +43,21 @@ export default function HeroSection() {
                 <img
                   src="/1.png"
                   alt="RO 1"
-                  className="absolute -left-5 -bottom-15 w-[160px] z-10 drop-shadow-2xl"
+                  className="absolute -left-5 -bottom-14 w-[160px] z-10 drop-shadow-2xl"
                 />
 
                 {/* Center RO */}
                 <img
                   src="/2.png"
                   alt="RO 2"
-                  className="absolute left-1/2 -translate-x-1/2 -bottom-12 w-[190px] z-30 drop-shadow-[0_25px_25px_rgba(0,0,0,.35)]"
+                  className="absolute left-1/2 -translate-x-1/2 -bottom-11 w-[190px] z-30 drop-shadow-[0_25px_25px_rgba(0,0,0,.35)]"
                 />
 
                 {/* Right RO */}
                 <img
                   src="/3.png"
                   alt="RO 3"
-                  className="absolute -right-1 -bottom-9 w-[130px] z-20 drop-shadow-2xl"
+                  className="absolute -right-1 -bottom-8 w-[130px] z-20 drop-shadow-2xl"
                 />
               </div>
 
