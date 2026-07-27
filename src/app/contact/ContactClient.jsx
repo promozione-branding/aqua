@@ -137,12 +137,12 @@ const faqs = [
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-100">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.12),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_45%)]" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-14">
+        <div className="relative max-w-7xl mx-auto px-6 py-8 md::py-14">
           <span className="inline-block rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-700 shadow-sm">
             CONTACT US
           </span>
 
-          <h1 className="mt-6 text-5xl md:text-6xl font-bold leading-tight text-slate-900">
+          <h1 className="mt-6 text-3xl md:text-6xl font-bold leading-tight text-slate-900">
             Your Trusted Partner for
             <br />
             RO Cabinets & Spare Parts
@@ -333,14 +333,14 @@ const faqs = [
         </section>
       </div>
 
-      <section className="max-w-7xl mx-auto px-6 pb-20">
+      <section className="max-w-7xl mx-auto px-6 pb-10 lg:pb-20">
         <iframe
           className="w-full h-[420px] rounded-3xl"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.9032540108756!2d77.0599969!3d28.782145199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390da829a9b5b381%3A0x31bd63e527d334c!2sMerlin%20Water%20Purifier!5e0!3m2!1sen!2sin!4v1784364461744!5m2!1sen!2sin"
         />
       </section>
 
-      <section className="max-w-4xl mx-auto px-6 pb-24">
+      <section className="max-w-4xl mx-auto px-6  py-10 lg::pb-24">
         <h2 className="text-4xl font-bold text-center mb-8">
           Frequently Asked Questions
         </h2>

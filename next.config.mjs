@@ -9,6 +9,8 @@ const nextConfig = {
         hostname: "pub-5d7e0ccbf7ae4e70ab58aa8c92d44dec.r2.dev",
       },
     ],
+        domains: ["cdn.sanity.io"],
+
   },
 };
 

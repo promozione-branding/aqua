@@ -37,7 +37,7 @@ export default async function SparePartsPage() {
     console.error("Failed to load spare parts subcategories:", error);
   }
   return (
-    <div className="bg-slate-50 text-slate-700 min-h-screen pt-8 pb-16 font-sans">
+    <div className="bg-slate-50 text-slate-700 min-h-screen pt-8 pb-8 lg:pb-16 font-sans">
       <div className="max-w-7xl mx-auto px-6 mb-10">
         {/* Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -89,7 +89,7 @@ export default async function SparePartsPage() {
                   </p>
                   
                   {/* Styled button element */}
-                  <div className="mt-4 pt-4 border-t border-slate-100">
+                  <div className="mt-4  border-t border-slate-100">
                     <span
                       className="block text-center w-full bg-blue-900 hover:bg-blue-955 text-white text-xs font-bold py-2.5 px-4 rounded-xl transition duration-150"
                     >

@@ -34,15 +34,14 @@ const ProductCard = memo(({ item, mobileSnap }) => {
           {item.name}
         </h3>
         <div className="space-y-0.5 text-xs text-gray-600 mb-4">
-          <p>
-            <span className="font-semibold">Storage:</span> {item.storage}
-          </p>
-          <p>
-            <span className="font-semibold">Material:</span> {item.material}
-          </p>
+          {item.specs?.map((spec, i) => (
+            <p key={i}>
+              <span className="font-semibold">{spec.key}:</span> {spec.value}
+            </p>
+          ))}
         </div>
         <div className="mt-auto">
-          <span className="w-full bg-blue-600 text-white rounded-lg py-2.5 font-semibold flex items-center justify-center gap-2 text-xs">
+          <span className="w-full bg-blue-600 text-white rounded-lg py-2.5 font-semibold flex items-center justify-center gap-2 text-base">
             Get Quote <ArrowRight size={15} />
           </span>
         </div>
@@ -165,8 +164,8 @@ export default function ScrollDrivenHorizontal({ products = [] }) {
           className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-4 pb-4 scroll-smooth"
           style={{
             WebkitOverflowScrolling: "touch",
-            scrollbarWidth: "none",        /* Firefox */
-            msOverflowStyle: "none",       /* IE/Edge */
+            scrollbarWidth: "none" /* Firefox */,
+            msOverflowStyle: "none" /* IE/Edge */,
           }}
         >
           {products.map((item) => (
@@ -221,10 +220,7 @@ export default function ScrollDrivenHorizontal({ products = [] }) {
 
           {/* GSAP Track */}
           <div className="overflow-hidden w-full">
-            <div
-              ref={trackRef}
-              className="flex gap-6 pl-20 pr-20 w-max"
-            >
+            <div ref={trackRef} className="flex gap-6 pl-20 pr-20 w-max">
               {products.map((item) => (
                 <ProductCard key={item.id} item={item} mobileSnap={false} />
               ))}

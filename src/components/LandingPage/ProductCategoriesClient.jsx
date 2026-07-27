@@ -8,7 +8,7 @@ import { Check } from "lucide-react";
 
 export default function ProductCategoriesClient({ categories = [] }) {
   return (
-    <section className="w-full bg-[#fafafa] py-14 overflow-hidden">
+    <section className="w-full bg-[#fafafa] py-7 lg:py-14 overflow-hidden">
       <div className="max-w-7xl mx-auto px-0">
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 items-start">
           {/* LEFT CONTENT */}

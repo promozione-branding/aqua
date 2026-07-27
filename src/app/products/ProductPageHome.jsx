@@ -55,7 +55,7 @@ export default function ProductPageHome({ preloadedProducts, preloadedCategories
   }, [preloadedProducts, selectedCategory]);
 
   return (
-    <div className="bg-slate-50 text-slate-700 min-h-screen pt-6 pb-16 font-sans">
+    <div className="bg-slate-50 text-slate-700 min-h-screen pt-6 pb-8 lg:pb-16 font-sans">
       <div className="max-w-7xl mx-auto px-6 mb-8">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
           <Link href="/" className="hover:text-blue-900 transition">Home</Link>

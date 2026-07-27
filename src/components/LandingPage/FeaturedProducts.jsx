@@ -19,10 +19,15 @@ export default async function FeaturedProducts() {
       const firstVariant = prod.colorVariants?.[0];
       const image = firstVariant?.images?.[0]?.url || "/1.png";
 
+
+     
+      
+
       return {
         id: prod._id.toString(),
         slug: prod.slug || prod._id.toString(),
         name: prod.name,
+        specs,
         storage: storageSpec,
         material: materialSpec,
         image,

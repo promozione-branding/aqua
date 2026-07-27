@@ -6,7 +6,7 @@ export default function AboutClient() {
    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-100">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.12),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_45%)]" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-14">
+        <div className="relative max-w-7xl mx-auto px-6 py-8 lg:py-14">
           {/* <span className="inline-block rounded-full border border-blue-200 bg-white px-4 py-2 text-sm font-semibold text-blue-700 shadow-sm">
             CONTACT US
           </span> */}
