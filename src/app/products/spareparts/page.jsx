@@ -84,7 +84,7 @@ export default async function SparePartsPage() {
                   <h3 className="text-lg font-bold text-blue-950 line-clamp-1">
                     {sub.name}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1 line-clamp-2 min-h-[32px]">
+                  <p className="text-xs text-blue-950 mt-1 line-clamp-2 min-h-[32px]">
                     {sub.description || "Premium water purifier spare parts and components."}
                   </p>
                   

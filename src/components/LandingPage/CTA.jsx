@@ -1,5 +1,6 @@
 import { ShoppingCart, ImageIcon, CreditCard } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -44,9 +45,9 @@ export default function CTA() {
           Request Quote
         </button>
 
-        <button className="rounded-xl border-2 border-white px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#1D7FD8]">
+        <Link href="/products" className="rounded-xl border-2 border-white px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#1D7FD8]">
           View Products
-        </button>
+        </Link>
       {/* </div> */}
     </div>
   </div>

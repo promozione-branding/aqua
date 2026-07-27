@@ -448,9 +448,9 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                 <p className="mt-3 flex-1 text-sm sm:text-base leading-relaxed text-blue-100/80">
                   We offer the best deals for bulk orders & distributors.
                 </p>
-                <button className="mt-4 w-fit rounded-lg bg-white px-4 py-2.5 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
+                <Link href="/contact" className="mt-4 w-fit rounded-lg bg-white px-4 py-2.5 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
                   CONTACT US NOW
-                </button>
+                </Link>
               </div>
               <Image
                 src="/2.png"
@@ -495,7 +495,7 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                   <h4 className="text-sm sm:text-lg font-bold text-blue-955 line-clamp-1">
                     {p.name}
                   </h4>
-                  <p className="text-xs sm:text-sm text-black mt-1">
+                  <p className="text-xs sm:text-sm pb-2 text-black mt-1">
                     Storage: {p.storage}
                   </p>
                   <div className="mt-auto pt-2 block w-full text-center text-xs font-bold text-blue-700 border border-blue-700 rounded-md py-1.5 sm:py-2 group-hover:bg-blue-900 group-hover:text-white transition">

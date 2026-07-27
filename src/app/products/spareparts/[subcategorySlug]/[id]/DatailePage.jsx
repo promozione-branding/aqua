@@ -443,9 +443,9 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 <p className="mt-4 flex-1 text-base leading-relaxed text-blue-100/80">
                   We offer the best deals for bulk orders & distributors.
                 </p>
-                <button className="mt-auto w-fit rounded-lg bg-white px-5 py-3 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
+                <Link href="/contact" className="mt-auto w-fit rounded-lg bg-white px-5 py-3 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
                   CONTACT US NOW
-                </button>
+                </Link>
               </div>
               <Image
                 src="/2.png"
@@ -492,7 +492,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                     <h4 className="text-lg font-bold text-blue-955 line-clamp-1">
                       {p.name}
                     </h4>
-                    <p className="text-base text-black mt-1">
+                    <p className="text-base pb-2 text-black mt-1">
                       Storage: {p.storage}
                     </p>
                     <Link href={`/products/${p.slug}`} className="block w-full text-center mt-3 text-xs font-bold text-blue-700 border border-blue-700 rounded-md py-2 hover:bg-blue-900 hover:text-white transition">

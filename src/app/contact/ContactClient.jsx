@@ -169,7 +169,7 @@ const faqs = [
         </svg>
 
         <section className="max-w-7xl z-50 mx-auto px-6 py-10 grid lg:grid-cols-2 gap-10 items-start">
-          <div className="rounded-[32px] z-50 border border-slate-200 bg-white p-8 lg:p-10 shadow-xl">
+          <div className="rounded-[32px] z-10 border border-slate-200 bg-white p-8 lg:p-10 shadow-xl">
             <h2 className=" text-3xl font-bold text-slate-900">
               Send an Inquiry
             </h2>
@@ -252,7 +252,7 @@ const faqs = [
             </form>
           </div>
 
-          <div className="rounded-3xl border z-50 border-slate-200 bg-white p-8 shadow-xl">
+          <div className="rounded-3xl border z-10 border-slate-200 bg-white p-8 shadow-xl">
             <h3 className="text-2xl font-bold text-slate-900">
               Office Information
             </h3>
@@ -346,26 +346,32 @@ const faqs = [
         </h2>
         <div className="space-y-4">
           {faqs.map(([q, a], i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-blue-400 overflow-hidden"
-            >
-              <button
-                onClick={() => setOpen(open === i ? -1 : i)}
-                className="w-full flex justify-between p-5 text-left"
-              >
-                <span>{q}</span>
-                <ChevronDown
-                  className={
-                    open === i ? "rotate-180 transition" : "transition"
-                  }
-                />
-              </button>
-              {open === i && (
-                <div className="px-5 pb-5 text-slate-900">{a}</div>
-              )}
-            </div>
-          ))}
+  <div
+    key={i}
+    className="rounded-2xl border border-blue-400 overflow-hidden"
+  >
+    <button
+      onClick={() => setOpen(open === i ? -1 : i)}
+      className="w-full flex justify-between p-5 text-left"
+    >
+      <span>{q}</span>
+      <ChevronDown
+        className={`transition-transform duration-300 ${
+          open === i ? "rotate-180" : ""
+        }`}
+      />
+    </button>
+
+    {/* Animated Content */}
+    <div
+      className={`px-5 text-slate-900 transition-all duration-300 ease-in-out overflow-hidden ${
+        open === i ? "max-h-40 opacity-100 pb-5" : "max-h-0 opacity-0"
+      }`}
+    >
+      {a}
+    </div>
+  </div>
+))}
         </div>
       </section>
     </main>

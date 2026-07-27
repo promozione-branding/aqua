@@ -14,6 +14,7 @@ export default function AboutClient() {
           <h1 className="mt-6 text-5xl md:text-7xl font-bold leading-tight text-slate-900">
            About
           {" "}
+          <br  className=" md:hidden"/>
           <span className="text-4xl">
            - JNJ AQUA
             </span>

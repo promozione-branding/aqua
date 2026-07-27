@@ -45,9 +45,9 @@ export default function HeroSection() {
                   BECOME DISTRIBUTOR
                 </button>
 
-                <button className="border-2 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                <button className="border-2 text-white bg-blue-700 border-gray-500 hover:border-blue-700  px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
                   <Download size={20} />
-                  DOWNLOAD CATALOGUE
+                  DOWNLOAD CATALOGUEss
                 </button>
 
                 <Link
@@ -115,7 +115,7 @@ export default function HeroSection() {
                     BECOME DISTRIBUTOR
                   </button>
 
-                  <button className="border-2 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                  <button className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-white px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-semibold flex items-center justify-center gap-2 transition w-full sm:w-auto">
                     <Download size={20} />
                     DOWNLOAD CATALOGUE
                   </button>
