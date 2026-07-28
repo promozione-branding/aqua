@@ -346,7 +346,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
               <a 
-                href={`https://wa.me/919876543210?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(product.name)}`}
+                href={`https://wa.me/919540010221?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center text-base justify-center gap-2 bg-green-500 border border-slate-300 text-white font-semibold rounded-lg px-4 py-3 hover:bg-green-600 hover:scale-105 duration-150 transition w-full sm:w-auto text-center"

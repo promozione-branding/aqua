@@ -205,10 +205,10 @@ const MobileMenuPanel = memo(
               Get Price List
             </button>
             <a
-              href="tel:+919876543210"
+              href="tel:+919540010221"
               className="flex items-center justify-center gap-2 mt-4 text-slate-600 font-medium text-sm"
             >
-              <Phone size={16} /> Support: +91 98765 43210
+              <Phone size={16} /> Support: +91 95400 10221
             </a>
           </div>
         </div>
@@ -354,11 +354,11 @@ export default function Navbar() {
 
           <div className="w-full md:w-auto flex items-center justify-between md:justify-end gap-4 sm:gap-7 shrink-0">
             <a
-              href="tel:+919876543210"
+              href="tel:+919540010221"
               className="flex items-center gap-1.5 hover:text-blue-200 transition"
             >
               <Phone size={13} />
-              <span>+91 98765 43210</span>
+              <span>+91 95400 10221</span>
             </a>
 
             <Link

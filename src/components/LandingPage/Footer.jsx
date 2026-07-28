@@ -27,7 +27,7 @@ export default function Footer() {
     <footer className="bg-[#0F172A] text-white pt-16 font-sans border-t border-slate-800/80 shadow-[0_-4px_20px_rgba(0,0,0,0.2)] relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Astride 5-Column Grid Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr] gap-x-8 gap-y-12 pb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr] gap-x-4 gap-y-12 pb-12">
           
           {/* Brand Section */}
           <div className="col-span-2 md:col-span-1 pr-4">
@@ -70,8 +70,7 @@ export default function Footer() {
                 { name: "Home", link: "/" },
                 { name: "About Us", link: "/about" },
                 { name: "Products", link: "/products" },
-                { name: "OEM Solutions", link: "/oem-solutions" },
-                { name: "Dealer Zone", link: "/dealer-zone" },
+                { name: "Blogs", link: "/blogs" },
                 { name: "Contact Us", link: "/contact" },
               ].map((item, index) => (
                 <Link
@@ -142,30 +141,26 @@ export default function Footer() {
               <div className="flex items-start gap-2.5 group">
                 <MapPin className="text-blue-500 shrink-0 mt-0.5 transition-transform group-hover:scale-110" size={18} />
                 <p className="text-slate-400 text-xs sm:text-sm leading-relaxed transition-colors group-hover:text-slate-200">
-                  B-103, Industrial Area,<br/> Sector-63, Noida,<br/> Uttar Pradesh 201301
+                 Plot No 27, Pocket N, Sector 3, Bawana Industrial Area <br />
+New Delhi - 110039, India
                 </p>
               </div>
 
               <div className="flex items-center gap-2.5 group">
                 <Phone className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
-                <a href="tel:+917949347105" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
-                  +91 79493 47105
+                <a href="tel:+919540010221" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
+                  +91 95400 10221
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5 group">
                 <Mail className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
-                <a href="mailto:info@crystalimpex.com" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
-                  info@crystalimpex.com
+                <a href="mailto:crystalimpex3@gmail.com" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
+                  crystalimpex3@gmail.com
                 </a>
               </div>
 
-              <div className="flex items-center gap-2.5 group">
-                <Globe className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
-                <a href="https://crystalimpex.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
-                  www.crystalimpex.com
-                </a>
-              </div>
+              
             </div>
           </div>
 

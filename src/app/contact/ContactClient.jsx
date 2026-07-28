@@ -291,7 +291,7 @@ const faqs = [
             <div className="mt-8 space-y-6">
               {/* Address */}
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+                <div className="flex h-12 w-12 p-3 md:p-0 items-center justify-center rounded-xl bg-blue-100">
                   <MapPin className="h-5 w-5 text-blue-700" />
                 </div>
 
@@ -316,10 +316,10 @@ const faqs = [
                   <p className="font-semibold text-slate-900">Phone</p>
 
                   <a
-                    href="tel:+911141440071"
+                    href="tel:+919540010221"
                     className="mt-1 block text-slate-600 transition hover:text-blue-700"
                   >
-                    + 91 7949347105
+                    + 91 95400 10221
                   </a>
                 </div>
               </div>
@@ -334,10 +334,10 @@ const faqs = [
                   <p className="font-semibold text-slate-900">Email</p>
 
                   <a
-                    href=""
+                    href="mailto:crystalimpex3@gmail.com"
                     className="mt-1 block text-slate-600 transition hover:text-blue-700"
                   >
-                    jnjaqua@gmail.com
+                    crystalimpex3@gmail.com
                   </a>
 
                 </div>
