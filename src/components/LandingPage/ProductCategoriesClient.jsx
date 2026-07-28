@@ -160,15 +160,56 @@ export default function ProductCategoriesClient({ categories = [] }) {
               <input
                 type="tel"
                 placeholder="Phone Number"
+                // value={phone}
+                onChange={(e) => {
+                  const onlyNums = e.target.value.replace(/[^0-9]/g, "");
+                  setPhone(onlyNums.slice(0, 10));
+                }}
+                maxLength={10}
+                pattern="[0-9]{10}"
+                required
                 className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
               />
 
               {/* Requirement */}
-              <input
-                type="text"
-                placeholder="Products Required (RO Cabinet, Pump, Membrane...)"
+              
+                <select
+                // value={product}
+                onChange={(e) => setProduct(e.target.value)}
                 className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
-              />
+                required
+                // disabled={loading}
+              >
+                <option value="" disabled>
+                  Select Product
+                </option>
+
+                <option value="RO Cabinets">
+                 RO Cabinets
+                </option>
+
+                <option value="Alkaline Filter">
+                 Alkaline Filter
+                </option>
+
+                <option value="Inline Filter">
+                  Inline Filter
+                </option>
+
+                <option value="Membrane">
+                  Membrane
+                </option>
+
+                <option value="Pre Filter">
+                  Pre Filter
+                </option>
+
+                <option value="Pump">
+                  Pump
+                </option>
+
+                
+              </select>
 
               {/* Desktop Button */}
               <button

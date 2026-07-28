@@ -15,6 +15,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import Popup from "../Popup";
 
 /**
  * OPTIMIZATION: Memoized Mobile Menu
@@ -30,6 +31,8 @@ const MobileMenuPanel = memo(
     staticCategories,
     subcategories,
   }) => {
+        const [isFormOpen, setIsFormOpen] = useState(false);
+
     return (
       <>
         {/* Backdrop (GPU accelerated opacity) */}
@@ -176,6 +179,13 @@ const MobileMenuPanel = memo(
             </div>
 
             <Link
+              href="/blogs"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="py-3 text-[16px] font-bold text-slate-800 uppercase tracking-wide"
+            >
+              Blogs
+            </Link>
+            <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
               className="py-3 text-[16px] font-bold text-slate-800 uppercase tracking-wide"
@@ -186,13 +196,14 @@ const MobileMenuPanel = memo(
 
           {/* Mobile Menu Footer CTA */}
           <div className="p-6 border-t border-slate-100 bg-slate-50 mt-auto shrink-0">
-            <Link
-              href="/"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <button
+              onClick={() => (setIsFormOpen(true) ,
+                setIsMobileMenuOpen(false))
+               }
               className="flex items-center justify-center bg-[#0D3B8E] text-white font-bold uppercase text-[14px] w-full h-12 rounded-xl shadow-md active:scale-[0.98] transition-transform"
             >
               Get Price List
-            </Link>
+            </button>
             <a
               href="tel:+919876543210"
               className="flex items-center justify-center gap-2 mt-4 text-slate-600 font-medium text-sm"
@@ -201,6 +212,9 @@ const MobileMenuPanel = memo(
             </a>
           </div>
         </div>
+         {isFormOpen && (                   
+      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
+         )}
       </>
     );
   },
@@ -209,6 +223,7 @@ const MobileMenuPanel = memo(
 MobileMenuPanel.displayName = "MobileMenuPanel";
 
 export default function Navbar() {
+
   const [subcategories, setSubcategories] = useState([]);
   const [activeCategoryId, setActiveCategoryId] = useState("ro-cabinets");
   const [roCabinetImage, setRoCabinetImage] = useState("/1.png");
@@ -216,6 +231,11 @@ export default function Navbar() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
+
+    const [isFormOpen, setIsFormOpen] = useState(false);
+
+
+
 
   useEffect(() => {
     // OPTIMIZATION: Only adjust body overflow, prevent reflow triggers
@@ -363,7 +383,7 @@ export default function Navbar() {
               </span>
             </Link>
             <div className="flex">
-              <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-xs lg:hidden px-2 py-2 rounded-lg font-bold flex items-center justify-center gap-1 transition ">
+              <button onClick={()=>{ setIsFormOpen(true);}} className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-xs lg:hidden px-2 py-2 rounded-lg font-bold flex items-center justify-center gap-1 transition ">
                 <Users size={18} />
                 BECOME DISTRIBUTOR
               </button>
@@ -548,24 +568,22 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <Link href="/" className="hover:text-[#0D3B8E] transition">
-                OEM Solutions
+              <Link href="/blogs" className="hover:text-[#0D3B8E] transition">
+               Blogs
               </Link>
-              <Link href="/" className="hover:text-[#0D3B8E] transition">
-                Components
-              </Link>
+              
               <Link href="/contact" className="hover:text-[#0D3B8E] transition">
                 Contact Us
               </Link>
             </nav>
 
             {/* Desktop CTA Button */}
-            <Link
-              href="/"
+            <buttom
+              onClick={()=>{ setIsFormOpen(true);}}
               className="hidden lg:flex items-center justify-center bg-[#0D3B8E] hover:bg-[#0B3379] text-white font-bold uppercase text-[13px] px-7 h-12 rounded-lg transition shadow-sm"
             >
               Get Price List
-            </Link>
+            </buttom>
           </div>
         </div>
 
@@ -579,6 +597,10 @@ export default function Navbar() {
           subcategories={subcategories}
         />
       </header>
+
+         {isFormOpen && (                   
+      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
+         )}
     </>
   );
 }

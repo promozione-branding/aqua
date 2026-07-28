@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Factory, Boxes, PencilRuler, Building2, Play, X, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const container = {
   hidden: { opacity: 0 },
@@ -110,7 +111,7 @@ export default function AboutSection() {
                 <div 
                   className="absolute inset-y-0 -left-1/2 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]"
                 />
-                <span className="relative z-10">KNOW MORE ABOUT US</span>
+                <Link href={"/about"} className="relative z-10">KNOW MORE ABOUT US</Link>
                 <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </div>

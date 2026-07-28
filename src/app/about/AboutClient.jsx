@@ -1,7 +1,12 @@
+"use client"
+import CTA from "@/components/LandingPage/CTA";
+import Popup from "@/components/Popup";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 export default function AboutClient() {
+      const [isFormOpen, setIsFormOpen] = useState(false);
+
   return <>
    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-100">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.12),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_45%)]" />
@@ -66,12 +71,12 @@ export default function AboutClient() {
         </p>
       </div>
 
-      <Link
-        href="/contact"
+      <button
+        onClick={()=>{setIsFormOpen(true)}}
         className="inline-block bg-gray-900 hover:bg-gray-800 text-white mt-6 px-7 py-3 rounded-full text-sm font-medium shadow-sm transition"
       >
         Contact Us
-      </Link>
+      </button>
     </div>
 
     {/* RIGHT IMAGE */}
@@ -158,5 +163,10 @@ export default function AboutClient() {
     </div>
   </div>
 </div>
+  <CTA/>
+
+  {isFormOpen && (                   
+      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
+         )}
   </>;
 }

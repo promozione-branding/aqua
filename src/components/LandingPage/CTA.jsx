@@ -1,8 +1,14 @@
+"use client"
 import { ShoppingCart, ImageIcon, CreditCard } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Popup from "../Popup";
+import { useState } from "react";
 
 export default function CTA() {
+
+    const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
 
    <section className="relative overflow-hidden bg-gradient-to-br from-[#1D7FD8] via-[#2E8EDB] to-[#3DB7E6] py-14">
@@ -28,29 +34,33 @@ export default function CTA() {
         Premium RO Components
       </span> */}
 
-      <h2 className="mt-6 text-4xl text-center font-extrabold leading-tight text-white md:text-5xl">
+      <h2 className="mt-6 text-2xl text-center font-extrabold leading-tight text-white md:text-5xl">
         High-Quality RO Cabinets
         <br />
         <span className="text-cyan-100">& Spare Parts for Every Need</span>
       </h2>
 
-      <p className="mx-auto mt-6 text-center text-lg leading-8 text-blue-50 md:text-xl">
+      <p className="mx-auto mt-6 text-center text-base md:leading-8 text-blue-50 md:text-xl">
         Upgrade your RO system with durable cabinets, filters, membranes,
         fittings, pumps, and premium spare parts designed for long-lasting
         performance.
       </p>
 
-      <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
-        <button className="rounded-xl bg-white px-10 py-4 text-lg font-bold text-[#1D7FD8] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#40CDE0] hover:text-white">
+      <div className="mt-10 flex flex-row items-center justify-center gap-5 sm:flex-row">
+        <button onClick={()=>{ setIsFormOpen(true);}} className="rounded-xl bg-white px-3 py-3  md:px-10 md:py-4  md:text-lg font-bold text-[#1D7FD8] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#40CDE0] hover:text-white">
           Request Quote
         </button>
 
-        <Link href="/products" className="rounded-xl border-2 border-white px-10 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#1D7FD8]">
+        <Link href="/products" className="rounded-xl border-2 border-white px-3 py-3  md:px-10 md:py-4 md:text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#1D7FD8]">
           View Products
         </Link>
       {/* </div> */}
     </div>
   </div>
+
+   {isFormOpen && (                   
+      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
+         )}
 </section>
   );
 }

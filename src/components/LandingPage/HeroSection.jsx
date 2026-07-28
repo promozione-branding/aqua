@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { Download, BadgeDollarSign, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Popup from "../Popup";
+import { useState } from "react";
 
 export default function HeroSection() {
+
+    const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <section className="relative overflow-hidden lg:h-screen bg-gradient-to-r ">
       {/* Background */}
@@ -85,6 +90,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 style={{ willChange: "transform, opacity" }}
+                className="mt-7"
               >
                 <motion.span
                   initial={{ opacity: 0, y: 10 }}
@@ -128,7 +134,7 @@ export default function HeroSection() {
                   style={{ willChange: "transform, opacity" }}
                   className="mt-8 sm:mt-10 flex flex-wrap gap-3 w-full sm:w-auto"
                 >
-                  <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                  <button onClick={()=>{setIsFormOpen(true)}} className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto">
                     <Users size={20} />
                     BECOME DISTRIBUTOR
                   </button>
@@ -192,6 +198,11 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom Water */}
+
+
+      {isFormOpen && (                   
+            <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
+               )}
     </section>
   );
 }

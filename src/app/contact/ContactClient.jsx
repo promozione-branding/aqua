@@ -222,14 +222,45 @@ const faqs = [
                 className="h-14 rounded-2xl border border-slate-300 px-5 outline-none transition-all duration-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100"
               />
 
-              <input
-                type="text"
-                name="subject"
-                placeholder="Product"
-                value={form.subject}
-                onChange={handleChange}
-                className="md:col-span-2 h-14 rounded-2xl border border-slate-300 px-5 outline-none transition-all duration-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100"
-              />
+             
+
+                <select
+                // value={product}
+                onChange={(e) => setProduct(e.target.value)}
+                className="h-15 w-13a0 rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
+                required
+                // disabled={loading}
+              >
+                <option value="" disabled>
+                  Select Product
+                </option>
+
+                <option value="RO Cabinets">
+                 RO Cabinets
+                </option>
+
+                <option value="Alkaline Filter">
+                 Alkaline Filter
+                </option>
+
+                <option value="Inline Filter">
+                  Inline Filter
+                </option>
+
+                <option value="Membrane">
+                  Membrane
+                </option>
+
+                <option value="Pre Filter">
+                  Pre Filter
+                </option>
+
+                <option value="Pump">
+                  Pump
+                </option>
+
+                
+              </select>
 
               <textarea
                 rows={3}

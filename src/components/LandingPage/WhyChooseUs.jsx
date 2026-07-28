@@ -10,6 +10,8 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { useState } from "react";
+import Popup from "../Popup";
 
 const features = [
   {
@@ -52,6 +54,9 @@ const benefits = [
 ];
 
 export default function WhyChooseUs() {
+
+    const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-blue-700 py-10 md:py-14">
       {/* Background Blur */}
@@ -127,8 +132,8 @@ export default function WhyChooseUs() {
                 ))}
               </div>
 
-              <button className="mt-8 md:mt-10 w-full md:w-auto justify-center bg-white text-blue-700 px-8 py-3.5 md:py-4 rounded-xl font-semibold flex items-center gap-3 hover:bg-blue-50 transition active:scale-95 md:active:scale-100">
-                Start OEM Manufacturing
+              <button onClick={()=>{ setIsFormOpen(true);}} className="mt-8 md:mt-10 w-full md:w-auto justify-center bg-white text-blue-700 px-8 py-3.5 md:py-4 rounded-xl font-semibold flex items-center gap-3 hover:bg-blue-50 transition active:scale-95 md:active:scale-100">
+                Get a Quote
                 <ArrowRight size={18} />
               </button>
             </div>
@@ -159,6 +164,10 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </div>
+
+       {isFormOpen && (                   
+            <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
+               )}
     </section>
   );
 }
