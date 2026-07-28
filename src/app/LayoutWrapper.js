@@ -11,6 +11,7 @@ export default function LayoutWrapper({ children }) {
     <>
       {!isAdmin && <Navbar />}
       {children}
+      
       {!isAdmin && <Footer />}
     </>
   );

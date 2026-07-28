@@ -1,6 +1,7 @@
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "./LayoutWrapper";
+import WhatsApp from "@/components/WhatsApp";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen flex flex-col">
         <LayoutWrapper>
           {children}
+          <WhatsApp/>
         </LayoutWrapper>
       </body>
     </html>

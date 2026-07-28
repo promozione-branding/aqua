@@ -29,11 +29,11 @@ const ProductCard = memo(({ item, mobileSnap }) => {
       </div>
 
       {/* Content */}
-      <div className="p-4 flex flex-col flex-1">
-        <h3 className="font-bold text-gray-900 text-sm mb-2 leading-6 line-clamp-2">
+      <div className="p-3 flex flex-col flex-1">
+        <h3 className="font-bold text-gray-900 text-[13px] mb-2 leading-6 line-clamp-2">
           {item.name}
         </h3>
-        <div className="space-y-0.5 text-xs text-gray-600 mb-4">
+        <div className="space-y-0.5 text-xs text-gray-600 mb-2.5">
           {item.specs?.map((spec, i) => (
             <p key={i}>
               <span className="font-semibold">{spec.key}:</span> {spec.value}
