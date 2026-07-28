@@ -135,12 +135,12 @@ export default function ManufacturingProcess() {
         <div ref={containerRef} className="relative max-w-5xl mx-auto">
 
           {/* Static base track — pure CSS, zero animation cost */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-[6px] -translate-x-1/2 bg-slate-200 z-0 rounded-full" />
+          <div className="absolute left-1/2 top-8 bottom-8 w-[6px] -translate-x-1/2 bg-slate-200 z-0 rounded-full" />
 
           {/* Animated fill track — scaleY on a single element, GPU composited */}
           <motion.div
             style={{ scaleY: sharedProgress }}
-            className="absolute left-1/2 top-0 bottom-0 w-[6px] -translate-x-1/2 bg-blue-600 rounded-full z-0 origin-top will-change-transform"
+            className="absolute left-1/2 top-8 bottom-8 w-[6px] -translate-x-1/2 bg-blue-600 rounded-full z-0 origin-top will-change-transform"
           />
 
           <div className="flex flex-col gap-4 md:gap-10">
