@@ -19,7 +19,7 @@ export default function Footer() {
   if (adminLayout) return null;
 
   return (
-    <footer className="bg-[#0F172A] text-white pt-16 font-sans border-t border-slate-800/80 shadow-[0_-4px_20px_rgba(0,0,0,0.2)] relative z-10">
+    <footer className="bg-[#0F172A] text-white pt-6 md:pt-16 font-sans border-t border-slate-800/80 shadow-[0_-4px_20px_rgba(0,0,0,0.2)] relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Astride 5-Column Grid Layout */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr]  gap-y-12 pb-12">
