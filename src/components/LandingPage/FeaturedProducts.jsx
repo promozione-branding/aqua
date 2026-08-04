@@ -20,6 +20,9 @@ export default async function FeaturedProducts() {
       const image = firstVariant?.images?.[0]?.url || "/1.png";
 
 
+      console.log(products)
+
+
      
       
 

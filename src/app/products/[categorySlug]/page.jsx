@@ -47,8 +47,20 @@ function mapProduct(prod) {
   const categoryName = prod.category?.name || "Water Purifier";
   const categorySlug = prod.category?.slug || "water-purifier";
   const firstVariant = prod.colorVariants?.[0];
-  const image = firstVariant?.images?.[0]?.url || "/1.png";
-  const allImages = firstVariant?.images?.map((img) => img.url) || [image];
+  // const image = firstVariant?.images?.[0]?.url || "/1.png";
+  // const allImages = firstVariant?.images?.map((img) => img.url) || [image];
+
+   // ✅ GET IMAGE (PRIMARY → FALLBACK)
+  const image =
+    prod.colorVariants?.find((v) => v.primary)?.images?.[0]?.url ||
+    prod.colorVariants?.[0]?.images?.[0]?.url ||
+    "/1.png";
+
+  // ✅ (optional) all images
+  const allImages =
+    prod.colorVariants?.flatMap((v) =>
+      v.images?.map((img) => img.url)
+    ) || [image];
 
   return {
     id: prod._id.toString(),

@@ -58,6 +58,7 @@ export default async function ProductCategories() {
       return {
         id: prod._id.toString(),
         title: prod.name,
+        firstVariant: firstVariant,
         image: imageUrl,
         slug: prod.slug || prod._id.toString(),
         categorySlug: prod.category?.slug || "ro-cabinet",
