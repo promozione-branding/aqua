@@ -42,6 +42,10 @@ const productSchema = new mongoose.Schema(
           type: String,
           trim: true,
         },
+        primary: {
+          type: Boolean,
+          default: false,
+        },
         images: [
           {
             url: {
@@ -54,9 +58,8 @@ const productSchema = new mongoose.Schema(
             },
           },
         ],
-      }
+      },
     ],
-
 
     specifications: [
       {
@@ -68,7 +71,7 @@ const productSchema = new mongoose.Schema(
           type: String,
           trim: true,
         },
-      }
+      },
     ],
 
     stock: {
@@ -110,7 +113,7 @@ const productSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export default mongoose.models.Product ||

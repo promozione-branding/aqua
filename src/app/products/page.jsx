@@ -1,5 +1,5 @@
-import React from 'react';
-import dynamicImport from 'next/dynamic';
+import React from "react";
+import dynamicImport from "next/dynamic";
 import connectDB from "@/config/connectDB";
 import Category from "@/models/category/Category";
 import Product from "@/models/Product/Product";
@@ -15,7 +15,11 @@ export async function generateMetadata({ searchParams }) {
     try {
       await connectDB();
       const categoryData = await Category.findOne({ slug: categorySlug });
-      if (categoryData && categoryData.metaTitle && categoryData.metaDescription) {
+      if (
+        categoryData &&
+        categoryData.metaTitle &&
+        categoryData.metaDescription
+      ) {
         return {
           title: categoryData.metaTitle,
           description: categoryData.metaDescription,
@@ -28,27 +32,29 @@ export async function generateMetadata({ searchParams }) {
 
   return {
     title: "Shop Premium RO Cabinets & Purifiers | Crystal Impex",
-    description: "Explore our collection of food-grade ABS RO cabinets, water purifiers, and OEM solutions.",
+    description:
+      "Explore our collection of food-grade ABS RO cabinets, water purifiers, and OEM solutions.",
   };
 }
 
-const ProductPageHome = dynamicImport(() => import('./ProductPageHome'), {
+const ProductPageHome = dynamicImport(() => import("./ProductPageHome"), {
   loading: () => (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center">
       <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-900"></div>
     </div>
-  )
+  ),
 });
 
 function mapProduct(prod) {
-  const discPercent = prod.price && prod.discountPrice
-    ? Math.round((1 - (prod.discountPrice / prod.price)) * 100)
-    : 0;
+  const discPercent =
+    prod.price && prod.discountPrice
+      ? Math.round((1 - prod.discountPrice / prod.price) * 100)
+      : 0;
 
   const categoryName = prod.category?.name || "Water Purifier";
-  const firstVariant = prod.colorVariants?.[0];
-  const image = firstVariant?.images?.[0]?.url || "/1.png";
-  const allImages = firstVariant?.images?.map((img) => img.url) || [image];
+  const firstVariant = prod.colorVariants;
+  // const image = firstVariant?.images?.[0]?.url || "/1.png";
+  // const allImages = firstVariant?.images?.map((img) => img.url) || [image];
 
   return {
     id: prod._id.toString(),
@@ -57,8 +63,10 @@ function mapProduct(prod) {
     price: prod.discountPrice || prod.price,
     originalPrice: prod.price,
     discount: discPercent > 0 ? `-${discPercent}%` : "",
-    image,
-    allImages,
+    // image,
+    colorVariants: firstVariant,
+
+    // allImages,
     category: categoryName,
     categorySlug: prod.category?.slug || "ro-cabinet",
     specifications: prod.specifications || [],
@@ -88,10 +96,11 @@ export default async function page({ searchParams }) {
     console.error("Server preloading failed:", error);
   }
 
+  console.log(preloadedProducts);
   return (
-    <ProductPageHome 
-      preloadedProducts={preloadedProducts} 
-      preloadedCategories={preloadedCategories} 
+    <ProductPageHome
+      preloadedProducts={preloadedProducts}
+      preloadedCategories={preloadedCategories}
     />
   );
 }

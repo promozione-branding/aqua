@@ -56,6 +56,7 @@ export async function PUT(req, { params }) {
     const description = formData.get("description")?.trim() || "";
     const metaTitle = formData.get("metaTitle")?.trim() || "";
     const metaDescription = formData.get("metaDescription")?.trim() || "";
+
     
     const specifications = JSON.parse(formData.get("specifications") || "[]");
     const colorVariantsData = JSON.parse(formData.get("colorVariants") || "[]");
@@ -71,6 +72,8 @@ export async function PUT(req, { params }) {
     product.metaTitle = metaTitle;
     product.metaDescription = metaDescription;
     product.specifications = specifications;
+
+    console.log(formData);
 
     // Handle slug updates
     if (customSlug) {
@@ -112,6 +115,7 @@ export async function PUT(req, { params }) {
 
         return {
           colorName: variant.colorName,
+          primary: variant.primary || false,
           images: [...(variant.existingImages || []), ...uploadedImages],
         };
       })

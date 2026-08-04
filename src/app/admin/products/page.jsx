@@ -30,6 +30,8 @@ export default function AllProductsPage() {
         getProducts();
     }, []);
 
+    console.log(products);
+
     const deleteProduct = async (id) => {
         const confirmDelete = window.confirm("Are you sure you want to delete this product?");
         if (!confirmDelete) return;
