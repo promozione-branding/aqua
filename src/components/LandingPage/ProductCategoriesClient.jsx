@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 
 export default function ProductCategoriesClient({ categories = [] }) {
+  console.log(categories);
   return (
     <section className="w-full bg-[#fafafa] py-7 lg:py-14 overflow-hidden">
       <div className="max-w-7xl mx-auto px-0">

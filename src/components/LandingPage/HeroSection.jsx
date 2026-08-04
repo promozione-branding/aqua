@@ -181,9 +181,9 @@ export default function HeroSection() {
 
               {/* Center RO */}
               <img
-                src="/2.png"
+                src="/22.png"
                 alt="RO 2"
-                className="absolute bottom-8 -right-33 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
+                className="absolute bottom-8 -right-30 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
               />
 
               {/* Right RO */}

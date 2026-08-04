@@ -142,7 +142,7 @@ export default function WhyChooseUs() {
             <div className="relative -left-2.5 sm:left-0 flex justify-center items-end h-[220px] sm:h-[310px] lg:h-[370px] pb-4 px-2 sm:px-4 w-full mt-4 lg:mt-0 overflow-hidden lg:overflow-visible">
               {/* Back Product */}
               <img
-                src="/2.png"
+                src="/22.png"
                 className="h-[150px] xs:h-[170px] sm:h-[230px] lg:h-[260px] w-auto object-contain rotate-[-10deg] absolute left-[15px] xs:left-[30px] sm:left-4 lg:left-2 bottom-4 drop-shadow-2xl hover:scale-105 transition duration-300"
                 alt="Product 2"
               />
