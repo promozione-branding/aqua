@@ -144,8 +144,9 @@ export default function Footer() {
                   size={18}
                 />
                 <p className="text-slate-400 text-xs sm:text-sm leading-relaxed transition-colors group-hover:text-slate-200">
-                  Plot No 27, Pocket N, Sector 3, Bawana Industrial Area <br />
-                  New Delhi - 110039, India
+                  J 248, Pocket N, Sector 3, Bawana
+                  <br className="hidden md:block" />
+                  New Delhi - 110039, Delhi, India
                 </p>
               </div>
 

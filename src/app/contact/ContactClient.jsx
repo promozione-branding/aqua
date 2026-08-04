@@ -299,8 +299,8 @@ const faqs = [
                   <p className="font-semibold text-slate-900">Address</p>
 
                   <div className="mt-1 block text-slate-600 transition ">
-                    J248, Pocket N, Sector 3, Bawana 
-                    <br />
+                    J 248, Pocket N, Sector 3, Bawana 
+                    <br className="hidden md:block" />
                     New Delhi - 110039, Delhi, India
                   </div>
                 </div>
@@ -380,7 +380,7 @@ const faqs = [
       <section className="max-w-7xl mx-auto px-6 pb-10 lg:pb-20">
         <iframe
           className="w-full h-[420px] rounded-3xl"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.9032540108756!2d77.0599969!3d28.782145199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390da829a9b5b381%3A0x31bd63e527d334c!2sMerlin%20Water%20Purifier!5e0!3m2!1sen!2sin!4v1784364461744!5m2!1sen!2sin"
+         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.7092759889247!2d77.0559703!3d28.7879302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d07dcb2b09505%3A0xb3e2066e97a46b7c!2sJNJ%20Aqua%20Private%20Limited!5e0!3m2!1sen!2sin!4v1785846403769!5m2!1sen!2sin"
         />
       </section>
 
