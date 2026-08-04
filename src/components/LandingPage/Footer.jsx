@@ -2,12 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Globe,
-} from "lucide-react";
+import { MapPin, Phone, Mail, Globe } from "lucide-react";
 
 import {
   FaFacebookF,
@@ -28,16 +23,21 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-12">
         {/* Astride 5-Column Grid Layout */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr]  gap-y-12 pb-12">
-          
           {/* Brand Section */}
           <div className="col-span-2 md:col-span-1 pr-4">
-            <Link href="/" aria-label="JNJ AQUA home" className="inline-flex items-center group">
+            <Link
+              href="/"
+              aria-label="JNJ AQUA home"
+              className="inline-flex items-center group"
+            >
               <h1 className="text-3xl font-extrabold tracking-tight text-white group-hover:text-blue-50 transition-colors">
                 JNJ AQUA
               </h1>
             </Link>
             <p className="text-slate-400 text-sm mt-5 max-w-[280px] leading-relaxed">
-              Manufacturer of premium RO Cabinets & Spare Parts. Delivering quality, innovation, and customized solutions for businesses across India.
+              Manufacturer of premium RO Cabinets & Spare Parts. Delivering
+              quality, innovation, and customized solutions for businesses
+              across India.
             </p>
             <div className="flex gap-3 mt-7">
               {[
@@ -139,41 +139,71 @@ export default function Footer() {
             </h4>
             <div className="space-y-4">
               <div className="flex items-start gap-2.5 group">
-                <MapPin className="text-blue-500 shrink-0 mt-0.5 transition-transform group-hover:scale-110" size={18} />
+                <MapPin
+                  className="text-blue-500 shrink-0 mt-0.5 transition-transform group-hover:scale-110"
+                  size={18}
+                />
                 <p className="text-slate-400 text-xs sm:text-sm leading-relaxed transition-colors group-hover:text-slate-200">
-                 Plot No 27, Pocket N, Sector 3, Bawana Industrial Area <br />
-New Delhi - 110039, India
+                  Plot No 27, Pocket N, Sector 3, Bawana Industrial Area <br />
+                  New Delhi - 110039, India
                 </p>
               </div>
 
-              <div className="flex items-center gap-2.5 group">
-                <Phone className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
-                <a href="tel:+919540010221" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
-                  +91 95400 10221
-                </a>
+              <div className="flex items-start gap-2.5 group">
+                <Phone
+                  className="text-blue-500 shrink-0 mt-1 transition-transform group-hover:scale-110"
+                  size={16}
+                />
+
+                <div className="flex flex-col">
+                  {[
+                    "+91 85957 76029",
+                    "+91 93155 56737",
+                    "+91 83185 96477",
+                  ].map((num, i) => (
+                    <a
+                      key={i}
+                      href={`tel:${num.replace(/\s/g, "")}`}
+                      className="text-slate-400 text-xs sm:text-sm font-medium transition-colors hover:text-blue-400"
+                    >
+                      {num}
+                    </a>
+                  ))}
+                </div>
               </div>
 
               <div className="flex items-center gap-2.5 group">
-                <Mail className="text-blue-500 shrink-0 transition-transform group-hover:scale-110" size={16} />
-                <a href="mailto:crystalimpex3@gmail.com" className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all">
-                  crystalimpex3@gmail.com
+                <Mail
+                  className="text-blue-500 shrink-0 transition-transform group-hover:scale-110"
+                  size={16}
+                />
+                <a
+                  href="mailto:jnjaquadelhi@gmail.com"
+                  className="text-slate-400 text-xs sm:text-sm transition-colors group-hover:text-blue-400 font-medium break-all"
+                >
+                  jnjaquadelhi@gmail.com
                 </a>
               </div>
-
-              
             </div>
           </div>
-
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <span className="font-medium">© {new Date().getFullYear()} JNJ AQUA. All Rights Reserved.</span>
+          <span className="font-medium">
+            © {new Date().getFullYear()} JNJ AQUA. All Rights Reserved.
+          </span>
           <div className="flex gap-6">
-            <Link href="/privacy-policy" className="hover:text-blue-400 transition-colors font-medium">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-blue-400 transition-colors font-medium"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms-conditions" className="hover:text-blue-400 transition-colors font-medium">
+            <Link
+              href="/terms-conditions"
+              className="hover:text-blue-400 transition-colors font-medium"
+            >
               Terms & Conditions
             </Link>
           </div>

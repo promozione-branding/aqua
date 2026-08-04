@@ -299,7 +299,7 @@ const faqs = [
                   <p className="font-semibold text-slate-900">Address</p>
 
                   <div className="mt-1 block text-slate-600 transition ">
-                    Plot No 27, Pocket N, Sector 3, Bawana Industrial Area
+                    J248, Pocket N, Sector 3, Bawana 
                     <br />
                     New Delhi - 110039, Delhi, India
                   </div>
@@ -307,22 +307,35 @@ const faqs = [
               </div>
 
               {/* Phone */}
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
-                  <Phone className="h-5 w-5 text-blue-700" />
-                </div>
+             <div className="flex items-start gap-4">
 
-                <div>
-                  <p className="font-semibold text-slate-900">Phone</p>
+  {/* Icon */}
+  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 shrink-0">
+    <Phone className="h-5 w-5 text-blue-700" />
+  </div>
 
-                  <a
-                    href="tel:+919540010221"
-                    className="mt-1 block text-slate-600 transition hover:text-blue-700"
-                  >
-                    + 91 95400 10221
-                  </a>
-                </div>
-              </div>
+  {/* Content */}
+  <div>
+    <p className="font-semibold text-slate-900">Phone</p>
+
+    <div className="mt-1 flex flex-col space-y-1">
+      {[
+        "+91 85957 76029",
+        "+91 93155 56737",
+        "+91 83185 96477",
+      ].map((num, i) => (
+        <a
+          key={i}
+          href={`tel:${num.replace(/\s/g, "")}`}
+          className="text-slate-600 text-sm font-medium transition hover:text-blue-700"
+        >
+          {num}
+        </a>
+      ))}
+    </div>
+  </div>
+
+</div>
 
               {/* Email */}
               <div className="flex items-start gap-4">
@@ -334,10 +347,10 @@ const faqs = [
                   <p className="font-semibold text-slate-900">Email</p>
 
                   <a
-                    href="mailto:crystalimpex3@gmail.com"
+                    href="mailto:jnjaquadelhi@gmail.com"
                     className="mt-1 block text-slate-600 transition hover:text-blue-700"
                   >
-                    crystalimpex3@gmail.com
+                   jnjaquadelhi@gmail.com
                   </a>
 
                 </div>
