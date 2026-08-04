@@ -52,9 +52,18 @@ function mapProduct(prod) {
       : 0;
 
   const categoryName = prod.category?.name || "Water Purifier";
-  const firstVariant = prod.colorVariants;
-  // const image = firstVariant?.images?.[0]?.url || "/1.png";
-  // const allImages = firstVariant?.images?.map((img) => img.url) || [image];
+
+  // ✅ GET IMAGE (PRIMARY → FALLBACK)
+  const image =
+    prod.colorVariants?.find((v) => v.primary)?.images?.[0]?.url ||
+    prod.colorVariants?.[0]?.images?.[0]?.url ||
+    "/1.png";
+
+  // ✅ (optional) all images
+  const allImages =
+    prod.colorVariants?.flatMap((v) =>
+      v.images?.map((img) => img.url)
+    ) || [image];
 
   return {
     id: prod._id.toString(),
@@ -63,10 +72,11 @@ function mapProduct(prod) {
     price: prod.discountPrice || prod.price,
     originalPrice: prod.price,
     discount: discPercent > 0 ? `-${discPercent}%` : "",
-    // image,
-    colorVariants: firstVariant,
 
-    // allImages,
+    image, // ⭐ MAIN IMAGE
+    allImages, // optional
+
+    colorVariants: prod.colorVariants || [],
     category: categoryName,
     categorySlug: prod.category?.slug || "ro-cabinet",
     specifications: prod.specifications || [],
