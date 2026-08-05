@@ -8,8 +8,7 @@ const WhatsApp = () => {
   
   const hideLayout =
     pathname.startsWith("/studio") ||
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/inquiry");
+    pathname.startsWith("/login")
 
   return (
     <>

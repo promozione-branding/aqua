@@ -20,6 +20,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
+import Popup from "@/components/Popup";
 
 const iconMap = {
   ShieldCheck,
@@ -116,6 +117,9 @@ const getVariantColors = (colorName) => {
 };
 
 export default function ProductDetailClient({ product, preloadedRelated, categorySlug }) {
+
+      const [isFormOpen, setIsFormOpen] = useState(false);
+
   const [activeVariantIndex, setActiveVariantIndex] = useState(0);
   const [activeThumb, setActiveThumb] = useState(0);
   const [activeTab, setActiveTab] = useState("description");
@@ -359,13 +363,17 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                 <FaWhatsapp size={23} />
                 WHATSAPP US
               </a>
-              <button className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition w-full sm:w-auto">
+              <button onClick={()=>{setIsFormOpen(true)}} className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition w-full sm:w-auto">
                 GET QUOTE
               </button>
-              <button className="flex items-center justify-center gap-2 bg-white border border-blue-900 text-blue-900 font-semibold text-sm rounded-lg py-3 px-4 hover:bg-blue-50 transition w-full sm:w-auto">
-                <Download className="w-5 h-5" />
-                DOWNLOAD CATALOGUE
-              </button>
+              <a
+                    href="/catelogue.pdf"
+                    download
+                    className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+                  >
+                    <Download size={20} />
+                    DOWNLOAD CATALOGUE
+                  </a>
             </div>
           </div>
         </div>
@@ -453,7 +461,7 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                 </Link>
               </div>
               <Image
-                src="/2.png"
+                 src="/newimg.webp"
                 alt="RO Cabinet"
                 width={420}
                 height={520}
@@ -538,12 +546,15 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
             <p className="text-blue-200/70 text-xs mb-2">
               Get in Touch Today!
             </p>
-            <button className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-2.5 sm:py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto">
+            <button onClick={()=>{setIsFormOpen(true)}} className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-2.5 sm:py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto">
               REQUEST A QUOTE
             </button>
           </div>
         </div>
       </section>
+       {isFormOpen && (                   
+      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
+         )}
     </div>
   );
 }

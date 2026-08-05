@@ -7,8 +7,7 @@ import Popup from "../Popup";
 import { useState } from "react";
 
 export default function HeroSection() {
-
-    const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
     <section className="relative overflow-hidden lg:h-screen bg-gradient-to-r ">
@@ -33,8 +32,8 @@ export default function HeroSection() {
               </span>
 
               <h2 className="mt-4 text-2xl sm:text-3xl font-black leading-tight">
-                RO CABINET & SPARE PARTS 
-                <span className="text-blue-600"> {" "}MANUFACTURER</span>
+                RO CABINET & SPARE PARTS
+                <span className="text-blue-600"> MANUFACTURER</span>
               </h2>
 
               <p className="mt-3 text-sm font-bold text-gray-600">
@@ -46,21 +45,21 @@ export default function HeroSection() {
               <div className="relative h-[200px]   flex items-end justify-center">
                 {/* Left RO */}
                 <img
-                  src="/1.png"
+                  src="/111.webp"
                   alt="RO 1"
                   className="absolute -left-5 -bottom-14 w-[160px] z-10 drop-shadow-2xl"
                 />
 
                 {/* Center RO */}
                 <img
-                  src="/2.png"
+                  src="/222.webp"
                   alt="RO 2"
                   className="absolute left-1/2 -translate-x-1/2 -bottom-11 w-[190px] z-30 drop-shadow-[0_25px_25px_rgba(0,0,0,.35)]"
                 />
 
                 {/* Right RO */}
                 <img
-                  src="/3.png"
+                  src="/333.webp"
                   alt="RO 3"
                   className="absolute -right-1 -bottom-8 w-[130px] z-20 drop-shadow-2xl"
                 />
@@ -134,15 +133,24 @@ export default function HeroSection() {
                   style={{ willChange: "transform, opacity" }}
                   className="mt-8 sm:mt-10 flex flex-wrap gap-3 w-full sm:w-auto"
                 >
-                  <button onClick={()=>{setIsFormOpen(true)}} className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                  <button
+                    onClick={() => {
+                      setIsFormOpen(true);
+                    }}
+                    className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-sm whitespace-nowrap px-4 py-3.5 rounded-lg font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+                  >
                     <Users size={20} />
                     BECOME DISTRIBUTOR
                   </button>
 
-                  <button className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 hover:text-white px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto">
+                  <a
+                    href="/catelogue.pdf"
+                    download
+                    className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+                  >
                     <Download size={20} />
                     DOWNLOAD CATALOGUE
-                  </button>
+                  </a>
 
                   <Link
                     href="/products"
@@ -174,21 +182,21 @@ export default function HeroSection() {
             <div className="relative w-[520px] h-[480px]">
               {/* Left RO */}
               <img
-                src="/1.png"
+                src="/111.webp"
                 alt="RO 1"
                 className="absolute bottom-12 -left-17 w-[250px] z-10 drop-shadow-2xl "
               />
 
               {/* Center RO */}
               <img
-                src="/22.png"
+                src="/222.webp"
                 alt="RO 2"
                 className="absolute bottom-8 -right-30 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
               />
 
               {/* Right RO */}
               <img
-                src="/3.png"
+                src="/333.webp"
                 alt="RO 3"
                 className="absolute bottom-22 -right-10 w-[180px] z-20 drop-shadow-2xl "
               />
@@ -199,10 +207,9 @@ export default function HeroSection() {
 
       {/* Bottom Water */}
 
-
-      {isFormOpen && (                   
-            <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
-               )}
+      {isFormOpen && (
+        <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+      )}
     </section>
   );
 }
