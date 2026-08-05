@@ -31,9 +31,9 @@ export async function generateMetadata({ searchParams }) {
   }
 
   return {
-    title: "Shop Premium RO Cabinets & Purifiers | Crystal Impex",
+    title: "RO Cabinet Products Manufacturer | JNJ AQUA",
     description:
-      "Explore our collection of food-grade ABS RO cabinets, water purifiers, and OEM solutions.",
+      "Discover premium RO cabinets from JNJ AQUA. We manufacture durable, high-quality RO water purifier cabinets for domestic and commercial applications across India.",
   };
 }
 
@@ -55,17 +55,18 @@ function mapProduct(prod) {
 
   // ✅ GET IMAGE (PRIMARY → FIRST WITH IMAGES → FALLBACK)
   const primaryVariant = prod.colorVariants?.find((v) => v.primary);
-  const firstVariantWithImages = prod.colorVariants?.find((v) => v.images?.length > 0);
+  const firstVariantWithImages = prod.colorVariants?.find(
+    (v) => v.images?.length > 0,
+  );
   const image =
     primaryVariant?.images?.[0]?.url ||
     firstVariantWithImages?.images?.[0]?.url ||
     "/1.png";
 
   // ✅ (optional) all images
-  const allImages =
-    prod.colorVariants?.flatMap((v) =>
-      v.images?.map((img) => img.url)
-    ) || [image];
+  const allImages = prod.colorVariants?.flatMap((v) =>
+    v.images?.map((img) => img.url),
+  ) || [image];
 
   return {
     id: prod._id.toString(),
