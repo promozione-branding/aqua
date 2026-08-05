@@ -53,10 +53,12 @@ function mapProduct(prod) {
 
   const categoryName = prod.category?.name || "Water Purifier";
 
-  // ✅ GET IMAGE (PRIMARY → FALLBACK)
+  // ✅ GET IMAGE (PRIMARY → FIRST WITH IMAGES → FALLBACK)
+  const primaryVariant = prod.colorVariants?.find((v) => v.primary);
+  const firstVariantWithImages = prod.colorVariants?.find((v) => v.images?.length > 0);
   const image =
-    prod.colorVariants?.find((v) => v.primary)?.images?.[0]?.url ||
-    prod.colorVariants?.[0]?.images?.[0]?.url ||
+    primaryVariant?.images?.[0]?.url ||
+    firstVariantWithImages?.images?.[0]?.url ||
     "/1.png";
 
   // ✅ (optional) all images
