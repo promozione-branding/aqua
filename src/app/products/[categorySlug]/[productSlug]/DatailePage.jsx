@@ -423,9 +423,12 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
             </div>
 
             <div className="pt-4 sm:pt-6">
-              <p className="text-sm sm:text-base text-black leading-relaxed">
-                {product.description || "No full description added yet."}
-              </p>
+              <p
+  className="text-sm sm:text-base text-black leading-relaxed"
+  dangerouslySetInnerHTML={{
+    __html: product.description || "No full description added yet.",
+  }}
+/>
 
               <ul className="mt-4 space-y-2.5">
                 {checklist.map((item) => (

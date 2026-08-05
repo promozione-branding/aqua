@@ -28,7 +28,7 @@ const iconMap = {
   Sparkles,
   Wrench,
   Sun,
-  Layers
+  Layers,
 };
 
 const quickFeatures = [
@@ -114,11 +114,11 @@ const getVariantColors = (colorName) => {
     return [colorMap[normalized]];
   }
   const parts = normalized.split(/[\s-]+/);
-  return parts.map(p => colorMap[p] || p);
+  return parts.map((p) => colorMap[p] || p);
 };
 
 export default function ProductDetailClient({ product, preloadedRelated }) {
-      const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const [activeVariantIndex, setActiveVariantIndex] = useState(0);
   const [activeThumb, setActiveThumb] = useState(0);
@@ -137,8 +137,8 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
 
   // Load variant images
   const activeVariant = sortedVariants[activeVariantIndex] || {};
-  const images = activeVariant.images?.map(img => img.url) || ["/1.png"];
-  
+  const images = activeVariant.images?.map((img) => img.url) || ["/1.png"];
+
   const selectVariant = (index) => {
     setActiveVariantIndex(index);
     setActiveThumb(0);
@@ -163,10 +163,14 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
     if (activeThumb > 0) {
       setActiveThumb(activeThumb - 1);
     } else if (sortedVariants.length > 1) {
-      const prevVariantIdx = (activeVariantIndex - 1 + sortedVariants.length) % sortedVariants.length;
+      const prevVariantIdx =
+        (activeVariantIndex - 1 + sortedVariants.length) %
+        sortedVariants.length;
       setActiveVariantIndex(prevVariantIdx);
       const prevVariant = sortedVariants[prevVariantIdx] || {};
-      const prevImages = prevVariant.images?.map(img => img.url) || ["/1.png"];
+      const prevImages = prevVariant.images?.map((img) => img.url) || [
+        "/1.png",
+      ];
       setActiveThumb(prevImages.length > 0 ? prevImages.length - 1 : 0);
     } else {
       setActiveThumb(images.length - 1);
@@ -174,15 +178,30 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
   };
 
   // Load dynamic specifications
-  const specs = product.specifications?.map(s => [s.key, s.value]) || [
+  const specs = product.specifications?.map((s) => [s.key, s.value]) || [
     ["Storage Capacity", "12L"],
     ["Material", "ABS Food Grade"],
   ];
 
-  const related = preloadedRelated && preloadedRelated.length > 0 ? preloadedRelated : [
-    { name: "Crystal Premium Cabinet", image: "/1.png", storage: "10L", tile: "#111827", slug: "#" },
-    { name: "Elite Plus Cabinet", image: "/2.png", storage: "15L", tile: "#111827", slug: "#" },
-  ];
+  const related =
+    preloadedRelated && preloadedRelated.length > 0
+      ? preloadedRelated
+      : [
+          {
+            name: "Crystal Premium Cabinet",
+            image: "/1.png",
+            storage: "10L",
+            tile: "#111827",
+            slug: "#",
+          },
+          {
+            name: "Elite Plus Cabinet",
+            image: "/2.png",
+            storage: "15L",
+            tile: "#111827",
+            slug: "#",
+          },
+        ];
 
   return (
     <div className="bg-slate-50 text-slate-700 min-h-screen overflow-x-hidden">
@@ -190,27 +209,30 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <div className="grid grid-cols-12 gap-6 sm:gap-12">
           {/* Gallery */}
-          <div id="product-gallery" className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16">
+          <div
+            id="product-gallery"
+            className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16"
+          >
             <div className="max-w-[420px] mx-auto w-full">
               <div className="relative w-full">
                 <div className="relative rounded-2xl border border-slate-200 aspect-square sm:aspect-[4/5] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
                   {/* Clickable side overlays for navigation */}
-                  <div 
+                  <div
                     className="absolute left-0 top-0 w-1/2 h-full cursor-pointer z-10"
                     onClick={handlePrevImage}
                     title="Previous Image"
                   />
-                  <div 
+                  <div
                     className="absolute right-0 top-0 w-1/2 h-full cursor-pointer z-10"
                     onClick={handleNextImage}
                     title="Next Image"
                   />
 
-                  <Image 
-                    src={images[activeThumb] || "/1.png"} 
-                    fill 
+                  <Image
+                    src={images[activeThumb] || "/1.png"}
+                    fill
                     alt={product.name}
-                    className="h-full w-full object-contain p-10" 
+                    className="h-full w-full object-contain p-10"
                   />
                 </div>
 
@@ -243,7 +265,12 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                       }`}
                     >
                       <div className="relative w-full h-full">
-                        <Image src={img} alt="thumb" fill className="object-contain" />
+                        <Image
+                          src={img}
+                          alt="thumb"
+                          fill
+                          className="object-contain"
+                        />
                       </div>
                     </button>
                   ))}
@@ -257,7 +284,9 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             <h1 className="text-3xl font-extrabold text-blue-955 tracking-tight">
               {product.name}
             </h1>
-            <p className="text-slate-500 mt-3.5">{product.category?.name || "Premium ABS RO Cabinet"}</p>
+            <p className="text-slate-500 mt-3.5">
+              {product.category?.name || "Premium ABS RO Cabinet"}
+            </p>
 
             <p className="text-base text-slate-600 leading-relaxed mt-6">
               {product.shortDescription || "Premium food-grade design."}
@@ -267,13 +296,18 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             {false && sortedVariants && sortedVariants.length > 0 && (
               <div className="mt-6">
                 <span className="text-sm font-extrabold text-slate-800 tracking-wider block mb-3 uppercase">
-                  COLOUR — <span className="text-blue-600 font-extrabold uppercase">{activeVariant.colorName}</span>
+                  COLOUR —{" "}
+                  <span className="text-blue-600 font-extrabold uppercase">
+                    {activeVariant.colorName}
+                  </span>
                 </span>
                 <div className="flex flex-wrap gap-2.5 items-center">
                   {sortedVariants.map((variant, idx) => {
                     const isSelected = activeVariantIndex === idx;
                     const colors = getVariantColors(variant.colorName);
-                    const hasWhite = colors.includes("#ffffff") || variant.colorName.toLowerCase().includes("white");
+                    const hasWhite =
+                      colors.includes("#ffffff") ||
+                      variant.colorName.toLowerCase().includes("white");
                     return (
                       <button
                         key={idx}
@@ -286,17 +320,50 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                         aria-label={`Select ${variant.colorName}`}
                       >
                         {colors.length === 1 ? (
-                          <div className="w-full h-full" style={{ backgroundColor: colors[0] }} />
+                          <div
+                            className="w-full h-full"
+                            style={{ backgroundColor: colors[0] }}
+                          />
                         ) : colors.length === 2 ? (
-                          <svg viewBox="0 0 100 100" className="w-full h-full block">
-                            <polygon points="0,0 100,0 0,100" fill={colors[0]} />
-                            <polygon points="100,0 100,100 0,100" fill={colors[1]} />
+                          <svg
+                            viewBox="0 0 100 100"
+                            className="w-full h-full block"
+                          >
+                            <polygon
+                              points="0,0 100,0 0,100"
+                              fill={colors[0]}
+                            />
+                            <polygon
+                              points="100,0 100,100 0,100"
+                              fill={colors[1]}
+                            />
                           </svg>
                         ) : (
-                          <svg viewBox="0 0 100 100" className="w-full h-full block">
-                            <rect x="0" y="0" width="33.33" height="100" fill={colors[0]} />
-                            <rect x="33.33" y="0" width="33.34" height="100" fill={colors[1]} />
-                            <rect x="66.67" y="0" width="33.33" height="100" fill={colors[2]} />
+                          <svg
+                            viewBox="0 0 100 100"
+                            className="w-full h-full block"
+                          >
+                            <rect
+                              x="0"
+                              y="0"
+                              width="33.33"
+                              height="100"
+                              fill={colors[0]}
+                            />
+                            <rect
+                              x="33.33"
+                              y="0"
+                              width="33.34"
+                              height="100"
+                              fill={colors[1]}
+                            />
+                            <rect
+                              x="66.67"
+                              y="0"
+                              width="33.33"
+                              height="100"
+                              fill={colors[2]}
+                            />
                           </svg>
                         )}
                       </button>
@@ -348,7 +415,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <a 
+              <a
                 href={`https://wa.me/919540010221?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noreferrer"
@@ -357,17 +424,22 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 <FaWhatsapp size={23} />
                 WHATSAPP US
               </a>
-              <button onClick={()=>{setIsFormOpen(true)}} className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition w-full sm:w-auto">
+              <button
+                onClick={() => {
+                  setIsFormOpen(true);
+                }}
+                className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition w-full sm:w-auto"
+              >
                 GET QUOTE
               </button>
               <a
-                    href="/catelogue.pdf"
-                    download
-                    className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto"
-                  >
-                    <Download size={20} />
-                    DOWNLOAD CATALOGUE
-                  </a>
+                href="/catelogue.pdf"
+                download
+                className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+              >
+                <Download size={20} />
+                DOWNLOAD CATALOGUE
+              </a>
             </div>
           </div>
         </div>
@@ -417,9 +489,13 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             </div>
 
             <div className="pt-6">
-              <p className="text-lg text-black leading-relaxed">
-                {product.description || "No full description added yet."}
-              </p>
+              <p
+                className="text-sm sm:text-base text-black leading-relaxed"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    product.description || "No full description added yet.",
+                }}
+              />
 
               <ul className="mt-5 space-y-3">
                 {checklist.map((item) => (
@@ -450,7 +526,10 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 <p className="mt-4 flex-1 text-base leading-relaxed text-blue-100/80">
                   We offer the best deals for bulk orders & distributors.
                 </p>
-                <Link href="/contact" className="mt-auto w-fit rounded-lg bg-white px-5 py-3 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
+                <Link
+                  href="/contact"
+                  className="mt-auto w-fit rounded-lg bg-white px-5 py-3 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50"
+                >
                   CONTACT US NOW
                 </Link>
               </div>
@@ -483,9 +562,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                   key={index}
                   className="group border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition"
                 >
-                  <div
-                    className="aspect-square flex items-center justify-center p-2 bg-slate-50"
-                  >
+                  <div className="aspect-square flex items-center justify-center p-2 bg-slate-50">
                     <div className="relative w-full h-full">
                       <Image
                         src={p.image}
@@ -502,7 +579,10 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                     <p className="text-base pb-2 text-black mt-1">
                       Storage: {p.storage}
                     </p>
-                    <Link href={`/products/${p.slug}`} className="block w-full text-center mt-3 text-xs font-bold text-blue-700 border border-blue-700 rounded-md py-2 hover:bg-blue-900 hover:text-white transition">
+                    <Link
+                      href={`/products/${p.slug}`}
+                      className="block w-full text-center mt-3 text-xs font-bold text-blue-700 border border-blue-700 rounded-md py-2 hover:bg-blue-900 hover:text-white transition"
+                    >
                       VIEW DETAILS
                     </Link>
                   </div>
@@ -545,16 +625,21 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             <p className="text-blue-200/70 text-xs mb-3.5">
               Get in Touch Today!
             </p>
-            <button onClick={()=>{setIsFormOpen(true)}} className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto">
+            <button
+              onClick={() => {
+                setIsFormOpen(true);
+              }}
+              className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto"
+            >
               REQUEST A QUOTE
             </button>
           </div>
         </div>
       </section>
 
-       {isFormOpen && (                   
-      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
-         )}
+      {isFormOpen && (
+        <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+      )}
     </div>
   );
 }
