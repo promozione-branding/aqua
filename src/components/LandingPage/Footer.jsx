@@ -39,25 +39,7 @@ export default function Footer() {
               quality, innovation, and customized solutions for businesses
               across India.
             </p>
-            <div className="flex gap-3 mt-7">
-              {[
-                { Icon: FaInstagram, label: "Instagram", href: "#" },
-                { Icon: FaFacebookF, label: "Facebook", href: "#" },
-                { Icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
-                { Icon: FaYoutube, label: "YouTube", href: "#" },
-              ].map(({ Icon, label, href }, index) => (
-                <a
-                  key={index}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-10 h-10 rounded-full border border-slate-700 bg-slate-800/50 flex items-center justify-center text-slate-300 transition-all duration-300 hover:bg-blue-600 hover:border-blue-500 hover:text-white hover:-translate-y-1 hover:shadow-[0_4px_14px_rgba(37,99,235,0.4)]"
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
-            </div>
+           
           </div>
 
           {/* Quick Links */}
@@ -93,9 +75,6 @@ export default function Footer() {
               {[
                 { name: "RO Cabinets", link: "/products/ro-cabinets" },
                 { name: "Spare Parts", link: "/products/spare-parts" },
-                { name: "RO Components", link: "/products/components" },
-                { name: "Commercial RO", link: "/products/commercial-ro" },
-                { name: "Accessories", link: "/products/accessories" },
               ].map((item, index) => (
                 <Link
                   key={index}
@@ -117,9 +96,9 @@ export default function Footer() {
               {[
                 { name: "Privacy Policy", link: "/privacy-policy" },
                 { name: "Terms & Conditions", link: "/terms-conditions" },
-                { name: "Refund Policy", link: "/refund-policy" },
-                { name: "Shipping Policy", link: "/shipping-policy" },
-                { name: "FAQs", link: "/#faq" },
+                { name: "Refund Policy", link: "/return-refund" },
+                { name: "Shipping Policy", link: "/shipping" },
+                { name: "FAQs", link: "/faq" },
               ].map((item, index) => (
                 <Link
                   key={index}
@@ -195,18 +174,17 @@ export default function Footer() {
             © {new Date().getFullYear()} JNJ AQUA. All Rights Reserved.
           </span>
           <div className="flex gap-6">
-            <Link
-              href="/privacy-policy"
-              className="hover:text-blue-400 transition-colors font-medium"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms-conditions"
-              className="hover:text-blue-400 transition-colors font-medium"
-            >
-              Terms & Conditions
-            </Link>
+            <p className="text-center">
+              Website Designed By 
+                Inquiry Bazaar Pvt. Ltd.  {" "}
+        <a
+          target="_blank"
+          href="https://inquirybazaar.com/"
+          className="text-[#2B4D9D] hover:underline"
+        >
+           B2B Marketplace
+        </a>
+            </p>
           </div>
         </div>
       </div>

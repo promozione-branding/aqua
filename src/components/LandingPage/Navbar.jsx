@@ -354,11 +354,11 @@ export default function Navbar() {
 
           <div className="w-full md:w-auto flex items-center justify-between md:justify-end gap-4 sm:gap-7 shrink-0">
             <a
-              href="tel:+919540010221"
+              href="tel:+918595776029"
               className="flex items-center gap-1.5 hover:text-blue-200 transition"
             >
               <Phone size={13} />
-              <span>+91 95400 10221</span>
+              <span>+91  85957 76029</span>
             </a>
 
             <Link

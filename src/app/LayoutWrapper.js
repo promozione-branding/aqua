@@ -5,7 +5,7 @@ import Footer from "@/components/LandingPage/Footer";
 
 export default function LayoutWrapper({ children }) {
   const pathname = usePathname();
-  const isAdmin = pathname?.startsWith("/admin");
+  const isAdmin = pathname?.startsWith("/admin")  || pathname?.startsWith("/inquiry") ;
 
   return (
     <>
