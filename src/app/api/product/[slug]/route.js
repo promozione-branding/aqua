@@ -3,7 +3,7 @@ import connectDB from "@/config/connectDB";
 import Product from "@/models/Product/Product";
 import Category from "@/models/category/Category";
 import SubCategory from "@/models/subcategory/SubCategory";
-import { uploadToR2 } from "@/utils/uploadToR2";
+import { uploadToR2, deleteFromR2 } from "@/utils/uploadToR2";
 import { generateSlug } from "@/utils/generateSlug";
 import crypto from "crypto";
 import path from "path";
@@ -87,6 +87,38 @@ export async function PUT(req, { params }) {
       product.slug = generateSlug(name);
     }
 
+    // Delete images from R2 that were removed from variants
+    if (product.colorVariants && product.colorVariants.length > 0) {
+      for (let variantIndex = 0; variantIndex < product.colorVariants.length; variantIndex++) {
+        const oldVariant = product.colorVariants[variantIndex];
+        const newVariant = colorVariantsData[variantIndex];
+
+        if (oldVariant.images && oldVariant.images.length > 0 && newVariant) {
+          // Build a set of image URLs/keys that should be kept
+          const existingImageUrls = (newVariant?.existingImages || []).map(img => img.url);
+          const existingImageKeys = (newVariant?.existingImages || []).map(img => img.imageField);
+          
+          console.log(`Variant ${variantIndex} - Old images:`, oldVariant.images.length);
+          console.log(`Variant ${variantIndex} - Keeping:`, existingImageUrls.length);
+
+          // Find images that were deleted (in old but not in new)
+          for (const oldImage of oldVariant.images) {
+            const isImageKept = existingImageUrls.includes(oldImage.url) || 
+                                existingImageKeys.includes(oldImage.imageField);
+            
+            if (!isImageKept) {
+              try {
+                console.log(`Deleting image: ${oldImage.imageField}`);
+                await deleteFromR2(oldImage.imageField);
+              } catch (error) {
+                console.error(`Failed to delete image ${oldImage.imageField}:`, error);
+              }
+            }
+          }
+        }
+      }
+    }
+
     // Upload new images and merge with existing ones per variant
     const uploadedColorVariants = await Promise.all(
       colorVariantsData.map(async (variant, variantIndex) => {
@@ -113,10 +145,15 @@ export async function PUT(req, { params }) {
           })
         );
 
+        // Only keep images that were explicitly sent as existingImages
+        const keptImages = (variant.existingImages || []).filter(img => 
+          img && img.imageField && img.url  // Validate structure
+        );
+
         return {
           colorName: variant.colorName,
           primary: variant.primary || false,
-          images: [...(variant.existingImages || []), ...uploadedImages],
+          images: [...keptImages, ...uploadedImages],
         };
       })
     );

@@ -1,4 +1,4 @@
-import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { r2 } from "@/config/r2";
 import sharp from "sharp";
 
@@ -61,4 +61,20 @@ export const uploadToR2 = async ({ file, folder, fileName, contentType }) => {
     key,
     url: `${process.env.CLOUD_FLARE_R2_PUBLIC_URL}/${key}`,
   };
+};
+
+// Delete a file from R2 storage
+export const deleteFromR2 = async (key) => {
+  try {
+    const command = new DeleteObjectCommand({
+      Bucket: process.env.CLOUD_FLARE_R2_BUCKET,
+      Key: key,
+    });
+
+    await r2.send(command);
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting file from R2:", error);
+    throw error;
+  }
 };

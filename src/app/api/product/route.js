@@ -5,7 +5,7 @@ import connectDB from "@/config/connectDB";
 import Product from "@/models/Product/Product";
 import Category from "@/models/category/Category";
 import SubCategory from "@/models/subcategory/SubCategory";
-import { uploadToR2 } from "@/utils/uploadToR2";
+import { uploadToR2, deleteFromR2 } from "@/utils/uploadToR2";
 import { generateSlug } from "@/utils/generateSlug";
 
 export const dynamic = "force-dynamic";
@@ -126,10 +126,31 @@ export async function DELETE(req) {
     if (!id) {
       return NextResponse.json({ success: false, message: "Product ID is required" }, { status: 400 });
     }
-    const deletedProduct = await Product.findByIdAndDelete(id);
-    if (!deletedProduct) {
+
+    // Get the product first to access image keys
+    const product = await Product.findById(id);
+    if (!product) {
       return NextResponse.json({ success: false, message: "Product not found" }, { status: 404 });
     }
+
+    // Delete all images from R2 storage
+    if (product.colorVariants && product.colorVariants.length > 0) {
+      for (const variant of product.colorVariants) {
+        if (variant.images && variant.images.length > 0) {
+          for (const image of variant.images) {
+            try {
+              await deleteFromR2(image.imageField);
+            } catch (error) {
+              console.error(`Failed to delete image ${image.imageField}:`, error);
+            }
+          }
+        }
+      }
+    }
+
+    // Now delete the product from database
+    await Product.findByIdAndDelete(id);
+    
     return NextResponse.json({ success: true, message: "Product deleted successfully" });
   } catch (error) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
