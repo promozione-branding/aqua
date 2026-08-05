@@ -362,7 +362,10 @@ export default function Navbar() {
             </a>
 
             <Link
-              href="#"
+            
+                    href="/catelogue.pdf"
+                    download
+                 
               className="flex items-center gap-1.5 hover:text-blue-200 transition"
             >
               <Download size={14} />

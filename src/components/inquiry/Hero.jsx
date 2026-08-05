@@ -11,15 +11,15 @@ export default function Hero() {
     <section onClick={()=>{setIsFormOpen(true)}} className="w-full ">
   <Image
   height={100} width={100}
-    src="/inquiry/banner1.webp"
+    src="/inquiry/desktop.webp"
     alt="RO Banner"
     className="w-full hidden md:block h-full md:h-[80vh] object-cover"
   />
   <Image
-    src="/inquiry/mob.webp"
+    src="/inquiry/mobb.webp"
     alt="RO Banner"
     height={100} width={100}
-    className="w-full md:hidden  h-[40vh] object-cover"
+    className="w-full md:hidden  h-[37vh] object-cover"
   />
 </section>
 
