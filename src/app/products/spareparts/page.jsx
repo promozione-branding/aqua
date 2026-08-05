@@ -9,8 +9,8 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export async function generateMetadata() {
   return {
-    title: "Spare Parts Categories | JNJ Aqua",
-    description: "Browse our high-quality RO spare parts, inline filters, membranes, pumps, and cabinets.",
+    title: "RO Spare Parts | Premium Water Purifier Components | JNJ Aqua",
+    description: "Shop premium RO spare parts from JNJ Aqua. Explore high-quality water purifier components designed for durability, reliable performance, and long-lasting efficiency.",
   };
 }
 export default async function SparePartsPage() {

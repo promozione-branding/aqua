@@ -1,5 +1,5 @@
-import React from 'react';
-import dynamicImport from 'next/dynamic';
+import React from "react";
+import dynamicImport from "next/dynamic";
 import connectDB from "@/config/connectDB";
 import Category from "@/models/category/Category";
 import Product from "@/models/Product/Product";
@@ -14,7 +14,11 @@ export async function generateMetadata({ params }) {
     try {
       await connectDB();
       const categoryData = await Category.findOne({ slug: categorySlug });
-      if (categoryData && categoryData.metaTitle && categoryData.metaDescription) {
+      if (
+        categoryData &&
+        categoryData.metaTitle &&
+        categoryData.metaDescription
+      ) {
         return {
           title: categoryData.metaTitle,
           description: categoryData.metaDescription,
@@ -26,23 +30,25 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: "Shop Premium RO Cabinets & Purifiers | Crystal Impex",
-    description: "Explore our collection of food-grade ABS RO cabinets, water purifiers, and OEM solutions.",
+    title: "RO Cabinet | Premium RO Cabinets for Water Purifiers | JNJ Aqua",
+    description:
+      "Explore premium RO cabinets from JNJ Aqua. Discover durable, stylish, and high-quality RO cabinets designed for reliable performance and seamless compatibility with water purifier systems.",
   };
 }
 
-const ProductPageHome = dynamicImport(() => import('../ProductPageHome'), {
+const ProductPageHome = dynamicImport(() => import("../ProductPageHome"), {
   loading: () => (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center">
       <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-900"></div>
     </div>
-  )
+  ),
 });
 
 function mapProduct(prod) {
-  const discPercent = prod.price && prod.discountPrice
-    ? Math.round((1 - (prod.discountPrice / prod.price)) * 100)
-    : 0;
+  const discPercent =
+    prod.price && prod.discountPrice
+      ? Math.round((1 - prod.discountPrice / prod.price) * 100)
+      : 0;
 
   const categoryName = prod.category?.name || "Water Purifier";
   const categorySlug = prod.category?.slug || "water-purifier";
@@ -50,17 +56,16 @@ function mapProduct(prod) {
   // const image = firstVariant?.images?.[0]?.url || "/1.png";
   // const allImages = firstVariant?.images?.map((img) => img.url) || [image];
 
-   // ✅ GET IMAGE (PRIMARY → FALLBACK)
+  // ✅ GET IMAGE (PRIMARY → FALLBACK)
   const image =
     prod.colorVariants?.find((v) => v.primary)?.images?.[0]?.url ||
     prod.colorVariants?.[0]?.images?.[0]?.url ||
     "/1.png";
 
   // ✅ (optional) all images
-  const allImages =
-    prod.colorVariants?.flatMap((v) =>
-      v.images?.map((img) => img.url)
-    ) || [image];
+  const allImages = prod.colorVariants?.flatMap((v) =>
+    v.images?.map((img) => img.url),
+  ) || [image];
 
   return {
     id: prod._id.toString(),
@@ -100,9 +105,9 @@ export default async function Page({ params }) {
   }
 
   return (
-    <ProductPageHome 
-      preloadedProducts={preloadedProducts} 
-      preloadedCategories={preloadedCategories} 
+    <ProductPageHome
+      preloadedProducts={preloadedProducts}
+      preloadedCategories={preloadedCategories}
       initialCategory={categorySlug}
     />
   );
