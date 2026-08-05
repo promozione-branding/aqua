@@ -9,16 +9,14 @@ const nextConfig = {
       },
     ],
     domains: ["cdn.sanity.io"],
-    unoptimized: true,
   },
   async headers() {
     return [
       {
-        source: "/:path*",
+        // Prevent Vercel Edge CDN from caching product pages on the custom domain
+        source: "/products/:path*",
         headers: [
-          { key: "Cache-Control", value: "no-store, no-cache, must-revalidate, max-age=0" },
-          { key: "Pragma", value: "no-cache" },
-          { key: "Expires", value: "0" },
+          { key: "Cache-Control", value: "no-store" },
         ],
       },
     ];
