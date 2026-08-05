@@ -1,5 +1,6 @@
 import connectDB from "@/config/connectDB";
 import Product from "@/models/Product/Product";
+import Category from "@/models/category/Category";
 import ScrollDrivenHorizontal from "@/components/UI/ScrollDrivenHorizontal";
 
 export default async function FeaturedProducts() {
