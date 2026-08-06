@@ -19,7 +19,7 @@ export default function Hero() {
           width={2000}
           src="/inquiry/desktop.webp"
           alt="RO Banner"
-          className="w-full hidden md:block h-full md:h-[80vh] object-cover"
+          className="w-full hidden md:block h-full md:h-[80vh] "
         />
         <Image
           src="/inquiry/mobb.webp"
