@@ -24,8 +24,8 @@ export default function Hero() {
         <Image
           src="/inquiry/mobb.webp"
           alt="RO Banner"
-          height={100}
-          width={100}
+          height={2000}
+          width={2000}
           className="w-full md:hidden  h-[37vh] object-cover"
         />
       </section>
