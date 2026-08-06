@@ -74,7 +74,7 @@ const products = [
           >
             {products.map((item, i) => (
               <SwiperSlide key={i}>
-                <div onClick={()=>{setIsFormOpen(true)}} className="bg-white rounded-xl border p-3 md:p-3.5 text-center hover:shadow-md transition h-full">
+                <div onClick={()=>{setIsFormOpen(true)}} className="bg-white rounded-xl border border-gray-300 p-3 md:p-3.5 text-center hover:shadow-md transition h-full">
                   
                   <img
                     src={item.img}
@@ -91,11 +91,11 @@ const products = [
                   </p>
 
                    <div className="flex gap-2 w-full justify-center items-center mx-auto">
-                                    <button className=" text-blue-600 text-sm border border-blue-600 px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
+                                    <button className=" text-blue-600 text-sm border border-blue-600 px-4 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
                                       VIEW <ArrowRight size={14} />
                                     </button>
                                     <div onClick={(e)=>{e.stopPropagation()}}>
-                                    <Link href="https://wa.link/jqmslb" className=" text-blue-600 text-sm border text-green-500 border-green-600 px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
+                                    <Link href="https://wa.link/jqmslb" className=" text-blue-600 text-sm border text-green-500 border-green-600 px-4 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
                                        <FaWhatsapp className="" size={20} />
                                     </Link>
                                     </div>

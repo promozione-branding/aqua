@@ -16,101 +16,101 @@ import Popup from "../Popup";
 export default function Product1() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
- const products = [
-  {
-    title: "ALFA UV CABINET",
-    desc: "Premium durable cabinet design",
-    img: "/inquiry/1.webp",
-  },
-  {
-    title: "AROMA CABINET",
-    desc: "Strong filter housing system",
-    img: "/inquiry/2.webp",
-  },
-  {
-    title: "GENIUS CABINET",
-    desc: "Complete RO spare solution",
-    img: "/inquiry/3.webp",
-  },
-  {
-    title: "NEXLIN CABINET",
-    desc: "Leak-proof durable valve system",
-    img: "/inquiry/4.webp",
-  },
-  {
-    title: "NEXLIN CABINET",
-    desc: "Long-lasting leak-proof valves",
-    img: "/inquiry/12.webp",
-  },
-  {
-    title: "OURE X CABINET",
-    desc: "Durable high-quality cabinet body",
-    img: "/inquiry/9.webp",
-  },
-  {
-    title: "QUBE CABINET",
-    desc: "Compact strong cabinet design",
-    img: "/inquiry/10.webp",
-  },
-  {
-    title: "VEDA CABINET",
-    desc: "Reliable durable cabinet structure",
-    img: "/inquiry/11.webp",
-  },
-  {
-    title: "MIRAGE CABINET",
-    desc: "Modern stylish cabinet design",
-    img: "/inquiry/26.webp",
-  },
-];
+  const products = [
+    {
+      title: "ALFA UV CABINET",
+      desc: "Premium durable cabinet design",
+      img: "/inquiry/1.webp",
+    },
+    {
+      title: "AROMA CABINET",
+      desc: "Strong filter housing system",
+      img: "/inquiry/2.webp",
+    },
+    {
+      title: "GENIUS CABINET",
+      desc: "Complete RO spare solution",
+      img: "/inquiry/3.webp",
+    },
+    {
+      title: "NEXLIN CABINET",
+      desc: "Leak-proof durable valve system",
+      img: "/inquiry/4.webp",
+    },
+    {
+      title: "NEXLIN CABINET",
+      desc: "Long-lasting leak-proof valves",
+      img: "/inquiry/12.webp",
+    },
+    {
+      title: "OURE X CABINET",
+      desc: "Durable high-quality cabinet body",
+      img: "/inquiry/9.webp",
+    },
+    {
+      title: "QUBE CABINET",
+      desc: "Compact strong cabinet design",
+      img: "/inquiry/10.webp",
+    },
+    {
+      title: "VEDA CABINET",
+      desc: "Reliable durable cabinet structure",
+      img: "/inquiry/11.webp",
+    },
+    {
+      title: "MIRAGE CABINET",
+      desc: "Modern stylish cabinet design",
+      img: "/inquiry/26.webp",
+    },
+  ];
 
-const products2 = [
-  {
-    title: "QUBE CABINET",
-    desc: "Compact strong cabinet design",
-    img: "/inquiry/10.webp",
-  },
-  {
-    title: "ATLIS CABINET",
-    desc: "Premium durable cabinet build",
-    img: "/inquiry/25.webp",
-  },
-  {
-    title: "NEXLIN CABINET",
-    desc: "Leak-proof durable valve system",
-    img: "/inquiry/4.webp",
-  },
-  {
-    title: "NEXLIN CABINET",
-    desc: "Long-lasting leak-proof valves",
-    img: "/inquiry/12.webp",
-  },
-  {
-    title: "ALFA UV CABINET",
-    desc: "Premium durable cabinet design",
-    img: "/inquiry/1.webp",
-  },
-  {
-    title: "VEDA CABINET",
-    desc: "Reliable durable cabinet structure",
-    img: "/inquiry/11.webp",
-  },
-  {
-    title: "GENIUS CABINET",
-    desc: "Complete RO spare solution",
-    img: "/inquiry/3.webp",
-  },
-  {
-    title: "AROMA CABINET",
-    desc: "Strong filter housing system",
-    img: "/inquiry/2.webp",
-  },
-  {
-    title: "OURE X CABINET",
-    desc: "Durable high-quality cabinet body",
-    img: "/inquiry/9.webp",
-  },
-];
+  const products2 = [
+    {
+      title: "QUBE CABINET",
+      desc: "Compact strong cabinet design",
+      img: "/inquiry/10.webp",
+    },
+    {
+      title: "ATLIS CABINET",
+      desc: "Premium durable cabinet build",
+      img: "/inquiry/25.webp",
+    },
+    {
+      title: "NEXLIN CABINET",
+      desc: "Leak-proof durable valve system",
+      img: "/inquiry/4.webp",
+    },
+    {
+      title: "NEXLIN CABINET",
+      desc: "Long-lasting leak-proof valves",
+      img: "/inquiry/12.webp",
+    },
+    {
+      title: "ALFA UV CABINET",
+      desc: "Premium durable cabinet design",
+      img: "/inquiry/1.webp",
+    },
+    {
+      title: "VEDA CABINET",
+      desc: "Reliable durable cabinet structure",
+      img: "/inquiry/11.webp",
+    },
+    {
+      title: "GENIUS CABINET",
+      desc: "Complete RO spare solution",
+      img: "/inquiry/3.webp",
+    },
+    {
+      title: "AROMA CABINET",
+      desc: "Strong filter housing system",
+      img: "/inquiry/2.webp",
+    },
+    {
+      title: "OURE X CABINET",
+      desc: "Durable high-quality cabinet body",
+      img: "/inquiry/9.webp",
+    },
+  ];
 
   const features = [
     "Consistent Quality",
@@ -137,8 +137,8 @@ const products2 = [
         <p className="text-xs text-gray-500 mb-3">{item.desc}</p>
 
         <div className="flex gap-2 justify-center items-center">
-          <button className="text-blue-600 text-sm border border-blue-600 px-5 py-1 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
-            VIEW
+          <button className="text-blue-600 text-sm border border-blue-600 px-3 py-1 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
+            VIEW <ArrowRight size={14} />
           </button>
 
           <a
