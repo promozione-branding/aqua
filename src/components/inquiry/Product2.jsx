@@ -23,18 +23,18 @@ const products = [
     img: "/inquiry/5.webp",
   },
   {
-    title: "RO Pipes",
-    desc: "Flexible durable pipes",
-    img: "/inquiry/6.webp",
+    title: "CARBON FILTER",
+    desc: "Flexible Carbon Filter",
+    img: "/inquiry/23.webp",
   },
   {
-    title: "RO Fittings",
-    desc: "Secure tight connections",
+    title: "MERLIN PER FILTER ",
+    desc: "Removes Impurities",
     img: "/inquiry/7.webp",
   },
   {
-    title: "RO Valves",
-    desc: "Long lasting control",
+    title: "MERLIN GDP PUMP",
+    desc: "Powerful Water Pump",
     img: "/inquiry/8.webp",
   },
 ];
