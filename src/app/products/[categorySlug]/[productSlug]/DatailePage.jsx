@@ -28,7 +28,7 @@ const iconMap = {
   Sparkles,
   Wrench,
   Sun,
-  Layers
+  Layers,
 };
 
 const quickFeatures = [
@@ -67,11 +67,11 @@ const productFeatures = [
 ];
 
 const checklist = [
-  "Suitable for 12L Storage RO Systems",
-  "Made from Food Grade ABS Material",
-  "Leak Proof, Rust Proof & UV Stabilized",
-  "Easy to Install and Clean",
-  "Smooth Finish with Elegant Looks",
+  "Advanced RO Technology",
+  "Multi-Stage Filtration",
+  "Durable Stylish Design",
+  "Reliable Performance System",
+  "Compact Space-Saving Design",
 ];
 
 const perks = [
@@ -113,22 +113,25 @@ const getVariantColors = (colorName) => {
     return [colorMap[normalized]];
   }
   const parts = normalized.split(/[\s-]+/);
-  return parts.map(p => colorMap[p] || p);
+  return parts.map((p) => colorMap[p] || p);
 };
 
-export default function ProductDetailClient({ product, preloadedRelated, categorySlug }) {
-
-      const [isFormOpen, setIsFormOpen] = useState(false);
+export default function ProductDetailClient({
+  product,
+  preloadedRelated,
+  categorySlug,
+}) {
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const [activeVariantIndex, setActiveVariantIndex] = useState(0);
   const [activeThumb, setActiveThumb] = useState(0);
   const [activeTab, setActiveTab] = useState("description");
 
-  const isSparePart = 
-    categorySlug === "spareparts" || 
-    categorySlug === "spare-parts" || 
-    product.category?.slug === "spareparts" || 
-    product.category?.slug === "spare-parts" || 
+  const isSparePart =
+    categorySlug === "spareparts" ||
+    categorySlug === "spare-parts" ||
+    product.category?.slug === "spareparts" ||
+    product.category?.slug === "spare-parts" ||
     product.category?.name?.toLowerCase().includes("spare");
 
   // Sort color variants to place White and Black first
@@ -144,8 +147,8 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
 
   // Load variant images
   const activeVariant = sortedVariants[activeVariantIndex] || {};
-  const images = activeVariant.images?.map(img => img.url) || ["/1.png"];
-  
+  const images = activeVariant.images?.map((img) => img.url) || ["/1.png"];
+
   const selectVariant = (index) => {
     setActiveVariantIndex(index);
     setActiveThumb(0);
@@ -170,10 +173,14 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
     if (activeThumb > 0) {
       setActiveThumb(activeThumb - 1);
     } else if (sortedVariants.length > 1) {
-      const prevVariantIdx = (activeVariantIndex - 1 + sortedVariants.length) % sortedVariants.length;
+      const prevVariantIdx =
+        (activeVariantIndex - 1 + sortedVariants.length) %
+        sortedVariants.length;
       setActiveVariantIndex(prevVariantIdx);
       const prevVariant = sortedVariants[prevVariantIdx] || {};
-      const prevImages = prevVariant.images?.map(img => img.url) || ["/1.png"];
+      const prevImages = prevVariant.images?.map((img) => img.url) || [
+        "/1.png",
+      ];
       setActiveThumb(prevImages.length > 0 ? prevImages.length - 1 : 0);
     } else {
       setActiveThumb(images.length - 1);
@@ -181,15 +188,30 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
   };
 
   // Load dynamic specifications
-  const specs = product.specifications?.map(s => [s.key, s.value]) || [
+  const specs = product.specifications?.map((s) => [s.key, s.value]) || [
     ["Storage Capacity", "12L"],
     ["Material", "ABS Food Grade"],
   ];
 
-  const related = preloadedRelated && preloadedRelated.length > 0 ? preloadedRelated : [
-    { name: "Crystal Premium Cabinet", image: "/1.png", storage: "10L", tile: "#111827", slug: "#" },
-    { name: "Elite Plus Cabinet", image: "/2.png", storage: "15L", tile: "#111827", slug: "#" },
-  ];
+  const related =
+    preloadedRelated && preloadedRelated.length > 0
+      ? preloadedRelated
+      : [
+          {
+            name: "Crystal Premium Cabinet",
+            image: "/1.png",
+            storage: "10L",
+            tile: "#111827",
+            slug: "#",
+          },
+          {
+            name: "Elite Plus Cabinet",
+            image: "/2.png",
+            storage: "15L",
+            tile: "#111827",
+            slug: "#",
+          },
+        ];
 
   return (
     <div className="bg-slate-50 text-slate-700 min-h-screen overflow-x-hidden">
@@ -197,27 +219,30 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
         <div className="grid grid-cols-12 gap-6 sm:gap-12">
           {/* Gallery */}
-          <div id="product-gallery" className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16">
+          <div
+            id="product-gallery"
+            className="col-span-12 lg:col-span-6 px-4 sm:px-12 lg:px-16"
+          >
             <div className="max-w-[420px] mx-auto w-full">
               <div className="relative w-full">
                 <div className="relative rounded-2xl border border-slate-200 aspect-square sm:aspect-[4/5] w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-blue-100">
                   {/* Clickable side overlays for navigation */}
-                  <div 
+                  <div
                     className="absolute left-0 top-0 w-1/2 h-full cursor-pointer z-10"
                     onClick={handlePrevImage}
                     title="Previous Image"
                   />
-                  <div 
+                  <div
                     className="absolute right-0 top-0 w-1/2 h-full cursor-pointer z-10"
                     onClick={handleNextImage}
                     title="Next Image"
                   />
 
-                  <Image 
-                    src={images[activeThumb] || "/1.png"} 
-                    fill 
+                  <Image
+                    src={images[activeThumb] || "/1.png"}
+                    fill
                     alt={product.name}
-                    className="h-full w-full object-contain p-10" 
+                    className="h-full w-full object-contain p-10"
                   />
                 </div>
 
@@ -250,7 +275,12 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                       }`}
                     >
                       <div className="relative w-full h-full">
-                        <Image src={img} alt="thumb" fill className="object-contain" />
+                        <Image
+                          src={img}
+                          alt="thumb"
+                          fill
+                          className="object-contain"
+                        />
                       </div>
                     </button>
                   ))}
@@ -264,7 +294,9 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
             <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-955 tracking-tight">
               {product.name}
             </h1>
-            <p className="text-slate-500 mt-2 text-sm sm:text-base">{product.category?.name || "Premium ABS RO Cabinet"}</p>
+            <p className="text-slate-500 mt-2 text-sm sm:text-base">
+              {product.category?.name || "Premium ABS RO Cabinet"}
+            </p>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-4">
               {product.shortDescription || "Premium food-grade design."}
@@ -273,13 +305,18 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
             {!isSparePart && sortedVariants && sortedVariants.length > 0 && (
               <div className="mt-6">
                 <span className="text-sm font-extrabold text-slate-800 tracking-wider block mb-3 uppercase">
-                  COLOUR — <span className="text-blue-600 font-extrabold uppercase">{activeVariant.colorName}</span>
+                  COLOUR —{" "}
+                  <span className="text-blue-600 font-extrabold uppercase">
+                    {activeVariant.colorName}
+                  </span>
                 </span>
                 <div className="flex flex-wrap gap-2.5 items-center">
                   {sortedVariants.map((variant, idx) => {
                     const isSelected = activeVariantIndex === idx;
                     const colors = getVariantColors(variant.colorName);
-                    const hasWhite = colors.includes("#ffffff") || variant.colorName.toLowerCase().includes("white");
+                    const hasWhite =
+                      colors.includes("#ffffff") ||
+                      variant.colorName.toLowerCase().includes("white");
                     return (
                       <button
                         key={idx}
@@ -292,17 +329,50 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                         aria-label={`Select ${variant.colorName}`}
                       >
                         {colors.length === 1 ? (
-                          <div className="w-full h-full" style={{ backgroundColor: colors[0] }} />
+                          <div
+                            className="w-full h-full"
+                            style={{ backgroundColor: colors[0] }}
+                          />
                         ) : colors.length === 2 ? (
-                          <svg viewBox="0 0 100 100" className="w-full h-full block">
-                            <polygon points="0,0 100,0 0,100" fill={colors[0]} />
-                            <polygon points="100,0 100,100 0,100" fill={colors[1]} />
+                          <svg
+                            viewBox="0 0 100 100"
+                            className="w-full h-full block"
+                          >
+                            <polygon
+                              points="0,0 100,0 0,100"
+                              fill={colors[0]}
+                            />
+                            <polygon
+                              points="100,0 100,100 0,100"
+                              fill={colors[1]}
+                            />
                           </svg>
                         ) : (
-                          <svg viewBox="0 0 100 100" className="w-full h-full block">
-                            <rect x="0" y="0" width="33.33" height="100" fill={colors[0]} />
-                            <rect x="33.33" y="0" width="33.34" height="100" fill={colors[1]} />
-                            <rect x="66.67" y="0" width="33.33" height="100" fill={colors[2]} />
+                          <svg
+                            viewBox="0 0 100 100"
+                            className="w-full h-full block"
+                          >
+                            <rect
+                              x="0"
+                              y="0"
+                              width="33.33"
+                              height="100"
+                              fill={colors[0]}
+                            />
+                            <rect
+                              x="33.33"
+                              y="0"
+                              width="33.34"
+                              height="100"
+                              fill={colors[1]}
+                            />
+                            <rect
+                              x="66.67"
+                              y="0"
+                              width="33.33"
+                              height="100"
+                              fill={colors[2]}
+                            />
                           </svg>
                         )}
                       </button>
@@ -354,7 +424,7 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <a 
+              <a
                 href={`https://wa.me/919540010221?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noreferrer"
@@ -363,17 +433,22 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                 <FaWhatsapp size={23} />
                 WHATSAPP US
               </a>
-              <button onClick={()=>{setIsFormOpen(true)}} className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition w-full sm:w-auto">
+              <button
+                onClick={() => {
+                  setIsFormOpen(true);
+                }}
+                className="bg-blue-900 text-white font-semibold text-sm rounded-lg px-4 py-3 hover:bg-blue-800 transition w-full sm:w-auto"
+              >
                 GET QUOTE
               </button>
               <a
-                    href="/catelogue.pdf"
-                    download
-                    className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto"
-                  >
-                    <Download size={20} />
-                    DOWNLOAD CATALOGUE
-                  </a>
+                href="/catelogue.pdf"
+                download
+                className="border-2 cursor-pointer hover:scale-105 text-white bg-blue-700 border-gray-500 hover:border-blue-700 px-4 py-3.5 rounded-lg text-sm whitespace-nowrap font-bold flex items-center justify-center gap-2 transition w-full sm:w-auto"
+              >
+                <Download size={20} />
+                DOWNLOAD CATALOGUE
+              </a>
             </div>
           </div>
         </div>
@@ -400,8 +475,12 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-800 mb-3">
                     <Icon className="w-5 h-5 sm:w-7 sm:h-7" strokeWidth={1.8} />
                   </div>
-                  <h3 className="text-sm sm:text-lg font-bold text-blue-955">{title}</h3>
-                  <p className="text-xs sm:text-base text-slate-500 mt-1">{desc}</p>
+                  <h3 className="text-sm sm:text-lg font-bold text-blue-955">
+                    {title}
+                  </h3>
+                  <p className="text-xs sm:text-base text-slate-500 mt-1">
+                    {desc}
+                  </p>
                 </div>
               );
             })}
@@ -424,11 +503,11 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
 
             <div className="pt-4 sm:pt-6">
               <p
-  className="text-sm sm:text-base text-black leading-relaxed"
-  dangerouslySetInnerHTML={{
-    __html: product.description || "No full description added yet.",
-  }}
-/>
+                className="text-sm sm:text-base text-black leading-relaxed"
+                dangerouslySetInnerHTML={{
+                  __html: product.description || null,
+                }}
+              />
 
               <ul className="mt-4 space-y-2.5">
                 {checklist.map((item) => (
@@ -459,12 +538,15 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
                 <p className="mt-3 flex-1 text-sm sm:text-base leading-relaxed text-blue-100/80">
                   We offer the best deals for bulk orders & distributors.
                 </p>
-                <Link href="/contact" className="mt-4 w-fit rounded-lg bg-white px-4 py-2.5 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50">
+                <Link
+                  href="/contact"
+                  className="mt-4 w-fit rounded-lg bg-white px-4 py-2.5 text-xs font-bold tracking-wide text-blue-955 transition hover:bg-blue-50"
+                >
                   CONTACT US NOW
                 </Link>
               </div>
               <Image
-                 src="/newimg.webp"
+                src="/newimg.webp"
                 alt="RO Cabinet"
                 width={420}
                 height={520}
@@ -489,7 +571,7 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
             {related.map((p, index) => (
               <Link
                 key={index}
-                href={`/products/${p.categorySlug || 'ro-cabinet'}/${p.slug}`}
+                href={`/products/${p.categorySlug || "ro-cabinet"}/${p.slug}`}
                 className="group border border-slate-200 rounded-xl overflow-hidden hover:shadow-lg transition flex flex-col"
               >
                 <div className="aspect-square flex items-center justify-center p-2 bg-slate-50">
@@ -521,7 +603,7 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
 
       {/* BULK CTA STRIP */}
       <section className="bg-blue-950 py-6 sm:py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+        <div className="max-w-7xl mx-auto px-4 md:px-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 md:gap-2">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 flex items-center justify-center text-white shrink-0">
               <Package className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.6} />
@@ -536,28 +618,36 @@ export default function ProductDetailClient({ product, preloadedRelated, categor
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:flex md:flex-wrap items-center gap-3 sm:gap-6 md:gap-8 text-white w-full md:w-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:flex md: items-center gap-3 md:gap-2 text-white w-full md:w-auto">
             {perks.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2">
-                <Icon className="w-5 h-5 sm:w-8 sm:h-8 text-blue-200" strokeWidth={1.6} />
-                <span className="text-xs sm:text-base font-semibold">{label}</span>
+                <Icon
+                  className="w-5 h-5 sm:w-8 sm:h-8 text-blue-200"
+                  strokeWidth={1.6}
+                />
+                <span className="text-xs sm:text-base font-semibold">
+                  {label}
+                </span>
               </div>
             ))}
           </div>
 
           <div className="shrink-0 w-full md:w-auto">
-            <p className="text-blue-200/70 text-xs mb-2">
-              Get in Touch Today!
-            </p>
-            <button onClick={()=>{setIsFormOpen(true)}} className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-2.5 sm:py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto">
+            <p className="text-blue-200/70 text-xs mb-2">Get in Touch Today!</p>
+            <button
+              onClick={() => {
+                setIsFormOpen(true);
+              }}
+              className="bg-white text-blue-955 text-xs font-bold tracking-wide px-5 py-2.5 sm:py-3 rounded-lg hover:bg-blue-50 transition w-full md:w-auto"
+            >
               REQUEST A QUOTE
             </button>
           </div>
         </div>
       </section>
-       {isFormOpen && (                   
-      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
-         )}
+      {isFormOpen && (
+        <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+      )}
     </div>
   );
 }

@@ -67,11 +67,11 @@ const productFeatures = [
 ];
 
 const checklist = [
-  "Suitable for 12L Storage RO Systems",
-  "Made from Food Grade ABS Material",
-  "Leak Proof, Rust Proof & UV Stabilized",
-  "Easy to Install and Clean",
-  "Smooth Finish with Elegant Looks",
+  "High-Quality Durable Materials",
+  "RO System Compatible",
+  "Easy Installation Replacement",
+  "Long-Lasting Design Build",
+  "Maintains System Efficiency",
 ];
 
 const perks = [
@@ -493,7 +493,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 className="text-sm sm:text-base text-black leading-relaxed"
                 dangerouslySetInnerHTML={{
                   __html:
-                    product.description || "No full description added yet.",
+                    product.description || null,
                 }}
               />
 
@@ -534,7 +534,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
                 </Link>
               </div>
               <Image
-                src="/newimg.webp"
+                src="/spareCta.webp"
                 alt="RO Cabinet"
                 width={420}
                 height={520}
@@ -604,7 +604,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
               <h3 className="text-white text-lg font-bold leading-tight">
                 Looking For
                 <br />
-                RO Cabinets in Bulk?
+                Quality Spare Parts ?
               </h3>
               <p className="text-blue-200/70 text-xs mt-2">
                 Get factory direct pricing with best quality products.
@@ -612,7 +612,7 @@ export default function ProductDetailClient({ product, preloadedRelated }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:flex md:flex-wrap items-center gap-6 md:gap-8 text-white w-full md:w-auto">
+          <div className="grid grid-cols-2 md:flex  items-center gap-6 md:gap-4 text-white w-full md:w-auto">
             {perks.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2.5">
                 <Icon className="w-8 h-8 text-blue-200" strokeWidth={1.6} />
