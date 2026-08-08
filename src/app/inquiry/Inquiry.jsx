@@ -58,11 +58,11 @@ export default function Inquiry() {
           <div className="hidden lg:flex items-center gap-4">
             {/* Phone */}
             <a
-              href="tel:+918595776029"
+              href="tel:+919540010221"
               className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-blue-600"
             >
               <Phone size={16} />
-              +91 85957 76029
+              +91 95400 10221
             </a>
             {/* Quote Button */}
             <button
@@ -80,14 +80,14 @@ export default function Inquiry() {
           <div className="flex lg:hidden items-center gap-3">
             {/* Call */}
             <a
-              href="tel:+918595776029"
+              href="tel:+919540010221"
               className="inline-flex items-center gap-0.5 bg-blue-100 px-2 py-2 rounded-full text-blue-700 font-medium hover:bg-blue-200 transition"
             >
               <span>
                 <Phone size={18} />
               </span>
               <br />
-              <span className="text-sm"> +91 85957 76029</span>
+              <span className="text-sm"> +91 95400 10221</span>
             </a>
 
             {/* WhatsApp */}
