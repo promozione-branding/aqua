@@ -227,6 +227,7 @@ export default function Navbar() {
   const [subcategories, setSubcategories] = useState([]);
   const [activeCategoryId, setActiveCategoryId] = useState("ro-cabinets");
   const [roCabinetImage, setRoCabinetImage] = useState("/1.png");
+  const [reverseOsmosisImage, setreverseOsmosisImage] = useState("/rev.webp");
   const [sparePartsImage, setSparePartsImage] = useState("/3.png");
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -334,8 +335,17 @@ export default function Navbar() {
         slug: "spareparts",
         hasSubcategories: true,
       },
+       {
+        id: "reverse-osmosis-water-purifier",
+        name: "Reverse Osmosis Water Purifier",
+        icon: LayoutGrid,
+        description: "Premium transparent and designer ABS cabinets.",
+        mainImage: reverseOsmosisImage,
+        slug: "reverse-osmosis-water-purifier",
+        hasSubcategories: false,
+      },
     ],
-    [roCabinetImage, sparePartsImage],
+    [roCabinetImage, sparePartsImage,reverseOsmosisImage],
   );
 
   const activeCategory =
