@@ -39,3 +39,14 @@ h6 {
   font-family: var(--font-montserrat);
 }
 
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+#products,
+#contact,#whychoose {
+  scroll-margin-top: 80px;
+}
