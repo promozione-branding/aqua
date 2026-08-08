@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import axios from "axios";
+import toast from "react-hot-toast";
 export default function ContactClient() {
   const [loading, setLoading] = useState(false);
-
+  const [status, setStatus] = useState("");
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -25,61 +27,64 @@ export default function ContactClient() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //   if (!form.name || !form.phone) {
-    //     toast.error("Please fill Name & Phone Number");
-    //     return;
-    //   }
+    if (!form.name || !form.phone) {
+      toast.error("Please fill Name & Phone Number");
+      return;
+    }
 
-    //   try {
-    //     setLoading(true);
+    try {
+      setLoading(true);
 
-    //     const payload = {
-    //       platform: "ARB Bearings Contact Form",
-    //       platformEmail: "marketing@arb-bearings.com",
+      const payload = {
+        platform: "JNJ AQUA",
+        platformEmail: "jnjaquadelhi@gmail.com",
 
-    //       name: form.name,
-    //       phone: form.phone,
-    //       email: form.email || "N/A",
+        name: form.name,
+        phone: form.phone,
+        email: form.email || "N/A",
 
-    //       place: form.company || "N/A",
+        place: form.company || "N/A",
 
-    //       product: form.subject || "General Inquiry",
+        product: form.subject || "General Inquiry",
 
-    //       message: `
-    // Company : ${form.company}
+        message: `
+    Company : ${form.company}
 
-    // Subject : ${form.subject}
+    Subject : ${form.subject}
 
-    // Message :
-    // ${form.message}
-    //       `,
-    //     };
+    Message :
+    ${form.message}
+          `,
+      };
 
-    //     const { data } = await axios.post(
-    //       "https://brandbnalo.com/api/form/add",
-    //       payload
-    //     );
+      const { data } = await axios.post(
+        "https://brandbnalo.com/api/form/add",
+        payload,
+      );
 
-    //     if (data.success) {
-    //       toast.success("Inquiry Submitted Successfully!");
+      if (data.success) {
+        setStatus("✅ Form submitted successfully!");
+        toast.success("Inquiry Submitted Successfully!");
 
-    //       setForm({
-    //         name: "",
-    //         company: "",
-    //         email: "",
-    //         phone: "",
-    //         subject: "",
-    //         message: "",
-    //       });
-    //     } else {
-    //       toast.error("Submission Failed");
-    //     }
-    //   } catch (err) {
-    //     console.log(err);
-    //     toast.error("Server Error");
-    //   } finally {
-    //     setLoading(false);
-    //   }
+        setForm({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setStatus("❌ Something went wrong.");
+        toast.error("Submission Failed");
+      }
+    } catch (err) {
+      console.log(err);
+      setStatus("❌ Something went wrong.");
+      toast.error("Server Error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactCards = [
@@ -110,28 +115,28 @@ export default function ContactClient() {
   ];
 
   const [open, setOpen] = useState(0);
-const faqs = [
-  [
-    "What RO products do you manufacture?",
-    "We manufacture and supply high-quality RO cabinets, membranes, filters, pumps, fittings, and a wide range of water purifier spare parts."
-  ],
-  [
-    "Do you accept bulk and OEM orders?",
-    "Yes. We specialize in bulk orders, OEM manufacturing, and customized solutions for distributors, dealers, and brands."
-  ],
-  [
-    "Can I request a product quotation?",
-    "Absolutely. Contact us with your product requirements, quantities, and specifications, and our team will provide a competitive quotation."
-  ],
-  [
-    "Do you ship products across India?",
-    "Yes, we supply RO cabinets and spare parts to customers across India with safe and timely delivery."
-  ],
-  [
-    "How can I contact your sales team?",
-    "You can reach us through our contact form, phone, WhatsApp, or email. Our team will respond as quickly as possible."
-  ],
-];
+  const faqs = [
+    [
+      "What RO products do you manufacture?",
+      "We manufacture and supply high-quality RO cabinets, membranes, filters, pumps, fittings, and a wide range of water purifier spare parts.",
+    ],
+    [
+      "Do you accept bulk and OEM orders?",
+      "Yes. We specialize in bulk orders, OEM manufacturing, and customized solutions for distributors, dealers, and brands.",
+    ],
+    [
+      "Can I request a product quotation?",
+      "Absolutely. Contact us with your product requirements, quantities, and specifications, and our team will provide a competitive quotation.",
+    ],
+    [
+      "Do you ship products across India?",
+      "Yes, we supply RO cabinets and spare parts to customers across India with safe and timely delivery.",
+    ],
+    [
+      "How can I contact your sales team?",
+      "You can reach us through our contact form, phone, WhatsApp, or email. Our team will respond as quickly as possible.",
+    ],
+  ];
   return (
     <main className="min-h-screen bg-[#F8FAFC] text-slate-900">
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-100">
@@ -222,9 +227,7 @@ const faqs = [
                 className="h-14 rounded-2xl border border-slate-300 px-5 outline-none transition-all duration-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100"
               />
 
-             
-
-                <select
+              <select
                 // value={product}
                 onChange={(e) => setProduct(e.target.value)}
                 className="h-15 w-13a0 rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
@@ -235,31 +238,17 @@ const faqs = [
                   Select Product
                 </option>
 
-                <option value="RO Cabinets">
-                 RO Cabinets
-                </option>
+                <option value="RO Cabinets">RO Cabinets</option>
 
-                <option value="Alkaline Filter">
-                 Alkaline Filter
-                </option>
+                <option value="Alkaline Filter">Alkaline Filter</option>
 
-                <option value="Inline Filter">
-                  Inline Filter
-                </option>
+                <option value="Inline Filter">Inline Filter</option>
 
-                <option value="Membrane">
-                  Membrane
-                </option>
+                <option value="Membrane">Membrane</option>
 
-                <option value="Pre Filter">
-                  Pre Filter
-                </option>
+                <option value="Pre Filter">Pre Filter</option>
 
-                <option value="Pump">
-                  Pump
-                </option>
-
-                
+                <option value="Pump">Pump</option>
               </select>
 
               <textarea
@@ -280,6 +269,10 @@ const faqs = [
 
                 <Send size={18} />
               </button>
+
+              {status && (
+                <p className="mt-3 text-sm font-medium text-center">{status}</p>
+              )}
             </form>
           </div>
 
@@ -299,7 +292,7 @@ const faqs = [
                   <p className="font-semibold text-slate-900">Address</p>
 
                   <div className="mt-1 block text-slate-600 transition ">
-                    J 248, Pocket N, Sector 3, Bawana 
+                    J 248, Pocket N, Sector 3, Bawana
                     <br className="hidden md:block" />
                     New Delhi - 110039, Delhi, India
                   </div>
@@ -307,35 +300,33 @@ const faqs = [
               </div>
 
               {/* Phone */}
-             <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4">
+                {/* Icon */}
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 shrink-0">
+                  <Phone className="h-5 w-5 text-blue-700" />
+                </div>
 
-  {/* Icon */}
-  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 shrink-0">
-    <Phone className="h-5 w-5 text-blue-700" />
-  </div>
+                {/* Content */}
+                <div>
+                  <p className="font-semibold text-slate-900">Phone</p>
 
-  {/* Content */}
-  <div>
-    <p className="font-semibold text-slate-900">Phone</p>
-
-    <div className="mt-1 flex flex-col space-y-1">
-      {[
-        "+91 85957 76029",
-        "+91 93155 56737",
-        "+91 83185 96477",
-      ].map((num, i) => (
-        <a
-          key={i}
-          href={`tel:${num.replace(/\s/g, "")}`}
-          className="text-slate-600 text-sm font-medium transition hover:text-blue-700"
-        >
-          {num}
-        </a>
-      ))}
-    </div>
-  </div>
-
-</div>
+                  <div className="mt-1 flex flex-col space-y-1">
+                    {[
+                      "+91 85957 76029",
+                      "+91 93155 56737",
+                      "+91 83185 96477",
+                    ].map((num, i) => (
+                      <a
+                        key={i}
+                        href={`tel:${num.replace(/\s/g, "")}`}
+                        className="text-slate-600 text-sm font-medium transition hover:text-blue-700"
+                      >
+                        {num}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
 
               {/* Email */}
               <div className="flex items-start gap-4">
@@ -350,9 +341,8 @@ const faqs = [
                     href="mailto:jnjaquadelhi@gmail.com"
                     className="mt-1 block text-slate-600 transition hover:text-blue-700"
                   >
-                   jnjaquadelhi@gmail.com
+                    jnjaquadelhi@gmail.com
                   </a>
-
                 </div>
               </div>
 
@@ -380,7 +370,7 @@ const faqs = [
       <section className="max-w-7xl mx-auto px-6 pb-10 lg:pb-20">
         <iframe
           className="w-full h-[420px] rounded-3xl"
-         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.7092759889247!2d77.0559703!3d28.7879302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d07dcb2b09505%3A0xb3e2066e97a46b7c!2sJNJ%20Aqua%20Private%20Limited!5e0!3m2!1sen!2sin!4v1785846403769!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.7092759889247!2d77.0559703!3d28.7879302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d07dcb2b09505%3A0xb3e2066e97a46b7c!2sJNJ%20Aqua%20Private%20Limited!5e0!3m2!1sen!2sin!4v1785846403769!5m2!1sen!2sin"
         />
       </section>
 
@@ -390,32 +380,32 @@ const faqs = [
         </h2>
         <div className="space-y-4">
           {faqs.map(([q, a], i) => (
-  <div
-    key={i}
-    className="rounded-2xl border border-blue-400 overflow-hidden"
-  >
-    <button
-      onClick={() => setOpen(open === i ? -1 : i)}
-      className="w-full flex justify-between p-5 text-left"
-    >
-      <span>{q}</span>
-      <ChevronDown
-        className={`transition-transform duration-300 ${
-          open === i ? "rotate-180" : ""
-        }`}
-      />
-    </button>
+            <div
+              key={i}
+              className="rounded-2xl border border-blue-400 overflow-hidden"
+            >
+              <button
+                onClick={() => setOpen(open === i ? -1 : i)}
+                className="w-full flex justify-between p-5 text-left"
+              >
+                <span>{q}</span>
+                <ChevronDown
+                  className={`transition-transform duration-300 ${
+                    open === i ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
 
-    {/* Animated Content */}
-    <div
-      className={`px-5 text-slate-900 transition-all duration-300 ease-in-out overflow-hidden ${
-        open === i ? "max-h-40 opacity-100 pb-5" : "max-h-0 opacity-0"
-      }`}
-    >
-      {a}
-    </div>
-  </div>
-))}
+              {/* Animated Content */}
+              <div
+                className={`px-5 text-slate-900 transition-all duration-300 ease-in-out overflow-hidden ${
+                  open === i ? "max-h-40 opacity-100 pb-5" : "max-h-0 opacity-0"
+                }`}
+              >
+                {a}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>

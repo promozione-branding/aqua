@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 // import { toast } from "react-toastify";
 
 
@@ -25,79 +26,79 @@ export default function Popup({ isOpen, onClose }) {
 
   // SUBMIT FORM
   const submitForm = async () => {
-//     try {
-//       setLoading(true);
+    try {
+      setLoading(true);
 
-//       const formData = {
-//         platform: "Plastic Dustbin Manufacturer Popup Form",
-//         platformEmail: "shaanpolywell@gmail.com",
-//         name,
-//         phone,
-//         email,
-//         place: place,
-//         product,
-//         message: `Company Name: ${company || "N/A"} ,"Message :"
+      const formData = {
+        platform: "Aqua JNJ",
+        platformEmail: "jnjaquadelhi@gmail.com",
+        name,
+        phone,
+        email,
+        place: place,
+        product,
+        message: `Company Name: ${company || "N/A"} ,"Message :"
 
-// ${message}`
-//       };
+${message}`
+      };
 
-//       const { data } = await axios.post(
-//         "https://brandbnalo.com/api/form/add",
-//         formData
-//       );
+      const { data } = await axios.post(
+        "https://brandbnalo.com/api/form/add",
+        formData
+      );
 
-//       if (data?.success) {
-//         setSubmitted(true);
+      if (data?.success) {
+        setSubmitted(true);
 
-//         setSuccessMessage(
-//           "✅ Your enquiry has been submitted successfully!"
-//         );
+        setSuccessMessage(
+          "✅ Your enquiry has been submitted successfully!"
+        );
 
-//         toast.success("Form Submitted Successfully");
+        toast.success("Form Submitted Successfully");
 
-//         const whatsappText = `Hi, I am ${name}.
-// Email: ${email}
-// Product: ${product}
+        const whatsappText = `Hi, I am ${name}.
+Email: ${email}
+Product: ${product}
 
-// Message: ${message}
+Message: ${message}
 
-// Contact: ${phone}`;
+Contact: ${phone}`;
 
-//         const waUrl = `https://wa.me/+918810422935?text=${encodeURIComponent(
-//           whatsappText
-//         )}`;
+        const waUrl = `https://wa.me/+919540010221?text=${encodeURIComponent(
+          whatsappText
+        )}`;
 
-//         setTimeout(() => {
-//           window.open(waUrl, "_blank");
-//         }, 1000);
+        setTimeout(() => {
+          window.open(waUrl, "_blank");
+        }, 1000);
 
-//         // RESET
-//         setName("");
-//         setPhone("");
-//         setEmail("");
-//         setProduct("");
-//         setMessage("");
-//         setPlace("");
-//         setCompany("");
-//         // setOtp("");
+        // RESET
+        setName("");
+        setPhone("");
+        setEmail("");
+        setProduct("");
+        setMessage("");
+        setPlace("");
+        setCompany("");
+        // setOtp("");
 
-//         // setShowOtpBox(false);
-//         // setIsPhoneVerified(false);
+        // setShowOtpBox(false);
+        // setIsPhoneVerified(false);
 
-//         setTimeout(() => {
-//           setSubmitted(false);
-//           onClose();
-//         }, 4000);
-//       } else {
-//         setSuccessMessage("❌ Failed to send. Please try again.");
-//       }
-//     } catch (error) {
-//       console.log(error);
+        setTimeout(() => {
+          setSubmitted(false);
+          onClose();
+        }, 4000);
+      } else {
+        setSuccessMessage("❌ Failed to send. Please try again.");
+      }
+    } catch (error) {
+      console.log(error);
 
-//       setSuccessMessage("❌ Server error. Try again later.");
-//     } finally {
-//       setLoading(false);
-//     }
+      setSuccessMessage("❌ Server error. Try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   // HANDLE SUBMIT

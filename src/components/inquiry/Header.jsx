@@ -13,10 +13,10 @@ export default function Header() {
   const navItems = [
     { name: "Home", href: "/inquiry" },
     { name: "About Us", href: "/inquiry" },
-    { name: "Products", href: "/inquiry" },
-    { name: "Why Choose Us", href: "/inquiry" },
+    { name: "Products", href: "#products" },
+    { name: "Why Choose Us", href: "#whychoose" },
     { name: "Gallery", href: "/inquiry" },
-    { name: "Contact Us", href: "/inquiry " },
+    { name: "Contact Us", href: "#contact" },
   ];
 
   return (
@@ -65,14 +65,7 @@ export default function Header() {
             GET BULK QUOTE
           </button>
 
-          {/* WhatsApp */}
-          <a
-            href="https://wa.link/jqmslb"
-            target="_blank"
-            className="bg-green-500 p-1 rounded-full text-white hover:bg-green-600"
-          >
-            <FaWhatsapp size={30} />
-          </a>
+        c
         </div>
 
         {/* Mobile Right */}
@@ -134,5 +127,7 @@ export default function Header() {
         <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
       )}
     </header>
+
+    
   );
 }
