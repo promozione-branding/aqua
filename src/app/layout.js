@@ -35,6 +35,8 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
+        <link rel="canonical" href="https://waterpurifiermanufacturer.com/" />
+
         {/* ✅ Microsoft Clarity */}
         <Script id="clarity-script" strategy="afterInteractive">
           {`
@@ -87,6 +89,28 @@ export default function RootLayout({ children }) {
           {children}
           <WhatsApp />
         </LayoutWrapper>
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "JNJ Aqua",
+              url: "https://waterpurifiermanufacturer.com/",
+              description:
+                "JNJ Aqua is a water purifier manufacturer providing high-quality RO water purification systems, commercial water purifiers, and industrial water treatment solutions.",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+91 85957 76029",
+                contactType: "customer service",
+                areaServed: "IN",
+                availableLanguage: ["English", "Hindi"],
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );

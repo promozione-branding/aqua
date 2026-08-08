@@ -1,0 +1,14 @@
+# robots.txt for JNJ Aqua
+# https://waterpurifiermanufacturer.com/
+
+# Allow all search engines and bots
+User-agent: *
+
+Allow: /
+
+# Block unnecessary URLs
+Disallow: /comments/
+Disallow: */feed/
+
+# Sitemap
+Sitemap: https://waterpurifiermanufacturer.com/sitemap.xml
