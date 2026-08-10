@@ -5,6 +5,7 @@ import { Download, BadgeDollarSign, Users, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Popup from "../Popup";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function HeroSection() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function HeroSection() {
              bg-[url('/bannerMOB.webp')] 
              md:bg-[url('/banner.webp')]"
         style={{
-          backgroundPosition: "50% 60%", // X Y
+          backgroundPosition: "50% 60%",
         }}
       />
 
@@ -44,22 +45,28 @@ export default function HeroSection() {
               {/* ✅ RO Images Section */}
               <div className="relative h-[200px]   flex items-end justify-center">
                 {/* Left RO */}
-                <img
-                  src="/111.webp"
+                <Image
+                  height={100}
+                  width={100}
+                  src="/1111.webp"
                   alt="RO 1"
                   className="absolute -left-5 -bottom-14 w-[160px] z-10 drop-shadow-2xl"
                 />
 
                 {/* Center RO */}
-                <img
-                  src="/222.webp"
+                <Image
+                  height={100}
+                  width={100}
+                  src="/2222.webp"
                   alt="RO 2"
                   className="absolute left-1/2 -translate-x-1/2 -bottom-11 w-[190px] z-30 drop-shadow-[0_25px_25px_rgba(0,0,0,.35)]"
                 />
 
                 {/* Right RO */}
-                <img
-                  src="/333.webp"
+                <Image
+                  height={100}
+                  width={100}
+                  src="/3333.webp"
                   alt="RO 3"
                   className="absolute -right-1 -bottom-8 w-[130px] z-20 drop-shadow-2xl"
                 />
@@ -181,22 +188,28 @@ export default function HeroSection() {
             {/* Products Group */}
             <div className="relative w-[520px] h-[480px]">
               {/* Left RO */}
-              <img
-                src="/111.webp"
+              <Image
+                height={100}
+                width={100}
+                src="/1111.webp"
                 alt="RO 1"
                 className="absolute bottom-12 -left-17 w-[250px] z-10 drop-shadow-2xl "
               />
 
               {/* Center RO */}
-              <img
-                src="/222.webp"
+              <Image
+                height={100}
+                width={100}
+                src="/2222.webp"
                 alt="RO 2"
                 className="absolute bottom-8 -right-30 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
               />
 
               {/* Right RO */}
-              <img
-                src="/333.webp"
+              <Image
+                height={100}
+                width={100}
+                src="/3333.webp"
                 alt="RO 3"
                 className="absolute bottom-22 -right-10 w-[180px] z-20 drop-shadow-2xl "
               />

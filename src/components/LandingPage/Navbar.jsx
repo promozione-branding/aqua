@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import Popup from "../Popup";
+import Image from "next/image";
 
 /**
  * OPTIMIZATION: Memoized Mobile Menu
@@ -31,7 +32,7 @@ const MobileMenuPanel = memo(
     staticCategories,
     subcategories,
   }) => {
-        const [isFormOpen, setIsFormOpen] = useState(false);
+    const [isFormOpen, setIsFormOpen] = useState(false);
 
     return (
       <>
@@ -147,7 +148,9 @@ const MobileMenuPanel = memo(
                                       className="snap-start shrink-0 w-[72px] flex flex-col items-center gap-2"
                                     >
                                       <div className="w-14 h-14 bg-white rounded-full border border-slate-200 flex items-center justify-center p-2 shadow-sm shrink-0">
-                                        <img
+                                        <Image
+                                          height={100}
+                                          width={100}
                                           src={sub.image || "/3.png"}
                                           alt={sub.name}
                                           loading="lazy" // OPTIMIZATION: Stop images from blocking thread
@@ -197,9 +200,7 @@ const MobileMenuPanel = memo(
           {/* Mobile Menu Footer CTA */}
           <div className="p-6 border-t border-slate-100 bg-slate-50 mt-auto shrink-0">
             <button
-              onClick={() => (setIsFormOpen(true) ,
-                setIsMobileMenuOpen(false))
-               }
+              onClick={() => (setIsFormOpen(true), setIsMobileMenuOpen(false))}
               className="flex items-center justify-center bg-[#0D3B8E] text-white font-bold uppercase text-[14px] w-full h-12 rounded-xl shadow-md active:scale-[0.98] transition-transform"
             >
               Get Price List
@@ -212,9 +213,9 @@ const MobileMenuPanel = memo(
             </a>
           </div>
         </div>
-         {isFormOpen && (                   
-      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
-         )}
+        {isFormOpen && (
+          <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+        )}
       </>
     );
   },
@@ -223,7 +224,6 @@ const MobileMenuPanel = memo(
 MobileMenuPanel.displayName = "MobileMenuPanel";
 
 export default function Navbar() {
-
   const [subcategories, setSubcategories] = useState([]);
   const [activeCategoryId, setActiveCategoryId] = useState("ro-cabinets");
   const [roCabinetImage, setRoCabinetImage] = useState("/1.png");
@@ -233,10 +233,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
 
-    const [isFormOpen, setIsFormOpen] = useState(false);
-
-
-
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
     // OPTIMIZATION: Only adjust body overflow, prevent reflow triggers
@@ -335,7 +332,7 @@ export default function Navbar() {
         slug: "spareparts",
         hasSubcategories: true,
       },
-       {
+      {
         id: "reverse-osmosis-water-purifier",
         name: "Reverse Osmosis Water Purifier",
         icon: LayoutGrid,
@@ -345,7 +342,7 @@ export default function Navbar() {
         hasSubcategories: false,
       },
     ],
-    [roCabinetImage, sparePartsImage,reverseOsmosisImage],
+    [roCabinetImage, sparePartsImage, reverseOsmosisImage],
   );
 
   const activeCategory =
@@ -368,14 +365,13 @@ export default function Navbar() {
               className="flex items-center gap-1.5 hover:text-blue-200 transition"
             >
               <Phone size={13} />
-              <span>+91  85957 76029</span>
+              <span>+91 85957 76029</span>
             </a>
 
             <Link
-            
-                    href="/catelogue.pdf"
-                    download
-                 
+              href="/catelogue.pdf"
+              download
+
               className="flex items-center gap-1.5 hover:text-blue-200 transition"
             >
               <Download size={14} />
@@ -396,7 +392,12 @@ export default function Navbar() {
               </span>
             </Link>
             <div className="flex">
-              <button onClick={()=>{ setIsFormOpen(true);}} className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-xs lg:hidden px-2 py-2 rounded-lg font-bold flex items-center justify-center gap-1 transition ">
+              <button
+                onClick={() => {
+                  setIsFormOpen(true);
+                }}
+                className="border-2 border-blue-700 text-blue-700 hover:bg-blue-700 hover:text-white text-xs lg:hidden px-2 py-2 rounded-lg font-bold flex items-center justify-center gap-1 transition "
+              >
                 <Users size={18} />
                 BECOME DISTRIBUTOR
               </button>
@@ -441,7 +442,9 @@ export default function Navbar() {
                       <div className="bg-slate-50/70 rounded-2xl p-5 border border-slate-100 h-full flex flex-col justify-between">
                         <div>
                           <div className="aspect-[4/3] bg-white rounded-xl mb-4 flex items-center justify-center p-4 relative overflow-hidden shadow-sm border border-slate-100/80">
-                            <img
+                            <Image
+                              height={100}
+                              width={100}
                               key={activeCategory.id}
                               src={activeMainImage}
                               alt={activeCategory.name}
@@ -545,7 +548,9 @@ export default function Navbar() {
                                     className="group/sub flex flex-col items-center gap-1.5 p-2 rounded-2xl hover:bg-slate-50 transition-all text-center"
                                   >
                                     <div className="w-12 h-12 bg-slate-50 rounded-full border border-slate-200 flex items-center justify-center p-2 group-hover/sub:border-blue-400 group-hover/sub:bg-blue-50/50 group-hover/sub:shadow-sm transition-all overflow-hidden shrink-0">
-                                      <img
+                                      <Image
+              height={100}
+                  width={100}
                                         src={sub.image || "/3.png"}
                                         alt={sub.name}
                                         className="w-full h-full object-contain group-hover/sub:scale-105 transition-transform duration-300"
@@ -582,9 +587,9 @@ export default function Navbar() {
               </div>
 
               <Link href="/blogs" className="hover:text-[#0D3B8E] transition">
-               Blogs
+                Blogs
               </Link>
-              
+
               <Link href="/contact" className="hover:text-[#0D3B8E] transition">
                 Contact Us
               </Link>
@@ -592,7 +597,9 @@ export default function Navbar() {
 
             {/* Desktop CTA Button */}
             <buttom
-              onClick={()=>{ setIsFormOpen(true);}}
+              onClick={() => {
+                setIsFormOpen(true);
+              }}
               className="hidden lg:flex items-center justify-center bg-[#0D3B8E] hover:bg-[#0B3379] text-white font-bold uppercase text-[13px] px-7 h-12 rounded-lg transition shadow-sm"
             >
               Get Price List
@@ -611,9 +618,9 @@ export default function Navbar() {
         />
       </header>
 
-         {isFormOpen && (                   
-      <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)}/>
-         )}
+      {isFormOpen && (
+        <Popup isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+      )}
     </>
   );
 }

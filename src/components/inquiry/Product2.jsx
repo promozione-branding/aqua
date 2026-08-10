@@ -12,6 +12,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { FaWhatsapp } from "react-icons/fa";
 import Popup from "../Popup";
+import Image from "next/image";
 
 export default function Product2() {
       const [isFormOpen, setIsFormOpen] = useState(false);
@@ -76,7 +77,9 @@ const products = [
               <SwiperSlide key={i}>
                 <div onClick={()=>{setIsFormOpen(true)}} className="bg-white rounded-xl border border-gray-300 p-3 md:p-3.5 text-center hover:shadow-md transition h-full">
                   
-                  <img
+                  <Image
+              height={100}
+                  width={100}
                     src={item.img}
                     alt={item.title}
                     className="h-30 md:h-50 mx-auto object-contain mb-3"

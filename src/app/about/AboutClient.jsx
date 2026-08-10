@@ -1,6 +1,7 @@
 "use client"
 import CTA from "@/components/LandingPage/CTA";
 import Popup from "@/components/Popup";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -81,7 +82,9 @@ export default function AboutClient() {
 
     {/* RIGHT IMAGE */}
     <div className="order-1 md:order-2 w-full">
-      <img
+      <Image
+      height={100}
+                  width={100}
         src="/1.png"
         alt="JNJ Aqua manufacturing facility"
         className="w-full h-100 md:h-full max-h-[630px] rounded-3xl object-cover shadow-sm"

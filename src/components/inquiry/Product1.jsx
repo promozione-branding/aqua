@@ -12,6 +12,7 @@ import Link from "next/link";
 import "swiper/css";
 import { FaWhatsapp } from "react-icons/fa";
 import Popup from "../Popup";
+import Image from "next/image";
 
 export default function Product1() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -126,7 +127,9 @@ export default function Product1() {
         onClick={() => setIsFormOpen(true)}
         className="bg-white rounded-xl border border-gray-300 p-3 text-center hover:shadow-md transition h-full"
       >
-        <img
+        <Image
+          height={100}
+          width={100}
           src={item.img}
           alt={item.title}
           className="h-28 mx-auto object-contain mb-3"

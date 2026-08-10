@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +20,9 @@ const ProductCard = memo(({ item, mobileSnap }) => {
     >
       {/* Image Container */}
       <div className="h-44 flex items-center justify-center bg-gray-50 p-4">
-        <img
+        <Image
+              height={100}
+                  width={100}
           src={item.image}
           alt={item.name}
           loading="lazy"
