@@ -5,9 +5,103 @@ import "swiper/css";
 import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
+import { useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function ProductCategoriesClient({ categories = [] }) {
-  console.log(categories);
+  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [product, setProduct] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const submitForm = async () => {
+    try {
+      setLoading(true);
+
+      const formData = {
+        platform: "Aqua JNJ",
+        platformEmail: "jnjaquadelhi@gmail.com",
+        name,
+        phone,
+        email,
+        place: "NA",
+        product,
+        message: `Company Name: ${"N/A"} ,"Message :"
+  
+  ${"NA"}`,
+      };
+
+      const { data } = await axios.post(
+        "https://brandbnalo.com/api/form/add",
+        formData,
+      );
+
+      if (data?.success) {
+        setSubmitted(true);
+
+        setSuccessMessage("✅ Your enquiry has been submitted successfully!");
+
+        toast.success("Form Submitted Successfully");
+
+        const whatsappText = `Hi, I am ${name}.
+  Email: ${email}
+  Product: ${product}
+  
+ 
+  
+  Contact: ${phone}`;
+
+        const waUrl = `https://wa.me/+919540010221?text=${encodeURIComponent(
+          whatsappText,
+        )}`;
+
+        setTimeout(() => {
+          window.open(waUrl, "_blank");
+        }, 1000);
+
+        // RESET
+        setName("");
+        setPhone("");
+        setEmail("");
+        setProduct("");
+        // setMessage("");
+        // setPlace("");
+        // setCompany("");
+        // setOtp("");
+
+        // setShowOtpBox(false);
+        // setIsPhoneVerified(false);
+
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 4000);
+      } else {
+        setSuccessMessage("❌ Failed to send. Please try again.");
+      }
+    } catch (error) {
+      console.log(error);
+
+      setSuccessMessage("❌ Server error. Try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // HANDLE SUBMIT
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!phone || phone.length !== 10) {
+      return toast.error("Enter Valid Phone Number");
+    }
+
+    await submitForm();
+  };
+
   return (
     <section className="w-full bg-[#fafafa] py-7 lg:py-14 overflow-hidden">
       <div className="max-w-7xl mx-auto px-0">
@@ -141,18 +235,23 @@ export default function ProductCategoriesClient({ categories = [] }) {
             manufacturers, dealers, distributors, and retailers.
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_1fr_auto]">
               {/* Name */}
               <input
                 type="text"
                 placeholder="Full Name"
+                value={name}
+                disabled={loading}
+                onChange={(e) => setName(e.target.value)}
                 className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
               />
 
               {/* Email */}
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email Address"
                 className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
               />
@@ -161,7 +260,8 @@ export default function ProductCategoriesClient({ categories = [] }) {
               <input
                 type="tel"
                 placeholder="Phone Number"
-                // value={phone}
+                value={phone}
+                disabled={loading}
                 onChange={(e) => {
                   const onlyNums = e.target.value.replace(/[^0-9]/g, "");
                   setPhone(onlyNums.slice(0, 10));
@@ -173,43 +273,29 @@ export default function ProductCategoriesClient({ categories = [] }) {
               />
 
               {/* Requirement */}
-              
-                <select
-                // value={product}
+
+              <select
+                value={product}
                 onChange={(e) => setProduct(e.target.value)}
                 className="h-15 w-full rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
                 required
-                // disabled={loading}
+                disabled={loading}
               >
                 <option value="" disabled>
                   Select Product
                 </option>
 
-                <option value="RO Cabinets">
-                 RO Cabinets
-                </option>
+                <option value="RO Cabinets">RO Cabinets</option>
 
-                <option value="Alkaline Filter">
-                 Alkaline Filter
-                </option>
+                <option value="Alkaline Filter">Alkaline Filter</option>
 
-                <option value="Inline Filter">
-                  Inline Filter
-                </option>
+                <option value="Inline Filter">Inline Filter</option>
 
-                <option value="Membrane">
-                  Membrane
-                </option>
+                <option value="Membrane">Membrane</option>
 
-                <option value="Pre Filter">
-                  Pre Filter
-                </option>
+                <option value="Pre Filter">Pre Filter</option>
 
-                <option value="Pump">
-                  Pump
-                </option>
-
-                
+                <option value="Pump">Pump</option>
               </select>
 
               {/* Desktop Button */}
@@ -231,6 +317,9 @@ export default function ProductCategoriesClient({ categories = [] }) {
               </button>
             </div>
           </form>
+          <p className="text-center mt-2 md:mt-4 font-medium text-lg text-blue-700">
+            {successMessage}
+          </p>
         </div>
       </section>
     </section>
