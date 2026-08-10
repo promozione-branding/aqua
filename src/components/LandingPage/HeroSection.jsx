@@ -13,14 +13,29 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden lg:h-screen bg-gradient-to-r ">
       {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover opacity-70 
-             bg-[url('/bannerMOB.webp')] 
-             md:bg-[url('/banner.webp')]"
-        style={{
-          backgroundPosition: "50% 60%",
-        }}
-      />
+      <div className="absolute inset-0 -z-10">
+  {/* 📱 Mobile Banner */}
+  <Image
+    src="/bannerMOB.webp"
+    alt="Mobile Banner"
+    fill
+    priority
+    quality={70}
+    sizes="100vw"
+    className="object-cover object-center opacity-70 md:hidden"
+  />
+
+  {/* 💻 Desktop Banner */}
+  <Image
+    src="/banner.webp"
+    alt="Desktop Banner"
+    fill
+    priority
+    quality={80}
+    sizes="100vw"
+    className="object-cover object-[50%_60%] opacity-70 hidden md:block"
+  />
+</div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-2 lg:py-0">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[500px] lg:min-h-[600px]">

@@ -549,8 +549,8 @@ export default function Navbar() {
                                   >
                                     <div className="w-12 h-12 bg-slate-50 rounded-full border border-slate-200 flex items-center justify-center p-2 group-hover/sub:border-blue-400 group-hover/sub:bg-blue-50/50 group-hover/sub:shadow-sm transition-all overflow-hidden shrink-0">
                                       <Image
-              height={100}
-                  width={100}
+                                        height={100}
+                                        width={100}
                                         src={sub.image || "/3.png"}
                                         alt={sub.name}
                                         className="w-full h-full object-contain group-hover/sub:scale-105 transition-transform duration-300"
