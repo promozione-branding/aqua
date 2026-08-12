@@ -78,7 +78,7 @@ export default function AboutSection() {
 
             {/* Paragraph Text */}
             <p className="mt-3 text-sm sm:text-base text-gray-700 leading-relaxed">
-              JNJ Aqua is a leading manufacturer of high-quality RO Cabinets and Spare Parts. With advanced technology, modern infrastructure and strict quality control, we deliver products that ensure purity, reliability and long-lasting performance.
+              JNJ Aqua is a leading manufacturer of high-quality <a className="font-bold text-blue-600" href="/products/ro-cabinet">RO Cabinets</a> and <a className="font-bold text-blue-600" href="/products/spareparts">Spare Parts</a>. With advanced technology, modern infrastructure and strict quality control, we deliver products that ensure purity, reliability and long-lasting performance.
             </p>
 
             {/* Compact Features Grid */}

@@ -124,7 +124,7 @@ export default function ProductCategoriesClient({ categories = [] }) {
               </h2>
 
               <p className="mt-5 text-gray-600 txt-lg leading-7">
-                Explore our complete range of RO Cabinets, Spare Parts,
+                <a className="font-bold text-blue-600" href="/products">Explore</a> our complete range of RO Cabinets, Spare Parts,
                 Components and OEM Manufacturing Solutions designed for quality,
                 performance and reliability.
               </p>
