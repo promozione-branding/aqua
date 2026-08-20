@@ -47,10 +47,10 @@ export default function HeroSection() {
                 • INDIA'S TRUSTED
               </span>
 
-              <h2 className="mt-4 text-2xl sm:text-3xl font-black leading-tight">
+              <h1 className="mt-4 text-2xl sm:text-3xl font-black leading-tight">
                 RO CABINET & SPARE PARTS
                 <span className="text-blue-600"> MANUFACTURER</span>
-              </h2>
+              </h1>
 
               <p className="mt-3 text-sm font-bold text-gray-600">
                 Premium Quality RO Cabinets, Spare Parts & OEM Manufacturing
@@ -123,7 +123,7 @@ export default function HeroSection() {
                   • INDIA'S TRUSTED
                 </motion.span>
 
-                <motion.h2
+                <motion.h1
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
@@ -134,7 +134,7 @@ export default function HeroSection() {
                   SPARE PARTS
                   <br />
                   <span className="text-blue-600">MANUFACTURER</span>
-                </motion.h2>
+                </motion.h1>
 
                 <motion.p
                   initial={{ opacity: 0, y: 15 }}
