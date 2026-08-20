@@ -6,6 +6,8 @@ import ManufacturingProcess from "@/components/LandingPage/ManufacturingProcess"
 import WhyChooseUs from "@/components/LandingPage/WhyChooseUs";
 import HeroSection from "@/components/LandingPage/HeroSection";
 import CTA from "@/components/LandingPage/CTA";
+import RO from "@/components/LandingPage/RO";
+import Faq from "@/components/LandingPage/Faq";
 
 export default function Home() {
   return (
@@ -13,10 +15,12 @@ export default function Home() {
       <HeroSection />
       <FeatureStrip />
       <ProductCategories />
+   
       <AboutSection />
       <FeaturedProducts />
       <WhyChooseUs />
       <ManufacturingProcess />
+      <Faq/>
       <CTA />
     </>
   );

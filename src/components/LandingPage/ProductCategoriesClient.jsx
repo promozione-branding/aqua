@@ -8,6 +8,7 @@ import { Check } from "lucide-react";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import RO from "./RO";
 
 export default function ProductCategoriesClient({ categories = [] }) {
   const [loading, setLoading] = useState(false);
@@ -322,6 +323,8 @@ export default function ProductCategoriesClient({ categories = [] }) {
           </p>
         </div>
       </section>
+
+         <RO/>
     </section>
   );
 }
