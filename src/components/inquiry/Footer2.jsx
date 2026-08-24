@@ -30,16 +30,15 @@ export default function Footer() {
               aria-label="JNJ AQUA home"
               className="inline-flex items-center group"
             >
-              <h1 className="text-3xl font-extrabold tracking-tight text-white group-hover:text-blue-50 transition-colors">
+              <p className="text-3xl font-extrabold tracking-tight text-white group-hover:text-blue-50 transition-colors">
                 JNJ AQUA
-              </h1>
+              </p>
             </Link>
             <p className="text-slate-400 text-sm mt-5 max-w-[280px] leading-relaxed">
               Manufacturer of premium RO Cabinets & Spare Parts. Delivering
               quality, innovation, and customized solutions for businesses
               across India.
             </p>
-           
           </div>
 
           {/* Quick Links */}
@@ -175,15 +174,14 @@ export default function Footer() {
           </span>
           <div className="flex gap-6">
             <p className="text-center">
-              Website Designed By 
-                Inquiry Bazaar Pvt. Ltd.  {" "}
-        <a
-          target="_blank"
-          href="https://inquirybazaar.com/"
-          className="text-[#2B4D9D] hover:underline"
-        >
-           B2B Marketplace
-        </a>
+              Website Designed By Inquiry Bazaar Pvt. Ltd.{" "}
+              <a
+                target="_blank"
+                href="https://inquirybazaar.com/"
+                className="text-[#2B4D9D] hover:underline"
+              >
+                B2B Marketplace
+              </a>
             </p>
           </div>
         </div>
