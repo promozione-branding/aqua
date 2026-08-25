@@ -24,8 +24,6 @@ import { useState } from "react";
 import Faq2 from "@/components/City/Faq2";
 import CTA from "@/components/LandingPage/CTA";
 
-
-
 const products = [
   {
     name: "Alive RO Water Cabinet",
@@ -60,35 +58,34 @@ const products = [
 const products2 = [
   {
     title: "AROMA RO CABINET",
-    image:"/citypage/aroma.webp",
-    href:"/products/ro-cabinet/aroma",
-    star:4
+    image: "/citypage/aroma.webp",
+    href: "/products/ro-cabinet/aroma",
+    star: 4,
   },
   {
     title: "PRIDE WATER PURIFIER BODY",
     image: "/citypage/pride.webp",
-    href:"/products/ro-cabinet/pride"
+    href: "/products/ro-cabinet/pride",
   },
   {
     title: "Merlin I Speed Water Purifier",
     image: "/citypage/merlin.webp",
-    href:"/products/reverse-osmosis-water-purifier/merlin-i-speed-water-purifier"
+    href: "/products/reverse-osmosis-water-purifier/merlin-i-speed-water-purifier",
   },
   {
     title: "Merlin Rapid digital Ro system",
     image: "/citypage/rapid2.webp",
-    href:"/products/reverse-osmosis-water-purifier/merlin-rapid-digital-ro-system"
-    
+    href: "/products/reverse-osmosis-water-purifier/merlin-rapid-digital-ro-system",
   },
   {
     title: "ELEVEN RO BODY CABINET",
     image: "/citypage/eleven.webp",
-    href:"/products/ro-cabinet/eleven"
+    href: "/products/ro-cabinet/eleven",
   },
   {
     title: "QUBE RO CABINET",
     image: "/citypage/qube.webp",
-    href:"/products/ro-cabinet/qube-5077"
+    href: "/products/ro-cabinet/qube-5077",
   },
 ];
 
@@ -164,9 +161,7 @@ const FloatingIcon = ({ children, className }) => {
   );
 };
 
-
-
-export default function Location({city}) {
+export default function Location({ city }) {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -175,43 +170,39 @@ export default function Location({city}) {
   const [product, setProduct] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-   
-
-
-    const features3 = [
-  {
-    icon: FaCheckCircle,
-    title: "Quality Products",
-    description: `We manufacture high-quality RO cabinets, water purifiers, and RO spare parts in ${city}, using reliable materials and maintaining excellent finishing standards.`,
-  },
-  {
-    icon: FaTags,
-    title: "Competitive Pricing",
-    description: `As an experienced RO Cabinet Manufacturer in ${city}, we offer competitive prices for both standard and bulk requirements.`,
-  },
-  {
-    icon: FaShieldAlt,
-    title: "Durable & Reliable",
-    description:
-      "Our RO cabinets and water purifiers are designed for reliable performance, durability, and long-term use.",
-  },
-  {
-    icon: FaPalette,
-    title: "Modern Designs",
-    description: `We offer stylish and practical RO cabinet designs in ${city} that complement modern domestic water purification systems.`,
-  },
-  {
-    icon: FaUsers,
-    title: "Experienced Team",
-    description: `Our experienced team follows consistent manufacturing processes to deliver reliable RO water purifier products in ${city}.`,
-  },
-  {
-    icon: FaIndustry,
-    title: "Bulk Manufacturing",
-    description: `JNJ Aqua provides bulk manufacturing and supply of RO cabinets, water purifiers, spare parts, and accessories in ${city} for dealers, distributors, and businesses.`,
-  },
-];
-
+  const features3 = [
+    {
+      icon: FaCheckCircle,
+      title: "Quality Products",
+      description: `We manufacture high-quality RO cabinets, water purifiers, and RO spare parts in ${city}, using reliable materials and maintaining excellent finishing standards.`,
+    },
+    {
+      icon: FaTags,
+      title: "Competitive Pricing",
+      description: `As an experienced RO Cabinet Manufacturer in ${city}, we offer competitive prices for both standard and bulk requirements.`,
+    },
+    {
+      icon: FaShieldAlt,
+      title: "Durable & Reliable",
+      description:
+        "Our RO cabinets and water purifiers are designed for reliable performance, durability, and long-term use.",
+    },
+    {
+      icon: FaPalette,
+      title: "Modern Designs",
+      description: `We offer stylish and practical RO cabinet designs in ${city} that complement modern domestic water purification systems.`,
+    },
+    {
+      icon: FaUsers,
+      title: "Experienced Team",
+      description: `Our experienced team follows consistent manufacturing processes to deliver reliable RO water purifier products in ${city}.`,
+    },
+    {
+      icon: FaIndustry,
+      title: "Bulk Manufacturing",
+      description: `JNJ Aqua provides bulk manufacturing and supply of RO cabinets, water purifiers, spare parts, and accessories in ${city} for dealers, distributors, and businesses.`,
+    },
+  ];
 
   const submitForm = async () => {
     try {
@@ -297,18 +288,18 @@ export default function Location({city}) {
     await submitForm();
   };
 
-
   return (
     <>
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-100">
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.12),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_45%)]" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-slate-100">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(37,99,235,0.12),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_45%)]" />
 
-  <div className="relative max-w-7xl mx-auto px-6 py-18 md:py-25">
-    <h1 className="mt-6 text-2xl text-center md:text-6xl font-bold leading-tight text-slate-900">
-      Water Purifier Manufacturer in <span className="text-blue-700">{city}</span> 
-    </h1>
-  </div>
-</section>
+        <div className="relative max-w-7xl mx-auto px-6 py-18 md:py-25">
+          <h1 className="mt-6 text-2xl text-center md:text-6xl font-bold leading-tight text-slate-900">
+            Water Purifier Manufacturer in{" "}
+            <span className="text-blue-700">{city}</span>
+          </h1>
+        </div>
+      </section>
 
       {/* explore products */}
 
@@ -547,9 +538,7 @@ export default function Location({city}) {
 
             {/* Main Heading */}
             <h2 className="max-w-[650px] text-4xl font-bold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl lg:text-[52px]">
-              Pure Water ,
-                    {" "}
-              <span className="text-blue-600">Better Life</span>
+              Pure Water , <span className="text-blue-600">Better Life</span>
             </h2>
 
             {/* Description */}
@@ -686,8 +675,6 @@ export default function Location({city}) {
                           {product.title}
                         </h3>
                       </Link>
-
-                     
                     </div>
                   </div>
                 </SwiperSlide>
@@ -780,97 +767,95 @@ export default function Location({city}) {
       </section>
 
       {/* why choose */}
-  <section className="relative overflow-hidden bg-white px-5 py-6 md:py-12">
-  {/* Background Decoration */}
-  <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-blue-600/[0.04]" />
-  <div className="pointer-events-none absolute -bottom-40 -left-40 h-[450px] w-[450px] rounded-full bg-blue-600/[0.04]" />
+      <section className="relative overflow-hidden bg-white px-5 py-6 md:py-12">
+        {/* Background Decoration */}
+        <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-blue-600/[0.04]" />
+        <div className="pointer-events-none absolute -bottom-40 -left-40 h-[450px] w-[450px] rounded-full bg-blue-600/[0.04]" />
 
-  <div className="relative mx-auto max-w-[1400px]">
-    {/* ================= HEADER ================= */}
-    <div className="mx-auto mb-12 max-w-4xl text-center lg:mb-16">
-      {/* Small Label */}
-      <div className="mb-4 flex items-center justify-center gap-3">
-        <span className="h-[2px] w-8 bg-blue-600" />
+        <div className="relative mx-auto max-w-[1400px]">
+          {/* ================= HEADER ================= */}
+          <div className="mx-auto mb-12 max-w-4xl text-center lg:mb-16">
+            {/* Small Label */}
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <span className="h-[2px] w-8 bg-blue-600" />
 
-        <span className="text-sm font-bold uppercase tracking-[0.25em] text-blue-600">
-          Why Choose Us
-        </span>
+              <span className="text-sm font-bold uppercase tracking-[0.25em] text-blue-600">
+                Why Choose Us
+              </span>
 
-        <span className="h-[2px] w-8 bg-blue-600" />
-      </div>
-
-      {/* Heading */}
-      <h2 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-        Why Choose JNJ Aqua as a{" "}
-        <span className="text-blue-600">
-          RO Cabinet Manufacturer in {city}s?
-        </span>
-      </h2>
-
-      {/* Description */}
-      <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-gray-600">
-        At{" "}
-        <strong className="font-semibold text-gray-900">
-          JNJ Aqua
-        </strong>
-        , we are committed to providing high-quality{" "}
-        <strong className="font-semibold text-gray-900">
-          RO cabinets, water purifiers, RO spare parts, and accessories in{" "}
-          {city}
-        </strong>
-        . As a trusted{" "}
-        <strong className="font-semibold text-gray-900">
-          RO Cabinet Manufacturer in {city}
-        </strong>{" "}
-        and{" "}
-        <strong className="font-semibold text-gray-900">
-          Water Purifier Manufacturer in {city}
-        </strong>
-        , we focus on quality, durability, competitive pricing, and customer
-        satisfaction.
-      </p>
-    </div>
-
-    {/* ================= FEATURE GRID ================= */}
-    <div className="grid gap-5 md:px-20 sm:grid-cols-2 lg:grid-cols-3">
-      {features3.map((feature, index) => {
-        const Icon = feature.icon;
-
-        return (
-          <article
-            key={feature.title}
-            className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-600/30 hover:shadow-xl"
-          >
-            {/* Top Blue Line */}
-            <div className="absolute left-0 right-0 top-0 h-1 origin-left scale-x-0 bg-blue-600 transition-transform duration-300 group-hover:scale-x-100" />
-
-            {/* Number */}
-            <span className="absolute right-5 top-4 text-5xl font-black text-gray-100 transition-colors duration-300 group-hover:text-blue-600/[0.08]">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-
-            {/* Icon */}
-            <div className="relative mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-              <Icon className="text-xl" />
+              <span className="h-[2px] w-8 bg-blue-600" />
             </div>
 
-            {/* Content */}
-            <h3 className="relative text-xl font-bold text-gray-900">
-              {feature.title}
-            </h3>
+            {/* Heading */}
+            <h2 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+              Why Choose JNJ Aqua as a{" "}
+              <span className="text-blue-600">
+                RO Cabinet Manufacturer in {city}s?
+              </span>
+            </h2>
 
-            <p className="relative mt-3 text-sm leading-6 text-gray-600">
-              {feature.description}
+            {/* Description */}
+            <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-gray-600">
+              At{" "}
+              <strong className="font-semibold text-gray-900">JNJ Aqua</strong>,
+              we are committed to providing high-quality{" "}
+              <strong className="font-semibold text-gray-900">
+                RO cabinets, water purifiers, RO spare parts, and accessories in{" "}
+                {city}
+              </strong>
+              . As a trusted{" "}
+              <strong className="font-semibold text-gray-900">
+                RO Cabinet Manufacturer in {city}
+              </strong>{" "}
+              and{" "}
+              <strong className="font-semibold text-gray-900">
+                Water Purifier Manufacturer in {city}
+              </strong>
+              , we focus on quality, durability, competitive pricing, and
+              customer satisfaction.
             </p>
+          </div>
 
-            {/* Bottom Accent */}
-            <div className="mt-6 h-px w-10 bg-blue-600 transition-all duration-300 group-hover:w-full" />
-          </article>
-        );
-      })}
-    </div>
-  </div>
-</section>
+          {/* ================= FEATURE GRID ================= */}
+          <div className="grid gap-5 md:px-20 sm:grid-cols-2 lg:grid-cols-3">
+            {features3.map((feature, index) => {
+              const Icon = feature.icon;
+
+              return (
+                <article
+                  key={feature.title}
+                  className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-600/30 hover:shadow-xl"
+                >
+                  {/* Top Blue Line */}
+                  <div className="absolute left-0 right-0 top-0 h-1 origin-left scale-x-0 bg-blue-600 transition-transform duration-300 group-hover:scale-x-100" />
+
+                  {/* Number */}
+                  <span className="absolute right-5 top-4 text-5xl font-black text-gray-100 transition-colors duration-300 group-hover:text-blue-600/[0.08]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Icon */}
+                  <div className="relative mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                    <Icon className="text-xl" />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="relative text-xl font-bold text-gray-900">
+                    {feature.title}
+                  </h3>
+
+                  <p className="relative mt-3 text-sm leading-6 text-gray-600">
+                    {feature.description}
+                  </p>
+
+                  {/* Bottom Accent */}
+                  <div className="mt-6 h-px w-10 bg-blue-600 transition-all duration-300 group-hover:w-full" />
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* form */}
       <section className="relative z-10 mt-13 px-4 lg:px-8">
