@@ -305,7 +305,7 @@ export default function Location({city}) {
 
   <div className="relative max-w-7xl mx-auto px-6 py-18 md:py-25">
     <h1 className="mt-6 text-2xl text-center md:text-6xl font-bold leading-tight text-slate-900">
-      Water Purifier Manufacturer in {city}
+      Water Purifier Manufacturer in <span className="text-blue-700">{city}</span> 
     </h1>
   </div>
 </section>
