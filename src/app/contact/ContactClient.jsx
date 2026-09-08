@@ -38,6 +38,7 @@ export default function ContactClient() {
       const payload = {
         platform: "JNJ AQUA",
         platformEmail: "jnjaquadelhi@gmail.com",
+         supplierToken: "6a9fefe9d936bdc2bb1dabfc",
 
         name: form.name,
         phone: form.phone,

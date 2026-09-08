@@ -211,6 +211,8 @@ export default function Location({ city }) {
       const formData = {
         platform: "Aqua JNJ City Page",
         platformEmail: "jnjaquadelhi@gmail.com",
+        supplierToken: "6a9fefe9d936bdc2bb1dabfc",
+
         name,
         phone,
         email,

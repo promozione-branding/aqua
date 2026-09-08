@@ -32,6 +32,7 @@ export default function Popup({ isOpen, onClose }) {
       const formData = {
         platform: "Aqua JNJ",
         platformEmail: "jnjaquadelhi@gmail.com",
+         supplierToken: "6a9fefe9d936bdc2bb1dabfc",
         name,
         phone,
         email,
