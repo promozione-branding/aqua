@@ -147,7 +147,7 @@ export default function WhyChooseUs() {
                   width={100}
                 src="/22.png"
                 className="h-[150px] xs:h-[170px] sm:h-[230px] lg:h-[260px] w-auto object-contain rotate-[-10deg] absolute left-[15px] xs:left-[30px] sm:left-4 lg:left-2 bottom-4 drop-shadow-2xl hover:scale-105 transition duration-300"
-                alt="Product 2"
+                alt="RO Cabinets"
               />
 
               {/* Center Product */}
@@ -156,7 +156,7 @@ export default function WhyChooseUs() {
                   width={100}
                 src="/1.png"
                 className="h-[190px] xs:h-[215px] sm:h-[290px] lg:h-[340px] w-auto object-contain relative z-20 drop-shadow-2xl hover:-translate-y-3 transition duration-300"
-                alt="Product 1"
+                alt="RO Cabinets"
               />
 
               {/* Right Product */}
@@ -165,7 +165,7 @@ export default function WhyChooseUs() {
                   width={100}
                 src="/3.png"
                 className="h-[150px] xs:h-[170px] sm:h-[230px] lg:h-[260px] w-auto object-contain rotate-[10deg] absolute right-[15px] xs:right-[30px] sm:right-3 lg:right-5 bottom-4 drop-shadow-2xl hover:scale-105 transition duration-300"
-                alt="Product 3"
+                alt="RO Cabinets"
               />
             </div>
           </div>

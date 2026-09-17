@@ -17,7 +17,7 @@ export default function HeroSection() {
   {/* 📱 Mobile Banner */}
   <Image
     src="/bannerMOB.webp"
-    alt="Mobile Banner"
+    alt="Water Purifier Manufacturer"
     fill
     priority
     quality={70}
@@ -28,7 +28,7 @@ export default function HeroSection() {
   {/* 💻 Desktop Banner */}
   <Image
     src="/banner.webp"
-    alt="Desktop Banner"
+    alt="Water Purifier Manufacturer"
     fill
     priority
     quality={80}
@@ -64,7 +64,7 @@ export default function HeroSection() {
                   height={100}
                   width={100}
                   src="/1111.webp"
-                  alt="RO 1"
+                  alt="RO Cabinets"
                   className="absolute -left-5 -bottom-14 w-[160px] z-10 drop-shadow-2xl"
                 />
 
@@ -73,7 +73,7 @@ export default function HeroSection() {
                   height={100}
                   width={100}
                   src="/2222.webp"
-                  alt="RO 2"
+                  alt="RO Cabinets"
                   className="absolute left-1/2 -translate-x-1/2 -bottom-11 w-[190px] z-30 drop-shadow-[0_25px_25px_rgba(0,0,0,.35)]"
                 />
 
@@ -82,7 +82,7 @@ export default function HeroSection() {
                   height={100}
                   width={100}
                   src="/3333.webp"
-                  alt="RO 3"
+                  alt="RO Cabinets"
                   className="absolute -right-1 -bottom-8 w-[130px] z-20 drop-shadow-2xl"
                 />
               </div>
@@ -207,7 +207,7 @@ export default function HeroSection() {
                 height={100}
                 width={100}
                 src="/1111.webp"
-                alt="RO 1"
+                alt="RO Cabinets"
                 className="absolute bottom-12 -left-17 w-[250px] z-10 drop-shadow-2xl "
               />
 
@@ -216,7 +216,7 @@ export default function HeroSection() {
                 height={100}
                 width={100}
                 src="/2222.webp"
-                alt="RO 2"
+                alt="RO Cabinets"
                 className="absolute bottom-8 -right-30 -translate-x-1/2 w-[380px] z-30 drop-shadow-[0_35px_35px_rgba(0,0,0,.35)]"
               />
 
@@ -225,7 +225,7 @@ export default function HeroSection() {
                 height={100}
                 width={100}
                 src="/3333.webp"
-                alt="RO 3"
+                alt="RO Cabinets"
                 className="absolute bottom-22 -right-10 w-[180px] z-20 drop-shadow-2xl "
               />
             </div>

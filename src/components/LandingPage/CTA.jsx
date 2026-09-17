@@ -14,7 +14,7 @@ export default function CTA() {
    <section className="relative overflow-hidden bg-gradient-to-br from-[#1D7FD8] via-[#2E8EDB] to-[#3DB7E6] py-14">
       <Image
     src="/water.png"
-    alt="Water"
+    alt=" RO Cabinet Manufacturer"
     fill
     className="absolute bottom-0 left-0 object-cover opacity-20 pointer-events-none"
   />

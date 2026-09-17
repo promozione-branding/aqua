@@ -180,7 +180,7 @@ export default function ProductCategoriesClient({ categories = [] }) {
                         <div className="mt-0 flex justify-center overflow-hidden rounded-2xl bg-gray-50">
                           <Image
                             src={item.image}
-                            alt={item.title}
+                            alt={item.title +" RO Cabinets"}
                             width={220}
                             height={180}
                             className="h-[210px] w-full object-contain transition duration-300 group-hover:scale-105"

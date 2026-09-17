@@ -30,9 +30,9 @@ export default function Footer() {
               aria-label="JNJ AQUA home"
               className="inline-flex items-center group"
             >
-              <h1 className="text-3xl font-extrabold tracking-tight text-white group-hover:text-blue-50 transition-colors">
+              <h3 className="text-3xl font-extrabold tracking-tight text-white group-hover:text-blue-50 transition-colors">
                 JNJ AQUA
-              </h1>
+              </h3>
             </Link>
             <p className="text-slate-400 text-sm mt-5 max-w-[280px] leading-relaxed">
               Manufacturer of premium RO Cabinets & Spare Parts. Delivering

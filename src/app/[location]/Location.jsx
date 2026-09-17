@@ -488,7 +488,7 @@ export default function Location({ city }) {
             <div className="absolute left-0 top-5 h-[330px] w-[78%] overflow-hidden rounded-2xl border border-gray-100 bg-gray-100 shadow-lg sm:h-[380px]">
               <Image
                 src="/citypage/aroma.webp"
-                alt="Water purification plant"
+                alt="RO Cabinet Manufacturer"
                 fill
                 priority
                 sizes="(max-width: 1024px) 80vw, 40vw"
@@ -503,7 +503,7 @@ export default function Location({ city }) {
             <div className="absolute bottom-0 right-0 z-10 flex h-[235px] w-[58%] items-center justify-center overflow-hidden rounded-2xl border-2 border-blue-600 bg-[#e8edf6] p-5 shadow-2xl sm:h-[270px]">
               <Image
                 src="/citypage/nexlin-urban.webp"
-                alt="Water purifier system"
+                alt="Water Purifier Manufacturer"
                 fill
                 sizes="(max-width: 1024px) 60vw, 25vw"
                 className="object-contain p-4 transition-transform duration-500 hover:scale-105"
@@ -736,7 +736,7 @@ export default function Location({ city }) {
               {/* Your purifier image */}
               <img
                 src="/citypage/alive-ro.webp"
-                alt="RO Water Purifier"
+                alt="RO Cabinet Manufacturer"
                 className="relative z-10 h-auto w-[230px] object-contain md:w-[380px] "
               />
 
