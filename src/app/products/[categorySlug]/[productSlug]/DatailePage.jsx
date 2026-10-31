@@ -21,6 +21,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import Popup from "@/components/Popup";
+import { handleWhatsappClick } from "@/lib/tracking";
 
 const iconMap = {
   ShieldCheck,
@@ -428,6 +429,7 @@ export default function ProductDetailClient({
                 href={`https://wa.me/919540010221?text=Hello,%20I'm%20interested%20in%20the%20${encodeURIComponent(product.name)}`}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => handleWhatsappClick({ obj: { name: product.name }, source: 'Website' })}
                 className="flex items-center text-base justify-center gap-2 bg-green-500 border border-slate-300 text-white font-semibold rounded-lg px-4 py-3 hover:bg-green-600 hover:scale-105 duration-150 transition w-full sm:w-auto text-center"
               >
                 <FaWhatsapp size={23} />

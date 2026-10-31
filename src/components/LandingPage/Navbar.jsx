@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Popup from "../Popup";
 import Image from "next/image";
+import { handleCallClick } from "@/lib/tracking";
 
 /**
  * OPTIMIZATION: Memoized Mobile Menu
@@ -208,6 +209,7 @@ const MobileMenuPanel = memo(
             <a
               href="tel:+919540010221"
               className="flex items-center justify-center gap-2 mt-4 text-slate-600 font-medium text-sm"
+            onClick={() => handleCallClick({ source: 'Website' })}
             >
               <Phone size={16} /> Support: +91 95400 10221
             </a>
@@ -363,6 +365,7 @@ export default function Navbar() {
             <a
               href="tel:+918595776029"
               className="flex items-center gap-1.5 hover:text-blue-200 transition"
+              onClick={() => handleCallClick({ source: 'Website' })}
             >
               <Phone size={13} />
               <span>+91 85957 76029</span>

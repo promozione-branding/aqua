@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import Popup from "@/components/Popup";
+import { handleCallClick } from "@/lib/tracking";
 
 export default function Inquiry() {
   const [open, setOpen] = useState(false);
@@ -59,6 +60,7 @@ export default function Inquiry() {
             {/* Phone */}
             <a
               href="tel:+919540010221"
+              onClick={() => handleCallClick({ source: 'Website' })}
               className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-blue-600"
             >
               <Phone size={16} />
@@ -81,6 +83,7 @@ export default function Inquiry() {
             {/* Call */}
             <a
               href="tel:+919540010221"
+              onClick={() => handleCallClick({ source: 'Website' })}
               className="inline-flex items-center gap-0.5 bg-blue-100 px-2 py-2 rounded-full text-blue-700 font-medium hover:bg-blue-200 transition"
             >
               <span>

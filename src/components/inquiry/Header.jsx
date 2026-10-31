@@ -5,6 +5,7 @@ import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import Popup from "../Popup";
+import { handleCallClick } from "@/lib/tracking";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -50,6 +51,7 @@ export default function Header() {
           <a
             href="tel:+918595776029"
             className="flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-blue-600"
+           onClick={() => handleCallClick({ source: 'Website' })}
           >
             <Phone size={16} />
             +91 85957 76029

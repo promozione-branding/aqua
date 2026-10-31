@@ -4,6 +4,7 @@ import { FaFileAlt,    FaWhatsapp } from "react-icons/fa";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { useState } from "react";
 import Popup from "../Popup";
+import { handleCallClick } from "@/lib/tracking";
 
 
 const MobFooter = () => {
@@ -14,7 +15,7 @@ const MobFooter = () => {
       <div className="mx-2 mb-2 rounded-2xl bg-[#f5f7fb] border border-blue-600 shadow-lg flex overflow-hidden">
 
         {/* Get Quote */}
-        <a  href="tel:+918595776029" className="flex-1 flex flex-col items-center justify-center py-3 text-blue-700 hover:bg-blue-50 transition">
+        <a  href="tel:+918595776029" className="flex-1 flex flex-col items-center justify-center py-3 text-blue-700 hover:bg-blue-50 transition" onClick={() => handleCallClick({ source: 'Website' })}>
           <BiSolidPhoneCall   className="size-6 mb-1" />
           <span className="text-sm font-semibold">Call</span>
         </a>

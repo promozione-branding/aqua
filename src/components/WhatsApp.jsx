@@ -1,4 +1,5 @@
 "use client";
+import { handleCallClick, handleWhatsappClick } from "@/lib/tracking";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
@@ -16,6 +17,7 @@ const WhatsApp = () => {
         <a
           href="tel:+919540010221" // 👈 replace with your number
           aria-label="Call Corechem Corporation"
+          onClick={() => handleCallClick({ source: 'Website' })}
           className="fixed bottom-20 right-4 z-50 bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition animate-bounce"
         >
           <FaPhoneAlt size={24} />
@@ -29,6 +31,7 @@ const WhatsApp = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat on WhatsApp with Corechem Corporation"
+          onClick={() => handleWhatsappClick({ source: 'Website' })}
           className="fixed bottom-5 right-4 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition animate-bounce"
         >
           <FaWhatsapp size={26} />

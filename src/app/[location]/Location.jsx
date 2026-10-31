@@ -23,6 +23,7 @@ import { FaStar } from "react-icons/fa6";
 import { useState } from "react";
 import Faq2 from "@/components/City/Faq2";
 import CTA from "@/components/LandingPage/CTA";
+import { handleCallClick } from "@/lib/tracking";
 
 const products = [
   {
@@ -386,6 +387,7 @@ export default function Location({ city }) {
                         <Link
                           href="tel:+919540010221"
                           aria-label={`Call about ${product.name}`}
+                          onClick={() => handleCallClick({ obj: { name: product.name }, source: 'Website' })}
                           className="group flex flex-1 items-center justify-center gap-2 rounded-xl border border-blue-600 bg-blue-600 px-4 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-blue-700 hover:shadow-lg"
                         >
                           <FaPhoneAlt className="text-base transition-transform duration-300 group-hover:scale-110" />
@@ -398,6 +400,7 @@ export default function Location({ city }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`WhatsApp about ${product.name}`}
+                          onClick={() => handleWhatsappClick({ obj: { name: product.name }, source: 'Website' })}
                           className="group flex flex-1 items-center justify-center gap-2 rounded-xl border border-[#25D366] bg-[#25D366] px-4 py-3 text-base font-semibold text-white transition-all duration-300 hover:bg-[#1ebe5d] hover:shadow-lg"
                         >
                           <FaWhatsapp className="text-2xl transition-transform duration-300 group-hover:scale-110" />

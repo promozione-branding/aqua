@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, Clock, Send, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { handleCallClick } from "@/lib/tracking";
 export default function ContactClient() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -320,6 +321,7 @@ export default function ContactClient() {
                       <a
                         key={i}
                         href={`tel:${num.replace(/\s/g, "")}`}
+                        onClick={() => handleCallClick({ source: 'Website' })}
                         className="text-slate-600 text-sm font-medium transition hover:text-blue-700"
                       >
                         {num}
