@@ -30,7 +30,7 @@ const MobFooter = () => {
 
         {/* WhatsApp */}
         <a
-          href="https://wa.link/jqmslb"
+          href="https://wa.me/919540010221"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 flex flex-col items-center justify-center py-3 text-blue-700 hover:bg-blue-50 transition"

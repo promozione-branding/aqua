@@ -145,7 +145,7 @@ export default function Product1() {
           </button>
 
           <a
-            href="https://wa.link/jqmslb"
+            href="https://wa.me/919540010221"
             onClick={(e) => e.stopPropagation()}
             className="text-green-600 border border-green-600 text-sm px-6 py-1 rounded-lg flex items-center justify-center"
           >
@@ -251,7 +251,7 @@ export default function Product1() {
             </button>
 
             <Link
-              href="https://wa.link/jqmslb"
+              href="https://wa.me/919540010221"
               className="border flex justify-center items-center gap-2 border-blue-600 text-green-600 px-5 py-2 rounded-full text-sm hover:bg-blue-600 hover:text-white transition"
             >
               WhatsApp <FaWhatsapp className="" size={20} />

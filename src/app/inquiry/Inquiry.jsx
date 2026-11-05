@@ -95,7 +95,7 @@ export default function Inquiry() {
 
             {/* WhatsApp */}
             <a
-              href="https://wa.link/jqmslb"
+              href="https://wa.me/919540010221"
               className="bg-green-500 p-1 rounded-full text-white"
             >
               <FaWhatsapp size={28} />

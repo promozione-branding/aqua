@@ -36,7 +36,7 @@ export default function Cta() {
           </button>
 
           <Link
-            href="https://wa.link/jqmslb"
+            href="https://wa.me/919540010221"
             target="_blank"
             className="flex items-center justify-center gap-2 border border-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-white hover:text-blue-600 transition"
           >

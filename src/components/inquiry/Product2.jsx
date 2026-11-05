@@ -98,7 +98,7 @@ const products = [
                                       VIEW <ArrowRight size={14} />
                                     </button>
                                     <div onClick={(e)=>{e.stopPropagation()}}>
-                                    <Link href="https://wa.link/jqmslb" className=" text-blue-600 text-sm border text-green-500 border-green-600 px-4 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
+                                    <Link href="https://wa.me/919540010221" className=" text-blue-600 text-sm border text-green-500 border-green-600 px-4 py-1.5 rounded-lg font-semibold flex items-center gap-1 hover:bg-blue-600 hover:text-white transition">
                                        <FaWhatsapp className="" size={20} />
                                     </Link>
                                     </div>
@@ -115,7 +115,7 @@ const products = [
             </button>
 
             
-             <Link href="https://wa.link/jqmslb" className="border flex justify-center items-center gap-2 border-blue-600 text-green-600 px-5 py-2 rounded-full text-sm hover:bg-blue-600 hover:text-white transition">
+             <Link href="https://wa.me/919540010221" className="border flex justify-center items-center gap-2 border-blue-600 text-green-600 px-5 py-2 rounded-full text-sm hover:bg-blue-600 hover:text-white transition">
               WhatsApp <FaWhatsapp className="" size={20} />
             </Link>
             

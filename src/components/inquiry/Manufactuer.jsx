@@ -63,7 +63,7 @@ export default function Manufactuer() {
             Contact Us
           </button>
           <a
-            href="https://wa.link/jqmslb"
+            href="https://wa.me/919540010221"
             className="inline-flex items-center gap-2 bg-white text-blue-700 px-5 py-2.5 rounded-full font-medium hover:bg-gray-100 transition"
           >
             <FaWhatsapp size={23} />
