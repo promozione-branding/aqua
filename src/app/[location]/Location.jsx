@@ -208,9 +208,9 @@ export default function Location({ city }) {
   const submitForm = async () => {
     try {
       setLoading(true);
-
+      const webisteUrl = window.location.hostname + window.location.pathname
       const formData = {
-        platform: "Aqua JNJ City Page",
+        platform: webisteUrl || "Aqua JNJ City Page",
         platformEmail: "jnjaquadelhi@gmail.com",
         supplierToken: "6a9fefe9d936bdc2bb1dabfc",
 

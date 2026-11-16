@@ -22,11 +22,11 @@ export default function ProductCategoriesClient({ categories = [] }) {
   const submitForm = async () => {
     try {
       setLoading(true);
-
+      const webisteUrl = window.location.hostname + window.location.pathname
       const formData = {
-        platform: "Aqua JNJ",
+        platform: webisteUrl || "Aqua JNJ",
         platformEmail: "jnjaquadelhi@gmail.com",
-         supplierToken: "6a9fefe9d936bdc2bb1dabfc",
+        supplierToken: "6a9fefe9d936bdc2bb1dabfc",
         name,
         phone,
         email,
@@ -180,7 +180,7 @@ export default function ProductCategoriesClient({ categories = [] }) {
                         <div className="mt-0 flex justify-center overflow-hidden rounded-2xl bg-gray-50">
                           <Image
                             src={item.image}
-                            alt={item.title +" RO Cabinets"}
+                            alt={item.title + " RO Cabinets"}
                             width={220}
                             height={180}
                             className="h-[210px] w-full object-contain transition duration-300 group-hover:scale-105"
@@ -325,7 +325,7 @@ export default function ProductCategoriesClient({ categories = [] }) {
         </div>
       </section>
 
-         <RO/>
+      <RO />
     </section>
   );
 }
