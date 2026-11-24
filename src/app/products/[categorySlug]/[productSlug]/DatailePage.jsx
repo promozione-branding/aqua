@@ -128,6 +128,16 @@ export default function ProductDetailClient({
   const [activeThumb, setActiveThumb] = useState(0);
   const [activeTab, setActiveTab] = useState("description");
 
+  const price = Number(product.price) || 0;
+  const discountPrice = Number(product.discountPrice) || 0;
+  const hasDiscount = discountPrice > 0 && discountPrice < price;
+  const currentPrice = hasDiscount ? discountPrice : price;
+  const discountPercentage = hasDiscount
+    ? Math.round(((price - discountPrice) / price) * 100)
+    : 0;
+  const formatPrice = (amount) =>
+    `₹${amount.toLocaleString("en-IN", { maximumFractionDigits: 2 })}`;
+
   const isSparePart =
     categorySlug === "spareparts" ||
     categorySlug === "spare-parts" ||
@@ -302,6 +312,43 @@ export default function ProductDetailClient({
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-4">
               {product.shortDescription || "Premium food-grade design."}
             </p>
+
+            <div className="mt-5 rounded-xl border border-blue-100 bg-white p-4 sm:p-5 shadow-sm">
+              <div className="flex items-center justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Price
+                  </p>
+                  <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="text-2xl sm:text-3xl font-extrabold text-blue-950">
+                      {formatPrice(currentPrice)}
+                    </span>
+                    {hasDiscount && (
+                      <>
+                        <span className="text-sm sm:text-base text-slate-400 line-through">
+                          {formatPrice(price)}
+                        </span>
+                        <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-700">
+                          {discountPercentage}% OFF
+                        </span>
+                      </>
+                    )}
+                  </div>
+                  {hasDiscount && (
+                    <p className="mt-1 text-sm font-medium text-emerald-700">
+                      You save {formatPrice(price - discountPrice)}
+                    </p>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsFormOpen(true)}
+                  className="shrink-0 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                >
+                  BUY NOW
+                </button>
+              </div>
+            </div>
 
             {!isSparePart && sortedVariants && sortedVariants.length > 0 && (
               <div className="mt-6">
