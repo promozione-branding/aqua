@@ -35,11 +35,11 @@ export default function ContactClient() {
 
     try {
       setLoading(true);
-
+      const webisteUrl = window.location.hostname + window.location.pathname
       const payload = {
-        platform: "JNJ AQUA",
+        platform: webisteUrl || "JNJ AQUA",
         platformEmail: "jnjaquadelhi@gmail.com",
-         supplierToken: "6a9fefe9d936bdc2bb1dabfc",
+        supplierToken: "6a9fefe9d936bdc2bb1dabfc",
 
         name: form.name,
         phone: form.phone,
@@ -234,7 +234,7 @@ export default function ContactClient() {
                 onChange={(e) => setProduct(e.target.value)}
                 className="h-15 w-13a0 rounded-2xl border border-blue-300 bg-slate-50 px-5 text-[15px] outline-none transition focus:border-blue-600 focus:bg-white"
                 required
-                // disabled={loading}
+              // disabled={loading}
               >
                 <option value="" disabled>
                   Select Product
@@ -393,17 +393,15 @@ export default function ContactClient() {
               >
                 <span>{q}</span>
                 <ChevronDown
-                  className={`transition-transform duration-300 ${
-                    open === i ? "rotate-180" : ""
-                  }`}
+                  className={`transition-transform duration-300 ${open === i ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
               {/* Animated Content */}
               <div
-                className={`px-5 text-slate-900 transition-all duration-300 ease-in-out overflow-hidden ${
-                  open === i ? "max-h-40 opacity-100 pb-5" : "max-h-0 opacity-0"
-                }`}
+                className={`px-5 text-slate-900 transition-all duration-300 ease-in-out overflow-hidden ${open === i ? "max-h-40 opacity-100 pb-5" : "max-h-0 opacity-0"
+                  }`}
               >
                 {a}
               </div>

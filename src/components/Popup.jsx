@@ -28,11 +28,11 @@ export default function Popup({ isOpen, onClose }) {
   const submitForm = async () => {
     try {
       setLoading(true);
-
+      const webisteUrl = window.location.hostname + window.location.pathname
       const formData = {
-        platform: "Aqua JNJ",
+        platform: webisteUrl || "Aqua JNJ",
         platformEmail: "jnjaquadelhi@gmail.com",
-         supplierToken: "6a9fefe9d936bdc2bb1dabfc",
+        supplierToken: "6a9fefe9d936bdc2bb1dabfc",
         name,
         phone,
         email,
@@ -110,13 +110,13 @@ Contact: ${phone}`;
       return toast.error("Enter Valid Phone Number");
     }
 
-   
+
     await submitForm();
   };
 
   return (
-    <div onClick={onClose}  className="fixed inset-0  flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
-      <div onClick={(e)=>{e.stopPropagation()}}  className="relative rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] p-4 md:p-10 w-[350px] md:w-[560px] bg-white">
+    <div onClick={onClose} className="fixed inset-0  flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
+      <div onClick={(e) => { e.stopPropagation() }} className="relative rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] p-4 md:p-10 w-[350px] md:w-[560px] bg-white">
 
         <button
           className="absolute top-4 right-5 text-gray-400 hover:text-red-500 text-xl transition"
@@ -158,11 +158,11 @@ Contact: ${phone}`;
                 </option>
 
                 <option value="RO Cabinets">
-                 RO Cabinets
+                  RO Cabinets
                 </option>
 
                 <option value="Alkaline Filter">
-                 Alkaline Filter
+                  Alkaline Filter
                 </option>
 
                 <option value="Inline Filter">
@@ -181,7 +181,7 @@ Contact: ${phone}`;
                   Pump
                 </option>
 
-                
+
               </select>
             </div>
             <div className="flex flex-col md:flex-row gap-4">

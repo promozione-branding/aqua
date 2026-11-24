@@ -10,11 +10,13 @@ export const trackEvent = ({
   source = "Website",
   supplierToken,
 }) => {
+  const webisteUrl = window.location.hostname + window.location.pathname
+
   const payload = {
     productId: obj?.name || "N/A",
     supplierToken: supplierToken || obj?.supplierToken || DEFAULT_SUPPLIER_TOKEN,
     eventType,
-    source,
+    source: webisteUrl || source,
   }
 
   if (!payload.supplierToken) {
